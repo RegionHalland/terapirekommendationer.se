@@ -1,0 +1,82 @@
+{
+    "name": "(#composer_project#)",
+    "license": "(#composer_license#)",
+    "authors": [
+        {
+            "name": "(#composer_author_name#)",
+            "email": "(#composer_author_email#)"
+        }
+    ],
+    "minimum-stability" : "stable",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/Modularity.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/Municipio.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/xcap-import.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/lix-calculator.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/open-hours.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/custom-short-links.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/readspeaker-helper.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/content-scheduler.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/broken-link-detector.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/better-post-UI.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/helsingborg-stad/ACF-UX-collapse.git"
+        },
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+
+    "require": {
+        "composer/installers": "~1.0",
+        "johnpbloch/wordpress": "^4.6.0",
+        "wpackagist-plugin/wp-nested-pages": "^1.5.4"
+    },
+
+    "extra": {
+        "path": "/",
+        "wordpress-install-dir": "wp",
+        "installer-paths": {
+            "wp-content/plugins/{$name}": ["type:wordpress-plugin"],
+            "wp-content/themes/{$name}": ["type:wordpress-theme"]
+        }
+    },
+
+    "scripts": {
+        "post-install-cmd": [
+            "mkdir -p wp-content/uploads/cache/blade-cache"
+        ]
+    }
+}
