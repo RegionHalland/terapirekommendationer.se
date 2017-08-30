@@ -1,10 +1,10 @@
 {
-    "name": "(#composer_project#)",
-    "license": "(#composer_license#)",
+    "name": "regionhalland/terapirekommendationer",
+    "license": "",
     "authors": [
         {
-            "name": "(#composer_author_name#)",
-            "email": "(#composer_author_email#)"
+            "name": "Sebastian Marcusson",
+            "email": "sebastian.marcusson@regionhalland.se"
         }
     ],
     "minimum-stability" : "stable",
@@ -18,51 +18,18 @@
             "url": "https://github.com/helsingborg-stad/Municipio.git"
         },
         {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/xcap-import.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/lix-calculator.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/open-hours.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/custom-short-links.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/readspeaker-helper.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/content-scheduler.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/broken-link-detector.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/better-post-UI.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/ACF-UX-collapse.git"
-        },
-        {
             "type":"composer",
             "url":"https://wpackagist.org"
         }
     ],
-
     "require": {
         "composer/installers": "~1.0",
         "johnpbloch/wordpress": "^4.6.0",
-        "wpackagist-plugin/wp-nested-pages": "^1.5.4"
+        "helsingborg-stad/modularity": ">=1.0.0",
+        "helsingborg-stad/municipio": ">=1.0.0",
+        "wpackagist-plugin/advanced-custom-fields": "4.4.11",
+        "wpackagist-plugin/wp-nested-pages": "2.0.1",
+        "wpackagist-plugin/simple-post-notes": "1.6"
     },
 
     "extra": {
