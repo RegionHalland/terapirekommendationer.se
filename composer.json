@@ -10,14 +10,6 @@
     "minimum-stability" : "stable",
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/Modularity.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/Municipio.git"
-        },
-        {
             "type":"composer",
             "url":"https://wpackagist.org"
         }

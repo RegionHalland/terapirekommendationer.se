@@ -18,6 +18,9 @@
  * @package WordPress
  */
 
+define('WP_HOME','http://tr.app');
+define('WP_SITEURL','http://tr.app');
+
 require_once 'config/content.php';
 require_once 'config/database.php';
 require_once 'config/salts.php';
