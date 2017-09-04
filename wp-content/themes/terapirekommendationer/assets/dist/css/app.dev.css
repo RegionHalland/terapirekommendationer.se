@@ -1,6 +1,3 @@
-html {
-  background: black; }
-
 html.video-is-playing .scroll-down-please-icon,
 html.video-is-playing .scroll-down-please {
   display: none !important; }
@@ -15,6 +12,3 @@ html.video-is-playing .scroll-down-please {
 
 html.translated-ltr #site-header {
   top: 39px; }
-
-body {
-  display: none !important; }
