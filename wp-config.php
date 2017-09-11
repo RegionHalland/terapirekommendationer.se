@@ -18,7 +18,7 @@
  * @package WordPress
  */
 
-define('WP_HOME','http://tr.app');
+define('WP_HOME','http://tr.app/wp');
 define('WP_SITEURL','http://tr.app');
 
 require_once 'config/content.php';
