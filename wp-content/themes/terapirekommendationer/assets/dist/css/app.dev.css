@@ -25,8 +25,10 @@ html.translated-ltr #site-header {
 
 @media print {
   @page {
+    border: 1px solid black;
     size: auto;
     /* auto is the initial value */
+    -webkit-print-color-adjust: exact;
     /* this affects the margin in the printer settings */ }
   body {
     /* this affects the margin on the content before sending to printer */
@@ -56,7 +58,25 @@ html.translated-ltr #site-header {
     column-count: 2;
     -webkit-column-gap: 10mm;
        -moz-column-gap: 10mm;
-            column-gap: 10mm; }
+            column-gap: 10mm;
+    position: relative; }
+    .article-content .wp-caption {
+      max-width: 100% !important;
+      width: 100% !important; }
+    .article-content .aligncenter {
+      -webkit-column-span: all;
+         -moz-column-span: all;
+              column-span: all;
+      max-width: 100%; }
+      .article-content .aligncenter img {
+        max-width: 100% !important; }
+    .article-content ul {
+      -webkit-print-color-adjust: exact;
+      padding: 1.5em;
+      padding-left: 100px;
+      list-style-type: square;
+      background-color: #CBE6FF !important;
+      border-radius: 3px; }
   .page-footer {
     margin: 5mm 15mm 25mm 15mm; }
   .site-header, .breadcrumbs {
@@ -96,8 +116,9 @@ html.translated-ltr #site-header {
     display: table-header-group; }
   tr,
   img {
-    page-break-inside: avoid; }
-  img {
+    display: block;
+    page-break-inside: avoid;
+    page-break-before: always;
     max-width: 100% !important; }
   p,
   h2,

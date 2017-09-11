@@ -1,8 +1,9 @@
 @media print {
     @page  
     { 
+        border:1px solid black;
         size: auto;   /* auto is the initial value */ 
-
+        -webkit-print-color-adjust: exact; 
         /* this affects the margin in the printer settings */ 
     } 
 
@@ -28,7 +29,7 @@
         }
     } 
     article {
-        margin: 25mm 15mm 0mm 15mm;  
+        margin: 25mm 15mm 0mm 15mm; 
     }
 
     .article-content {
@@ -36,6 +37,42 @@
         -moz-column-count: 2; /* Firefox */
         column-count: 2;
         column-gap: 10mm;
+        position:relative;
+        .wp-caption {
+            max-width:100% !important;
+            width:100% !important;
+            // &::after {
+            //     display:block;
+            //     height:10px;
+            //     width:100px;
+            //     background:red;
+            //     //visibility: hidden;
+            //     page-break-after: always;
+            //     page-break-inside: avoid;
+            //     page-break-before: always;
+            // }
+        }
+
+        .aligncenter {
+            column-span:all;
+            //page-break-before: always; 
+            max-width:100%;
+            //display:block;
+            img {
+                // page-break-inside: avoid;
+                // page-break-before: auto;
+                // page-break-after:unset;
+                max-width:100% !important;
+            }
+        }
+        ul {
+            -webkit-print-color-adjust: exact; 
+            padding:1.5em;
+            padding-left:100px;
+            list-style-type: square;
+            background-color: #CBE6FF !important;
+            border-radius:3px;
+        } 
     }
 
     .page-footer {
@@ -91,9 +128,9 @@
     }
     tr,
     img {
+        display: block;
         page-break-inside: avoid;
-    }
-    img {
+        page-break-before: always;
         max-width: 100% !important;
     }
     p,
