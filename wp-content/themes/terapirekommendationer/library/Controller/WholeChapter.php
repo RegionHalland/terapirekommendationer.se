@@ -11,12 +11,28 @@ namespace Terapirekommendationer\Controller;
  *    \Municipio\Helper\Template::add(__('Custom template', 'municipio'), \Municipio\Helper\Template::locateTemplate('custom-template-view.blade.php'));
  */
 
-class ExampleController extends \Municipio\Controller\BaseController
+class WholeChapter extends \Municipio\Controller\BaseController
 {
     public function init()
     {
         // This will make a variable with name "exampleVariable"
         // accessible from the view of this controller
-        $this->data['exampleVariable'] = 'example value';
+
+        $this->data['parent'] = $this->getChapters();
+    }
+
+    public function getChapters(){
+    	$page_id = get_the_id();
+    	
+    	$args = array(
+		    'post_type'      => 'page',
+		    'posts_per_page' => -1,
+		    'post_parent'    => $page_id,
+		    'order'          => 'ASC',
+		    'orderby'        => 'menu_order'
+		 );
+
+		$parent = new \WP_Query( $args );
+    	return $parent;
     }
 }
