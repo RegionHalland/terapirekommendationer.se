@@ -1,3 +1,6 @@
+html {
+  border: blue solid thick; }
+
 html.video-is-playing .scroll-down-please-icon,
 html.video-is-playing .scroll-down-please {
   display: none !important; }
