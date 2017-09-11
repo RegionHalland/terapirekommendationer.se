@@ -35,11 +35,11 @@ html.translated-ltr #site-header {
     body::before {
       content: '22';
       font-family: "ff-nuvo-web-pro";
-      font-size: 1.5em;
+      font-size: 1.25em;
       font-weight: bold;
-      padding: 1em;
+      padding: 0.75em;
       position: absolute;
-      margin-top: 2cm;
+      margin-top: 1cm;
       margin-bottom: 1cm;
       -webkit-print-color-adjust: exact;
       left: 0;
@@ -47,12 +47,16 @@ html.translated-ltr #site-header {
       color: white !important;
       background-color: #004B93 !important; }
   article {
+    margin: 25mm 15mm 0mm 15mm; }
+  .article-content {
     -webkit-column-count: 2;
     /* Chrome, Safari, Opera */
     -moz-column-count: 2;
     /* Firefox */
     column-count: 2;
-    margin: 25mm 15mm 0mm 15mm; }
+    -webkit-column-gap: 10mm;
+       -moz-column-gap: 10mm;
+            column-gap: 10mm; }
   .page-footer {
     margin: 5mm 15mm 25mm 15mm; }
   .site-header, .breadcrumbs {

@@ -3,7 +3,7 @@
     <h1>{{ the_title() }}</h1>
 
     @include('partials.accessibility-menu')
-
+    <div class="article-content">
     @if (get_field('post_single_show_featured_image') === true)
         <img src="{{ municipio_get_thumbnail_source(null, array(700,700)) }}" alt="{{ the_title() }}">
     @endif
@@ -21,5 +21,5 @@
         @endif
 
     @endif
-
+    </div>
 </article>
