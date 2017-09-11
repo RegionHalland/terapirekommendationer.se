@@ -1,11 +1,22 @@
 @media print {
-    @page {
-        margin: 2cm;
-    }
-    body {
+    @page  
+    { 
+        size: auto;   /* auto is the initial value */ 
+
+        /* this affects the margin in the printer settings */ 
+    } 
+
+    body  
+    { 
+        /* this affects the margin on the content before sending to printer */ 
+        margin: 0;  
+        padding: 0;
         &::before {
             content:'Kapitel 1';
             position:absolute;
+            //margin:10px;
+            margin-top:2cm;
+            margin-bottom:1cm;
             -webkit-print-color-adjust: exact; 
             left:0;
             top:0;
@@ -13,6 +24,12 @@
             width:50px;
             background-color: blue !important;
         }
+    } 
+    article {
+        // -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        // -moz-column-count: 2; /* Firefox */
+        // column-count: 2;
+        margin: 25mm 25mm 25mm 25mm;  
     }
     .site-header, .breadcrumbs {
         display:none;

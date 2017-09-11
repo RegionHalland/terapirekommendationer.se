@@ -15,16 +15,26 @@ html.translated-ltr #site-header {
 
 @media print {
   @page {
-    margin: 2cm; }
-  body::before {
-    content: 'Kapitel 1';
-    position: absolute;
-    -webkit-print-color-adjust: exact;
-    left: 0;
-    top: 0;
-    height: 50px;
-    width: 50px;
-    background-color: blue !important; }
+    size: auto;
+    /* auto is the initial value */
+    /* this affects the margin in the printer settings */ }
+  body {
+    /* this affects the margin on the content before sending to printer */
+    margin: 0;
+    padding: 0; }
+    body::before {
+      content: 'Kapitel 1';
+      position: absolute;
+      margin-top: 2cm;
+      margin-bottom: 1cm;
+      -webkit-print-color-adjust: exact;
+      left: 0;
+      top: 0;
+      height: 50px;
+      width: 50px;
+      background-color: blue !important; }
+  article {
+    margin: 25mm 25mm 25mm 25mm; }
   .site-header, .breadcrumbs {
     display: none; }
   h4 {
