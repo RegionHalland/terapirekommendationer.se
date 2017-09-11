@@ -1,3 +1,13 @@
+body, html {
+  font-family: "minion-pro-display"; }
+  body h1, body h2, body h3, body h4, body h5, body h6, html h1, html h2, html h3, html h4, html h5, html h6 {
+    font-family: "ff-nuvo-web-pro"; }
+  body h1, html h1 {
+    color: black; }
+  body h2, body h3, body h4, html h2, html h3, html h4 {
+    color: #004B93 !important;
+    -webkit-print-color-adjust: exact; }
+
 html.video-is-playing .scroll-down-please-icon,
 html.video-is-playing .scroll-down-please {
   display: none !important; }
@@ -23,23 +33,30 @@ html.translated-ltr #site-header {
     margin: 0;
     padding: 0; }
     body::before {
-      content: 'Kapitel 1';
+      content: '22';
+      font-family: "ff-nuvo-web-pro";
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: 1em;
       position: absolute;
       margin-top: 2cm;
       margin-bottom: 1cm;
       -webkit-print-color-adjust: exact;
       left: 0;
-      top: 0;
-      height: 50px;
-      width: 50px;
-      background-color: blue !important; }
+      top: 15mm;
+      color: white !important;
+      background-color: #004B93 !important; }
   article {
-    margin: 25mm 25mm 25mm 25mm; }
+    -webkit-column-count: 2;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 2;
+    /* Firefox */
+    column-count: 2;
+    margin: 25mm 15mm 0mm 15mm; }
+  .page-footer {
+    margin: 5mm 15mm 25mm 15mm; }
   .site-header, .breadcrumbs {
     display: none; }
-  h4 {
-    color: blue !important;
-    -webkit-print-color-adjust: exact; }
   *,
   *:before,
   *:after {

@@ -2,6 +2,20 @@ html {
     //background: black; //Fixes issues of color in footer, when page is to "short".
 }
 
+body,html {
+    h1,h2,h3,h4,h5,h6 {
+        font-family: "ff-nuvo-web-pro";
+    }
+    h1 {
+        color:black;
+    }
+    h2,h3,h4 {
+        color:#004B93 !important;
+        -webkit-print-color-adjust: exact; 
+    }
+    font-family: "minion-pro-display";
+}
+
 html.video-is-playing {
     .scroll-down-please-icon,
     .scroll-down-please {
