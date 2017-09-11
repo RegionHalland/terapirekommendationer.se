@@ -49,14 +49,9 @@ gulp.task('watch', function() {
     gulp.watch('assets/source/sass/**/*.scss', ['sass-dist', 'sass-dev']);
 });
 
-/*gulp.task('bs', function() {
-    browserSync.init({
-        proxy: "tr.app"
-    });
-});*/
 
 // Static Server + watching scss/html files
-gulp.task('serve', function() {
+gulp.task('watch-bs', function() {
     browserSync.init({
         proxy: "tr.app"
     });
