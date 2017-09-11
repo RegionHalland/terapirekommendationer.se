@@ -25,6 +25,7 @@
 
                 <article class="clearfix">
                     @foreach ($parent->posts as $child)
+                        <h1>{{$child->post_title}}</h1>
                         <p>{!!$child->post_content!!}</p>
                     @endforeach
                 </article>
