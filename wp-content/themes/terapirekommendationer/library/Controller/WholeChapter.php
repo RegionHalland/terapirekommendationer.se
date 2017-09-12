@@ -2,6 +2,8 @@
 
 namespace Terapirekommendationer\Controller;
 
+//require_once('prince.php');
+
 /**
  * To add a custom template and load it's controller do the following:
  *
@@ -15,11 +17,33 @@ class WholeChapter extends \Municipio\Controller\BaseController
 {
     public function init()
     {
-        // This will make a variable with name "exampleVariable"
-        // accessible from the view of this controller
+    	$page_id = get_the_id();
+    	$args = array(
+		    'post_type'      => 'page',
+		    'posts_per_page' => -1,
+		    //'p' => 473,
+		    'post_parent'    => $page_id,
+		    'order'          => 'ASC',
+		    'orderby'        => 'menu_order'
+		 );
 
-        $this->data['parent'] = $this->getChapters();
+		$parent = new \WP_Query( $args );
+		//return $parent;
+    	/*$prince = new PrinceWrapper('/home/vagrant/Code/Region_Halland/terapirekommendationer.se/wp-content/themes/terapirekommendationer/library/Controller/prince');
+
+    	//$prince->convert_file("/Users/sema0703/Code/Region_Halland/terapirekommendationer.se/vendor/gridonic/princexml-php/lib/readme.html");
+    	wp_die(json_encode($prince));*/
+		//$prince = new Prince('./prince');
+		/*foreach ($parent->posts as $key => $post) {
+			echo '<h1>' . $post->post_title  .'</h1>';
+			echo '<p>' . $post->post_content  .'</p>';
+		}
+		die();*/
+
+		$this->data["parent"] = $parent;
+
     }
+
 
     public function getChapters(){
     	$page_id = get_the_id();

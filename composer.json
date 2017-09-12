@@ -33,7 +33,9 @@
         "helsingborg-stad/municipio": ">=1.0.0",
         "wpackagist-plugin/wp-nested-pages": "2.0.1",
         "wpackagist-plugin/simple-post-notes": "1.6",
-        "advanced-custom-fields/advanced-custom-fields-pro": "^5.0"
+        "advanced-custom-fields/advanced-custom-fields-pro": "^5.0",
+        "tecnickcom/tcpdf": "^6.2"
+        //"gridonic/princexml-php": "^1.2"
     },
     "extra": {
         "path": "/",
