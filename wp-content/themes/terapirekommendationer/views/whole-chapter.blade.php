@@ -24,10 +24,11 @@
             @endwhile
 
                 <article class="clearfix">
-                    @foreach ($parent->posts as $child)
-                        <h1>{{$child->post_title}}</h1>
-                        <p>{!!$child->post_content!!}</p>
-                    @endforeach
+                    <div class="article-content">
+                        @foreach ($parent->posts as $child)
+                            <p>{!!$child->post_content!!}</p>
+                        @endforeach
+                    </div>
                 </article>
 
             @if (is_active_sidebar('content-area'))
