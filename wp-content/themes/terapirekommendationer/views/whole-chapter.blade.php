@@ -26,7 +26,12 @@
                 <article class="clearfix">
                     <div class="article-content">
                         @foreach ($parent->posts as $child)
-                            <p>{!!$child->post_content!!}</p>
+                            <?php $content = $child->post_content;
+                            $content = apply_filters('the_content', $content);
+                            $content = str_replace(']]>', ']]&gt;', $content);
+                            ?>
+
+                            {!!$content!!}
                         @endforeach
                     </div>
                 </article>
