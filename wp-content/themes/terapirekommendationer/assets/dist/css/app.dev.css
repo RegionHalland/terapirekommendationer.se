@@ -24,22 +24,22 @@ html.translated-ltr #site-header {
   top: 39px; }
 
 @media print {
+  h1::before {
+    content: '1. '; }
   @page {
-    border: 1px solid black;
-    size: auto;
+    size: A4 portrait;
     /* auto is the initial value */
-    -webkit-print-color-adjust: exact;
-    /* this affects the margin in the printer settings */ }
+    -webkit-print-color-adjust: exact; }
   body {
     /* this affects the margin on the content before sending to printer */
     margin: 0;
     padding: 0; }
     body::before {
-      content: '22';
+      content: "1";
       font-family: "ff-nuvo-web-pro";
       font-size: 1.25em;
       font-weight: bold;
-      padding: 0.75em;
+      padding: 0.75em 1.25em;
       position: absolute;
       margin-top: 1cm;
       margin-bottom: 1cm;
@@ -49,36 +49,37 @@ html.translated-ltr #site-header {
       color: white !important;
       background-color: #004B93 !important; }
   article {
-    margin: 25mm 15mm 0mm 15mm; }
+    margin: 25mm 35mm 0mm 35mm;
+    position: relative; }
   .article-content {
-    -webkit-column-count: 2;
-    /* Chrome, Safari, Opera */
-    -moz-column-count: 2;
-    /* Firefox */
-    column-count: 2;
-    -webkit-column-gap: 10mm;
-       -moz-column-gap: 10mm;
-            column-gap: 10mm;
     position: relative; }
     .article-content .wp-caption {
-      max-width: 100% !important;
       width: 100% !important; }
     .article-content .aligncenter {
       -webkit-column-span: all;
          -moz-column-span: all;
               column-span: all;
-      max-width: 100%; }
+      text-align: left;
+      -webkit-print-color-adjust: exact;
+      max-width: 100%;
+      width: 100%;
+      display: block; }
       .article-content .aligncenter img {
+        page-break-inside: avoid;
+        page-break-before: auto;
+        page-break-after: auto;
         max-width: 100% !important; }
     .article-content ul {
       -webkit-print-color-adjust: exact;
       padding: 1.5em;
-      padding-left: 100px;
       list-style-type: square;
       background-color: #CBE6FF !important;
       border-radius: 3px; }
+    .article-content ol {
+      -webkit-print-color-adjust: exact;
+      padding: 1.5em; }
   .page-footer {
-    margin: 5mm 15mm 25mm 15mm; }
+    margin: 5mm 35mm 25mm 35mm; }
   .site-header, .breadcrumbs {
     display: none; }
   *,
@@ -125,6 +126,8 @@ html.translated-ltr #site-header {
   h3 {
     orphans: 3;
     widows: 3; }
+  h6 {
+    font-size: 10pt; }
   h2,
   h3 {
     page-break-after: avoid; } }
