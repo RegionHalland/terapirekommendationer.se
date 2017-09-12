@@ -133,9 +133,9 @@
     tr,
     img {
         display: block;
-        image-resolution: from-image;
+        //image-resolution: from-image;
         page-break-inside: avoid;
-        page-break-before: always;
+        //page-break-before: always;
         max-width: 100% !important;
     }
     p,

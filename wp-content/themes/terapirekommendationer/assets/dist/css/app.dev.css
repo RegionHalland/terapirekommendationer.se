@@ -118,9 +118,7 @@ html.translated-ltr #site-header {
   tr,
   img {
     display: block;
-    image-resolution: from-image;
     page-break-inside: avoid;
-    page-break-before: always;
     max-width: 100% !important; }
   p,
   h2,
