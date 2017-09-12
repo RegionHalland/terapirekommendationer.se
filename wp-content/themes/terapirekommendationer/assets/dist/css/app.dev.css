@@ -118,6 +118,7 @@ html.translated-ltr #site-header {
   tr,
   img {
     display: block;
+    image-resolution: from-image;
     page-break-inside: avoid;
     page-break-before: always;
     max-width: 100% !important; }
@@ -128,6 +129,8 @@ html.translated-ltr #site-header {
     widows: 3; }
   h6 {
     font-size: 10pt; }
+  h2 {
+    page-break-before: always; }
   h2,
   h3 {
     page-break-after: avoid; } }

@@ -133,6 +133,7 @@
     tr,
     img {
         display: block;
+        image-resolution: from-image;
         page-break-inside: avoid;
         page-break-before: always;
         max-width: 100% !important;
@@ -145,6 +146,9 @@
     }
     h6 {
         font-size:10pt;
+    }
+    h2 {
+        page-break-before:always;
     }
     h2,
     h3 {
