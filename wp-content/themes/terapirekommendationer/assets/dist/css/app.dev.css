@@ -71,7 +71,7 @@ html.translated-ltr #site-header {
         max-width: 100% !important; }
     .article-content ul {
       -webkit-print-color-adjust: exact;
-      padding: 1.5em;
+      padding: 1em;
       page-break-inside: avoid;
       list-style-type: square;
       background-color: #CBE6FF !important;
@@ -129,7 +129,7 @@ html.translated-ltr #site-header {
     widows: 3; }
   h6 {
     font-size: 10pt;
-    margin: 2mm 0mm; }
+    margin: 1mm 0mm; }
   h1 {
     font-size: 1.8rem;
     border: none !important; }
