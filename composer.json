@@ -24,18 +24,34 @@
                     "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=b3JkZXJfaWQ9OTg3ODB8dHlwZT1wZXJzb25hbHxkYXRlPTIwMTctMDItMDIgMTU6MTQ6Mzc="
                 }
             }
+        },
+        {
+          "type": "package",
+          "package": {
+                "name": "oasisworkflow/oasis-workflow-pro",
+                "version": "1.5.9",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://www.oasisworkflow.com/index.php?eddfile=24519%3A429%3A0%3A0&ttl=1507862268&file=0&token=4a71776b0bd10440cbc44e61f024d535"
+                }
+            }
         }
+        
     ],
     "require": {
         "composer/installers": "~1.0",
         "johnpbloch/wordpress": "^4.6.0",
         "helsingborg-stad/modularity": ">=1.0.0",
-        "helsingborg-stad/municipio": ">=1.0.0",
+        "helsingborg-stad/municipio": "1.5.9",
         "wpackagist-plugin/wp-nested-pages": "2.0.1",
         "wpackagist-plugin/simple-post-notes": "1.6",
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.0",
-        "tecnickcom/tcpdf": "^6.2"
-        //"gridonic/princexml-php": "^1.2"
+        "tecnickcom/tcpdf": "^6.2",
+        "wpackagist-plugin/user-role-editor": "^4.35",
+        "wpackagist-plugin/edit-flow": "^0.8.2",
+        "wpackagist-plugin/bu-versions": "^0.7.8",
+        "oasisworkflow/oasis-workflow-pro": "^1.5"
     },
     "extra": {
         "path": "/",
