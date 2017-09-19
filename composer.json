@@ -52,7 +52,8 @@
         "wpackagist-plugin/edit-flow": "^0.8.2",
         "wpackagist-plugin/bu-versions": "^0.7.8",
         "oasisworkflow/oasis-workflow-pro": "^1.5",
-        "caxy/php-htmldiff": "^0.1.5"
+        "caxy/php-htmldiff": "^0.1.5",
+        "gridonic/princexml-php": "^1.2"
     },
     "extra": {
         "path": "/",
