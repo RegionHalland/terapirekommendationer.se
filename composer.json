@@ -47,10 +47,7 @@
         "wpackagist-plugin/wp-nested-pages": "2.0.1",
         "wpackagist-plugin/simple-post-notes": "1.6",
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.0",
-        "tecnickcom/tcpdf": "^6.2",
         "wpackagist-plugin/user-role-editor": "^4.35",
-        "wpackagist-plugin/edit-flow": "^0.8.2",
-        "wpackagist-plugin/bu-versions": "^0.7.8",
         "oasisworkflow/oasis-workflow-pro": "^1.5",
         "caxy/php-htmldiff": "^0.1.5",
         "gridonic/princexml-php": "^1.2"
