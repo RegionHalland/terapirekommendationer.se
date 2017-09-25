@@ -137,7 +137,7 @@
     img {
         display: block;
         //image-resolution: from-image;
-        page-break-inside: avoid;
+        page-break-inside: always;
         //page-break-before: always;
         max-width: 100% !important;
     }

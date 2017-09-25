@@ -22,26 +22,21 @@ class WholeChapter extends \Municipio\Controller\BaseController
     	//$blade = New View();
     	//return $blade('whole-chapter', ['name' => 'James']);
     	$page_id = 3913;
-    	/*$args = array(
-		    'post_type'      => 'page',
-		    'posts_per_page' => -1,
-		    //'p' => 473,
-		    'post_parent'    => $page_id,
-		    'order'          => 'ASC',
-		    'orderby'        => 'menu_order'
-		 );
-
-		$parent = new \WP_Query( $args );*/
+    	$page_id_chapter1 = 183;
+    	$chapterOne = get_page($page_id_chapter1);
 
 		$args = array(
 			'sort_order' => 'asc',
 			'sort_column' => 'menu_order',
-			'child_of' => 0,
+			//'child_of' => 0,
 			'parent' => $page_id,
 		);
 		$pages = get_pages($args);
 
-		/*foreach ($pages as $key => $children) {
+		/*var_dump($pages);
+		die();*/
+
+		foreach ($pages as $key => $children) {
 			$argsTwo = array(
 				'sort_order' => 'asc',
 				'sort_column' => 'menu_order',
@@ -83,9 +78,9 @@ class WholeChapter extends \Municipio\Controller\BaseController
 				echo get_pages($argsThree);
 
 				//$child[$k]->grand_children = get_pages($argsThree);
-			}
+			}*/
 
-		}*/
+		}
 
 		//var_dump($pages[0]->children[2]->grand_children);
 
@@ -105,7 +100,26 @@ class WholeChapter extends \Municipio\Controller\BaseController
 		$cache = __DIR__;
     	$blade = new Blade($views, $cache);
     	
-    	echo $myString = $blade->view()->make('print', ["chapters" => $pages])->render();
+    	echo $myString = $blade->view()->make('print', [
+    		"chapter_one" => $chapterOne,
+    		"chapters" => $pages
+    	])->render();
+
+		/*$file = 'tr.html';
+		// Open the file to get existing content
+		$current = file_get_contents($file);
+		// Append a new person to the file
+		$current .= "John Smith\n";
+		// Write the contents back to the file
+		file_put_contents($file, $current);*/
+
+		if (!is_dir('wp-content/themes/terapirekommendationer/assets/dist/html/')) {
+  			// dir doesn't exist, make it
+  			mkdir('wp-content/themes/terapirekommendationer/assets/dist/html/');
+		}
+
+		echo file_put_contents("wp-content/themes/terapirekommendationer/assets/dist/html/tr.html", $myString);
+
     	die();
 
 
@@ -115,7 +129,7 @@ class WholeChapter extends \Municipio\Controller\BaseController
     	$prince->addStyleSheet(__DIR__.'/min.css');
 		$err = [];
 		$prince->convert_string_to_file($myString, './tr.pdf', $err);
-		//var_dump($err);
+		var_dump($err);
 
     	die();
     	//var_dump(Blade);

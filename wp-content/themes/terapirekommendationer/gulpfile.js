@@ -1,5 +1,6 @@
 // Include gulp
 var gulp = require('gulp');
+const shell = require('gulp-shell')
 
 // Include Our Plugins
 var sass 			= require('gulp-sass');
@@ -56,8 +57,14 @@ gulp.task('watch-bs', function() {
         proxy: "tr.app"
     });
 
-    gulp.watch('assets/source/sass/**/*.scss', ['sass-dist', 'sass-dev']);
+    gulp.watch('assets/source/sass/**/*.scss', ['sass-dist', 'sass-dev', 'shorthand']);
 });
+
+// Generate pdf with prince
+gulp.task('shorthand', ['sass-dev'] ,shell.task([
+  'prince -s assets/dist/css/app.dev.css assets/dist/html/tr.html'//,
+  //'echo world'
+]))
 
 // Default Task
 gulp.task('default', ['sass-dist', 'sass-dev', 'scripts-dist', 'watch', 'bs']);
