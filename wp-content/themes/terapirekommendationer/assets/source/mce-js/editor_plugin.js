@@ -61,7 +61,7 @@
                 onclick: function() {
                     var selection = tinyMCE.activeEditor.selection.getContent();
                     tinyMCE.activeEditor.selection.setContent(
-                        '<div><header>Ange målgrupp</header><div>'+selection+'</div></div>'
+                        '<div class="infobox--children"><header class="infobox__header">Ange målgrupp</header><div class="infobox__content">'+selection+'</div></div>'
                     );
                 }
               }, {
@@ -69,7 +69,7 @@
                 onclick: function() {
                     var selection = tinyMCE.activeEditor.selection.getContent();
                     tinyMCE.activeEditor.selection.setContent(
-                        '<div><header>Ange målgrupp</header><div>'+selection+'</div></div>'
+                        '<div class="infobox--elderly"><header class="infobox__header">Ange målgrupp</header><div class="infobox__content">'+selection+'</div></div>'
                     );
                 }
               }
