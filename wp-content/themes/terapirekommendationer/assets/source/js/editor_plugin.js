@@ -1,5 +1,3 @@
-var Terapirekommendationer;
-
 (function() {
     tinymce.create('tinymce.plugins.myplugin', {
         /**
@@ -59,28 +57,3 @@ var Terapirekommendationer;
     // Register plugin
     tinymce.PluginManager.add( 'wptuts', tinymce.plugins.Wptuts );
 })();
-Terapirekommendationer = Terapirekommendationer || {};
-Terapirekommendationer.ExampleNamespace = Terapirekommendationer.Liquid || {};
-
-Terapirekommendationer.ExampleNamespace.ExampleClass = (function ($) {
-
-	var classVariable = false;
-
-    /**
-     * Constructor
-     * Should be named as the class itself
-     */
-	function ExampleClass() {
-
-    }
-
-    /**
-     * Method
-     */
-    ExampleClass.prototype.exampleMethod = function () {
-
-    }
-
-	return new ExampleClass();
-
-})(jQuery);

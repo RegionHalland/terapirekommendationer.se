@@ -36,12 +36,16 @@ gulp.task('sass-dev', function() {
 
 // Concatenate & Minify JS
 gulp.task('scripts-dist', function() {
-    return gulp.src('assets/source/js/*.js')
+    gulp.src('assets/source/js/*.js')
             .pipe(concat('app.js'))
             .pipe(gulp.dest('assets/dist/js'))
             .pipe(rename('app.min.js'))
             .pipe(uglify())
             .pipe(gulp.dest('assets/dist/js'));
+    
+    gulp.src('assets/source/mce-js/*.js')
+            .pipe(uglify())
+            .pipe(gulp.dest('assets/dist/mce-js'));
 });
 
 // Watch Files For Changes
@@ -58,10 +62,11 @@ gulp.task('watch-bs', function() {
     });
 
     gulp.watch('assets/source/sass/**/*.scss', ['sass-dist', 'sass-dev', 'shorthand']);
+    gulp.watch(['assets/source/js/**/*.js', 'assets/source/mce-js/*.js'], ['scripts-dist']);
 });
 
 // Generate pdf with prince
-gulp.task('shorthand', ['sass-dev'] ,shell.task([
+gulp.task('shorthand', ['sass-dev'], shell.task([
   'prince -s assets/dist/css/app.dev.css assets/dist/html/tr.html'//,
   //'echo world'
 ]))
