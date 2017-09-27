@@ -266,6 +266,7 @@ $blue: #004B93;
     .infobox--background,
     .infobox--border {
         padding: 2pt 10pt;
+        page-break-after: always;
     }
 
     .infobox--background {
@@ -278,6 +279,7 @@ $blue: #004B93;
 
     .infobox--elderly {
         background: #f0f4ed;
+        page-break-after:always;
     
         .infobox__header {
             background: #438011;
@@ -287,6 +289,7 @@ $blue: #004B93;
     
     .infobox--children {
         background: #faf5ea;
+        page-break-after: always;
     
         .infobox__header {
             background: #fdb813;      
