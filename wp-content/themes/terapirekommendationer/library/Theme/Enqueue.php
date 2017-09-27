@@ -90,7 +90,7 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
      */
     public function style()
     {
-        wp_register_style('hbg-prime', 'https://regionhalland.github.io/styleguide-web/dist/1.4.0/css/hbg-prime-blue.min.css?ver=latest', '', '1.0.0');
+        wp_register_style('hbg-prime', 'https://regionhalland.github.io/styleguide-web/dist/css/hbg-prime-blue.min.css?ver=latest', '', '1.0.0');
         wp_enqueue_style('hbg-prime');
 
         wp_enqueue_style('Terapirekommendationer-css', get_stylesheet_directory_uri(). '/assets/dist/css/app.min.css', '', filemtime(get_stylesheet_directory() . '/assets/dist/css/app.min.css'));
