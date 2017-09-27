@@ -1163,7 +1163,31 @@
     height: 400px;
     -webkit-print-color-adjust: exact;
     width: 100%;
-    background: #eaeaea; } }
+    background: #eaeaea; }
+  .infobox--background,
+  .infobox--border {
+    padding: 2pt 10pt; }
+  .infobox--background {
+    background: #ddeef9; }
+  .infobox--border {
+    border: 3px solid #00579d; }
+  .infobox--elderly {
+    background: #f0f4ed; }
+    .infobox--elderly .infobox__header {
+      background: #438011;
+      color: #fff; }
+  .infobox--children {
+    background: #faf5ea; }
+    .infobox--children .infobox__header {
+      background: #fdb813; }
+  .infobox__header {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 11pt;
+    font-weight: 700;
+    font-family: source-sans-pro; }
+  .infobox__content {
+    padding: 2pt 10pt; } }
 
 /* COMPONENTS */
 ul.segment {

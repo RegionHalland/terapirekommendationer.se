@@ -66,8 +66,8 @@ gulp.task('watch-bs', function() {
 });
 
 // Generate pdf with prince
-gulp.task('shorthand', ['sass-dev'], shell.task([
-  'prince -s assets/dist/css/app.dev.css assets/dist/html/tr.html'//,
+gulp.task('shorthand', ['sass-dev', 'sass-dist'], shell.task([
+  'prince -s ./assets/dist/css/app.dev.css assets/dist/html/tr.html'//,
   //'echo world'
 ]))
 
