@@ -62,7 +62,7 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 * Block defines whether it is a span, div, selector, or inline style
 * Classes allows you to define CSS classes
 * Wrapper whether or not to add a new block-level element around any selected elements
-*/
+
         array(  
             'title' => 'Content Block',  
             'block' => 'div',  
