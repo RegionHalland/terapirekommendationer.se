@@ -23,18 +23,7 @@ class Enqueue
      */
     public function editorStyle()
     {
-        /*if ((defined('DEV_MODE') && DEV_MODE === true) || (isset($_GET['DEV_MODE']) && $_GET['DEV_MODE'] === 'true')) {
-            add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//hbgprime.dev/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.dev.css'));
-            return;
-        }
-
-        if (defined('STYLEGUIDE_VERSION') && STYLEGUIDE_VERSION != "") {
-            add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//helsingborg-stad.github.io/styleguide-web/dist/' . STYLEGUIDE_VERSION . '/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
-        } else {
-            add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//helsingborg-stad.github.io/styleguide-web/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
-        }*/
-
-        add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide-web/dist/1.4.0/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
+        add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide-web/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
     }
 
 // create a URL to the child theme
@@ -61,7 +50,7 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 * Callback function to filter the MCE settings
 */
  
-function my_mce_before_init_insert_formats( $init_array ) {  
+/*function my_mce_before_init_insert_formats( $init_array ) {  
  
 // Define the style_formats array
  
@@ -85,14 +74,14 @@ function my_mce_before_init_insert_formats( $init_array ) {
             'block' => 'span',  
             'classes' => 'blue-button',
             'wrapper' => true,
-        )*/
+        )
     );  
     // Insert the array, JSON ENCODED, into 'style_formats'
     $init_array['style_formats'] = json_encode( $style_formats );  
      
     return $init_array;  
    
-} 
+} */
 
 
     /**
