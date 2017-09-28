@@ -1166,18 +1166,21 @@
     background: #eaeaea; }
   .infobox--background,
   .infobox--border {
-    padding: 2pt 10pt; }
+    padding: 2pt 10pt;
+    page-break-after: always; }
   .infobox--background {
     background: #ddeef9; }
   .infobox--border {
     border: 3px solid #00579d; }
   .infobox--elderly {
-    background: #f0f4ed; }
+    background: #f0f4ed;
+    page-break-after: always; }
     .infobox--elderly .infobox__header {
       background: #438011;
       color: #fff; }
   .infobox--children {
-    background: #faf5ea; }
+    background: #faf5ea;
+    page-break-after: always; }
     .infobox--children .infobox__header {
       background: #fdb813; }
   .infobox__header {

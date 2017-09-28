@@ -72,5 +72,5 @@ gulp.task('shorthand', ['sass-dev', 'sass-dist'], shell.task([
 ]))
 
 // Default Task
-gulp.task('default', ['sass-dist', 'sass-dev', 'scripts-dist', 'watch', 'bs']);
+gulp.task('default', ['sass-dist', 'sass-dev', 'scripts-dist', 'watch']);
 
