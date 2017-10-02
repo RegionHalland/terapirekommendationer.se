@@ -50,9 +50,7 @@
         "wpackagist-plugin/user-role-editor": "^4.35",
         "oasisworkflow/oasis-workflow-pro": "^1.5",
         "caxy/php-htmldiff": "^0.1.5",
-        "gridonic/princexml-php": "^1.2",
-        "wpackagist-plugin/tinymce-custom-styles": "1.0.4",
-        "wpackagist-plugin/tinymce-advanced": "^4.6"
+        "gridonic/princexml-php": "^1.2"
     },
     "extra": {
         "path": "/",
