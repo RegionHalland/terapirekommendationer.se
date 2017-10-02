@@ -10,7 +10,7 @@ class Enqueue
         add_action('wp_enqueue_scripts', array($this, 'style'));
         add_action('wp_enqueue_scripts', array($this, 'script'));
         // Attach callback to 'tiny_mce_before_init' 
-        //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init_insert_formats') );
+        add_filter( 'tiny_mce_before_init', array($this, 'make_mce_awesome') );
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
         add_filter( 'mce_external_plugins', array($this, 'myplugin_register_tinymce_javascript'));
         add_filter( 'mce_buttons', array($this, 'myplugin_register_buttons') );
@@ -24,6 +24,8 @@ class Enqueue
     public function editorStyle()
     {
         add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide-web/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
+
+        add_editor_style($this->get_template_directory_child() . '/assets/dist/css/app.min.css');
     }
 
 // create a URL to the child theme
@@ -49,8 +51,12 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 /*
 * Callback function to filter the MCE settings
 */
- 
-/*function my_mce_before_init_insert_formats( $init_array ) {  
+function make_mce_awesome( $init ) {
+    $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3 Blå=h5;Mellanrubrik 4=h6;';
+
+    return $init;
+}
+/*function my_mce_before_init_insert_formats( $init_array ) {
  
 // Define the style_formats array
  
