@@ -12,7 +12,7 @@ class Enqueue
         add_action('admin_init', array($this, 'editorStyle'));
         
         // Attach callback to 'tiny_mce_before_init' 
-        //add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
+        add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
         add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
         
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
@@ -90,7 +90,7 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 * Callback function to filter the MCE settings
 */
 function tr_modify_block_formats( $init ) {
-    $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3 Blå=h5;Mellanrubrik 4=h6;';
+    $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3=h5;Mellanrubrik 4=h6;';
 
     return $init;
 }
