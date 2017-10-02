@@ -12,7 +12,9 @@ class Enqueue
         add_action('admin_init', array($this, 'editorStyle'));
         
         // Attach callback to 'tiny_mce_before_init' 
-        add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
+        //add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
+        add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
+        
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
         add_filter( 'mce_external_plugins', array($this, 'myplugin_register_tinymce_javascript'));
         add_filter( 'mce_buttons_2', array($this, 'tr_register_mce_buttons') );
@@ -23,11 +25,26 @@ class Enqueue
         
     }
 
+    function my_mce4_options( $init ) {
+        $default_colours = '
+            "000000", "Black",
+            "ffffff", "White",
+            "00579d", "Blue",
+            "438011", "Green",
+            "fdb813", "Yellow",
+            "f44242", "Red"
+        ';
+
+        $init['textcolor_map'] = '['.$default_colours.']';
+        //$init['textcolor_rows'] = 6; // expand colour grid to 6 rows
+        return $init;
+}
+
         /**
      * Add stylesheet to editor
      * @return void
      */
-    public function editorStyle()
+    function editorStyle()
     {
         add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide-web/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
     }
@@ -42,9 +59,10 @@ function get_template_directory_child() {
 
 function tr_register_mce_buttons( $buttons ) {
     array_push( $buttons, 'dropcap', 'content_types' );
+    array_unshift( $buttons, 'table' );
+
     $buttons[] = 'superscript';
     $buttons[] = 'subscript';
-
 
     return $buttons;
 }
@@ -62,7 +80,8 @@ function tr_remove_mce_2_buttons( $buttons ) {
 }
 
 function myplugin_register_tinymce_javascript( $plugin_array ) {
-   $plugin_array['tr'] = $this->get_template_directory_child() . '/assets/dist/mce-js/editor_plugin.js';
+   $plugin_array['tr'] = $this->get_template_directory_child() . '/assets/dist/mce-js/mce_content_types_plugin.js';
+    $plugin_array['table'] = $this->get_template_directory_child() . '/assets/dist/mce-js/mce_table_plugin.js';
 
    return $plugin_array;
 }
