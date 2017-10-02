@@ -9,12 +9,18 @@ class Enqueue
         // Enqueue scripts and styles
         add_action('wp_enqueue_scripts', array($this, 'style'));
         add_action('wp_enqueue_scripts', array($this, 'script'));
+        add_action('admin_init', array($this, 'editorStyle'));
+        
         // Attach callback to 'tiny_mce_before_init' 
-        add_filter( 'tiny_mce_before_init', array($this, 'make_mce_awesome') );
+        add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
         add_filter( 'mce_external_plugins', array($this, 'myplugin_register_tinymce_javascript'));
-        add_filter( 'mce_buttons', array($this, 'myplugin_register_buttons') );
-        add_action('admin_init', array($this, 'editorStyle'));
+        add_filter( 'mce_buttons_2', array($this, 'tr_register_mce_buttons') );
+        add_filter( 'mce_buttons', array($this, 'tr_remove_mce_buttons') );
+        add_filter( 'mce_buttons_2', array($this, 'tr_remove_mce_2_buttons') );
+        
+
+        
     }
 
         /**
@@ -24,8 +30,6 @@ class Enqueue
     public function editorStyle()
     {
         add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide-web/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
-
-        add_editor_style($this->get_template_directory_child() . '/assets/dist/css/app.min.css');
     }
 
 // create a URL to the child theme
@@ -36,14 +40,29 @@ function get_template_directory_child() {
     return $directory_child;
 }
 
-function myplugin_register_buttons( $buttons ) {
-   array_push( $buttons, 'dropcap', 'mybutton' );
-   return $buttons;
+function tr_register_mce_buttons( $buttons ) {
+    array_push( $buttons, 'dropcap', 'content_types' );
+    $buttons[] = 'superscript';
+    $buttons[] = 'subscript';
+
+
+    return $buttons;
 }
- 
+
+function tr_remove_mce_buttons( $buttons ) {
+    $remove = array('blockquote', 'wp_more', 'alignleft', 'aligncenter', 'alignright');
+
+    return array_diff( $buttons, $remove );
+}
+
+function tr_remove_mce_2_buttons( $buttons ) {
+    $remove = array( 'indent', 'outdent', 'hr');
+
+    return array_diff( $buttons, $remove );
+}
 
 function myplugin_register_tinymce_javascript( $plugin_array ) {
-   $plugin_array['wptuts'] = $this->get_template_directory_child() . '/assets/dist/mce-js/editor_plugin.js';
+   $plugin_array['tr'] = $this->get_template_directory_child() . '/assets/dist/mce-js/editor_plugin.js';
 
    return $plugin_array;
 }
@@ -51,7 +70,7 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 /*
 * Callback function to filter the MCE settings
 */
-function make_mce_awesome( $init ) {
+function tr_modify_block_formats( $init ) {
     $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3 Blå=h5;Mellanrubrik 4=h6;';
 
     return $init;

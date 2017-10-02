@@ -1,5 +1,5 @@
 (function() {
-    tinymce.create('tinymce.plugins.Wptuts', {
+    tinymce.create('tinymce.plugins.tr', {
         /**
          * Initializes the plugin, this will be executed after the plugin has been created.
          * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -9,19 +9,7 @@
          * @param {string} url Absolute URL to where the plugin is located.
          */
         init : function(ed, url) {
-            /*ed.addButton('showrecent', {
-                title : 'Add recent posts shortcode',
-                cmd : 'mceWRAP',
-                icon: 'pricon-smiley-cool',
-            });*/
-
-            /*ed.addButton('showrecent', {
-                title : 'Add recent posts shortcode',
-                cmd : 'mceWRAP',
-                icon: 'pricon-smiley-cool',
-            });*/
-
-            ed.addButton('mybutton', {
+            ed.addButton('content_types', {
               type: 'menubutton',
               text: 'Innehållstyper',
               icon: false,
@@ -99,15 +87,13 @@
          */
         getInfo : function() {
             return {
-                longname : 'Wptuts Buttons',
-                author : 'Lee',
-                authorurl : 'http://wp.tutsplus.com/author/leepham',
-                infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/example',
+                longname : 'Terapirekommendatioenr Buttons',
+                author : 'Sebastian',
                 version : "0.1"
             };
         }
     });
  
     // Register plugin
-    tinymce.PluginManager.add( 'wptuts', tinymce.plugins.Wptuts );
+    tinymce.PluginManager.add( 'tr', tinymce.plugins.tr );
 })();
