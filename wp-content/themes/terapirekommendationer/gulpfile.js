@@ -9,7 +9,8 @@ var uglify 			= require('gulp-uglify');
 var cssnano 		= require('gulp-cssnano');
 var rename 			= require('gulp-rename');
 var autoprefixer 	= require('gulp-autoprefixer');
-var browserSync    = require('browser-sync');
+var plumber         = require('gulp-plumber');
+var browserSync     = require('browser-sync');
 
 // Compile Our Sass
 gulp.task('sass-dist', function() {
@@ -37,6 +38,7 @@ gulp.task('sass-dev', function() {
 // Concatenate & Minify JS
 gulp.task('scripts-dist', function() {
     gulp.src('assets/source/js/*.js')
+            .pipe(plumber())
             .pipe(concat('app.js'))
             .pipe(gulp.dest('assets/dist/js'))
             .pipe(rename('app.min.js'))
@@ -44,6 +46,7 @@ gulp.task('scripts-dist', function() {
             .pipe(gulp.dest('assets/dist/js'));
     
     gulp.src('assets/source/mce-js/*.js')
+            .pipe(plumber())
             .pipe(uglify())
             .pipe(gulp.dest('assets/dist/mce-js'));
 });
