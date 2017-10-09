@@ -58,7 +58,7 @@ function get_template_directory_child() {
 }
 
 function tr_register_mce_buttons( $buttons ) {
-    array_push( $buttons, 'dropcap', 'content_types' );
+    array_push( $buttons, 'dropcap', 'infobox_background', 'infobox_border', 'infobox_elder', 'infobox_children' );
     array_unshift( $buttons, 'table' );
 
     $buttons[] = 'superscript';

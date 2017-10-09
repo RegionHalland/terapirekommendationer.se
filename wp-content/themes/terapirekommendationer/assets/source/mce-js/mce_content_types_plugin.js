@@ -1,99 +1,189 @@
 (function() {
-    tinymce.create('tinymce.plugins.tr', {
-        /**
-         * Initializes the plugin, this will be executed after the plugin has been created.
-         * This call is done before the editor instance has finished it's initialization so use the onInit event
-         * of the editor instance to intercept that event.
-         *
-         * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
-         * @param {string} url Absolute URL to where the plugin is located.
-         */
-        init : function(ed, url) {
-            ed.addButton('content_types', {
-              type: 'menubutton',
-              text: 'Innehållstyper',
-              icon: false,
-              menu: [{
-                text: 'Informationsruta med blå bakgrund',
-               /*onPostRender: function() {
-                var _this = this;   // reference to the button itself
-                ed.on('NodeChange', function(e) {
-                    //activate the button if this parent has this class
-                    var is_active = jQuery( ed.selection.getNode() ).hasClass('infobox--background');
-                    _this.active( is_active );
-                })
-                },*/
-                onclick: function() {
-                    var selection = tinyMCE.activeEditor.selection.getContent();
-                    tinyMCE.activeEditor.selection.setContent('<div class="infobox--background">' + selection + '</div>');
-                //ed.dom.toggleClass( ed.selection.getNode(), 'infobox--background' );
-                //this.active( !this.active() ); //toggle the button too
-                /*selection = tinyMCE.activeEditor.selection.getContent();
-                var elem_type = ed.selection.getNode().nodeName; // Get element type
-                console.log(tinyMCE.activeEditor.selection)
-                    if( elem_type !== 'DIV') {
-                        return tinyMCE.activeEditor.selection.setContent('<div class="infobox--background">' + selection + '</div>');
-                    }*/
-                    // Removes all paragraphs in the active editor
-                    //tinyMCE.activeEditor.selection.dom.remove(tinyMCE.activeEditor.selection.dom.select('div'));
-                    //return tinyMCE.activeEditor.selection.setContent(selection);
-                }
-              }, {
-                text: 'Informationsruta med blå ram',
-                onclick: function() {
-                    var selection = tinyMCE.activeEditor.selection.getContent();
-                    tinyMCE.activeEditor.selection.setContent('<div class="infobox--border">' + selection + '</div>');
-                }
-              }, {
-                text: 'Målgruppsanpassat innehåll - Barn/ungdom',
-                onclick: function() {
-                    var selection = tinyMCE.activeEditor.selection.getContent();
-                    tinyMCE.activeEditor.selection.setContent(
-                        '<div class="infobox--children"><header class="infobox__header">Ange målgrupp</header><div class="infobox__content">'+selection+'</div></div>'
-                    );
-                }
-              }, {
-                text: 'Målgruppsanpassat innehåll - Äldre',
-                onclick: function() {
-                    var selection = tinyMCE.activeEditor.selection.getContent();
-                    tinyMCE.activeEditor.selection.setContent(
-                        '<div class="infobox--elderly"><header class="infobox__header">Ange målgrupp</header><div class="infobox__content">'+selection+'</div></div>'
-                    );
-                }
-              }
-              ]
-            });
-        },
- 
-        /**
-         * Creates control instances based in the incomming name. This method is normally not
-         * needed since the addButton method of the tinymce.Editor class is a more easy way of adding buttons
-         * but you sometimes need to create more complex controls like listboxes, split buttons etc then this
-         * method can be used to create those.
-         *
-         * @param {String} n Name of the control to create.
-         * @param {tinymce.ControlManager} cm Control manager to use inorder to create new control.
-         * @return {tinymce.ui.Control} New control instance or null if no control was created.
-         */
-        createControl : function(n, cm) {
-            return null;
-        },
- 
-        /**
-         * Returns information about the plugin as a name/value array.
-         * The current keys are longname, author, authorurl, infourl and version.
-         *
-         * @return {Object} Name/value array containing information about the plugin.
-         */
-        getInfo : function() {
-            return {
-                longname : 'Terapirekommendatioenr Buttons',
-                author : 'Sebastian',
-                version : "0.1"
-            };
-        }
-    });
- 
-    // Register plugin
-    tinymce.PluginManager.add( 'tr', tinymce.plugins.tr );
+	// Create plugin
+	tinymce.create('tinymce.plugins.tr', {
+		init: function(editor, url) {
+			
+			var parents;
+			var parent;
+
+			editor.on('nodeChange', function(e) {
+				parent = e.parents[e.parents.length - 1];
+				parents = e.parents;
+			})
+
+			editor.addButton('infobox_background', {
+				type: 'button',
+				text: 'Blå bakgrund',
+				icon: false,
+				onclick: function() {
+					var selection = tinyMCE.activeEditor.selection;
+					var bm = selection.getBookmark();
+
+					if (parents.filter(function(e) { return e.nodeName == 'DIV'; }).length > 0) {
+						var content = jQuery(parent).contents();
+						jQuery(content).unwrap()
+
+					} else {
+						selection.setContent(
+							'<div class="infobox--background">'+ selection.getContent() +'</div>'
+						);
+					}
+
+					selection.moveToBookmark(bm);
+					tinyMCE.activeEditor.undoManager.add()
+				}
+			});
+
+			editor.addButton('infobox_border', {
+				type: 'button',
+				text: 'Blå ram',
+				icon: false,
+				onclick: function() {
+					var selection = tinyMCE.activeEditor.selection;
+					var bm = selection.getBookmark();
+
+					if (parents.filter(function(e) { return e.nodeName == 'DIV'; }).length > 0) {
+						var content = jQuery(parent).contents();
+						jQuery(content).unwrap()
+
+					} else {
+						selection.setContent(
+							'<div class="infobox--border">'+ selection.getContent() +'</div>'
+						);
+						selection = tinyMCE.activeEditor.selection;
+					}
+					
+					selection.moveToBookmark(bm);
+					tinyMCE.activeEditor.undoManager.add()
+				}
+			});
+
+			editor.addButton('infobox_children', {
+				type: 'button',
+				text: 'Målgrupp: Barn',
+				icon: false,
+				onclick: function() {
+					var selection = tinyMCE.activeEditor.selection;
+
+					if (parents.filter(function(e) { return e.nodeName == 'DIV'; }).length > 0) {
+						var content = jQuery(parent).find('.infobox__content').html();
+						jQuery(parent).remove();
+						selection.setContent(content)
+					} else {
+						selection.setContent(
+							'<div class="infobox--children"><header class="infobox__header"><strong>Barn</strong></header><div class="infobox__content">'+ selection.getContent() +'</div></div>'
+						);
+					}
+
+					selection.moveToBookmark(bm);
+					tinyMCE.activeEditor.undoManager.add()
+				}
+			});
+
+
+			editor.addButton('infobox_elder', {
+				type: 'button',
+				text: 'Målgrupp: Äldre',
+				icon: false,
+				onclick: function() {
+					var selection = tinyMCE.activeEditor.selection;
+					var bm = selection.getBookmark();
+
+					if (parents.filter(function(e) { return e.nodeName == 'DIV'; }).length > 0) {
+						var content = jQuery(parent).find('.infobox__content').html();
+						jQuery(parent).remove();
+						selection.setContent(content)
+						
+					} else {
+						selection.setContent(
+							'<div class="infobox--elderly"><header class="infobox__header"><strong>Äldre</strong></header><div class="infobox__content">'+ selection.getContent() +'</div></div>'
+						);
+					}
+
+					selection.moveToBookmark(bm);
+					tinyMCE.activeEditor.undoManager.add()
+				}
+			});
+
+			/*var buttons = [
+				{
+					label: 'Blå bakgrund',
+					name: 'infobox_background',
+					class: 'infobox--background',
+					beforeContent: '<div class="infobox--background">',
+					afterContent: '</div>'
+				},
+				{
+					label: 'Blå ram',
+					name: 'infobox_border',
+					class: 'infobox--border',
+					beforeContent: '<div class="infobox--border">',
+					afterContent: '</div>'
+				},
+				{
+					label: 'Målgrupp: Äldre',
+					name: 'infobox_elder',
+					class: 'infobox--children',
+					beforeContent: '<div class="infobox--children"><header class="infobox__header">Ange målgrupp</header><div class="infobox__content">',
+					afterContent: '</div></div>'
+				},
+				{
+					label: 'Målgrupp: Barn',
+					name: 'infobox_children',
+					class: '',
+					beforeContent: '<div class="infobox--elderly"><header class="infobox__header">Ange målgrupp</header><div class="infobox__content">',
+					afterContent: '</div></div>',
+				}
+			]
+
+			for (var i = 0; i < buttons.length; i++) {
+				(function() {
+					var button = buttons[i];
+					editor.addButton(button.name, {
+						type: 'button',
+						text: button.label,
+						icon: false,
+						onclick: function() {
+							var content = jQuery(parent).contents();
+							
+							if (content.parent().is('div')) {
+								// var content = jQuery(parent).contents();
+								// 
+								//jQuery(content).unwrap()
+								var children = jQuery(parent).children().not('div').clone;
+								//jQuery(parent).remove('div');
+								//jQuery(parent).remove('header');
+								//jQuery(parent).contents().unwrap();
+								
+								
+
+							} else {
+								jQuery(parent).wrap('<div class="infobox--children"><header class="infobox__header">Ange målgrupp</header><div class="infobox__content"></div></div>');
+							}
+
+
+
+						
+							 //var selection = editor.selection;
+							 //selection.setContent(button.beforeContent + parents + button.afterContent)
+
+							 //jQuery('#firstul').innerHTML = parents[1].outerHTML;
+							// var parent = selection.getNode();
+							
+							/*if (!parent.classList.contains(button.classes)) {
+								selection.setContent(button.beforeContent +  parents + button.afterContent)
+								// this.active(true);
+							} else {
+								parent.classList.remove(button.classes);
+								// this.active(false);
+							}
+						}
+					});
+				}())
+			}*/
+		}
+	});
+
+	// Register plugin
+	tinymce.PluginManager.add( 'tr', tinymce.plugins.tr );
 })();
