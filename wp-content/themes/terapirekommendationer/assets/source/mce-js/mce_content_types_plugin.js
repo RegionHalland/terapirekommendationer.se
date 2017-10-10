@@ -123,12 +123,16 @@
 					// Register format for figure comment
 					editor.formatter.register('figure_comment_format', {
 						inline: 'span',
-						classes: 'figurecomment'
+						classes: 'figurecomment',
+						styles: {
+							padding: '2px',
+							color: '#ff0000',
+							backgroundColor: '#ffbebe'
+						}
 					});
 
 					editor.formatter.toggle('figure_comment_format');
 
-					// Add .active to toolbar-button
 					var btn = this;
 					editor.formatter.formatChanged('figure_comment_format', function(state) {
 						btn.active(state)
