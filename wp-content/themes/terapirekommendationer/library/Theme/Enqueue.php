@@ -13,13 +13,16 @@ class Enqueue
         
         // Attach callback to 'tiny_mce_before_init' 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
+        //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init') );
         add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
         
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
         add_filter( 'mce_external_plugins', array($this, 'myplugin_register_tinymce_javascript'));
         add_filter( 'mce_buttons_2', array($this, 'tr_register_mce_buttons') );
+        add_filter( 'mce_buttons_3', array($this, 'tr_register_mce_target_audience') );
         add_filter( 'mce_buttons', array($this, 'tr_remove_mce_buttons') );
         add_filter( 'mce_buttons_2', array($this, 'tr_remove_mce_2_buttons') );
+        //add_filter( 'mce_buttons_3', array($this, 'tr_register_mce_3_buttons') );
         
 
         
@@ -58,11 +61,16 @@ function get_template_directory_child() {
 }
 
 function tr_register_mce_buttons( $buttons ) {
-    array_push( $buttons, 'dropcap', 'infobox_background', 'infobox_border', 'infobox_elder', 'infobox_children' );
     array_unshift( $buttons, 'table' );
 
     $buttons[] = 'superscript';
     $buttons[] = 'subscript';
+
+    return $buttons;
+}
+
+function tr_register_mce_target_audience( $buttons ) {
+    array_push( $buttons, 'figure_comment', 'infobox_background', 'infobox_border', 'infobox_elder', 'infobox_children' );
 
     return $buttons;
 }
@@ -94,7 +102,14 @@ function tr_modify_block_formats( $init ) {
 
     return $init;
 }
-/*function my_mce_before_init_insert_formats( $init_array ) {
+
+// function tr_register_mce_3_buttons( $buttons ) {
+//     array_unshift( $buttons, 'styleselect' );
+//     return $buttons;
+// }
+
+
+/*function my_mce_before_init( $init_array ) {
  
 // Define the style_formats array
  

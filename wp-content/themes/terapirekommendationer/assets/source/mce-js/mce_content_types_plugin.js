@@ -18,6 +18,7 @@
 				onclick: function() {
 					var selection = tinyMCE.activeEditor.selection;
 					var bm = selection.getBookmark();
+					var btn = this;
 
 					if (parents.filter(function(e) { return e.nodeName == 'DIV'; }).length > 0) {
 						var content = jQuery(parent).contents();
@@ -50,7 +51,6 @@
 						selection.setContent(
 							'<div class="infobox--border">'+ selection.getContent() +'</div>'
 						);
-						selection = tinyMCE.activeEditor.selection;
 					}
 					
 					selection.moveToBookmark(bm);
@@ -64,6 +64,7 @@
 				icon: false,
 				onclick: function() {
 					var selection = tinyMCE.activeEditor.selection;
+					var bm = selection.getBookmark();
 
 					if (parents.filter(function(e) { return e.nodeName == 'DIV'; }).length > 0) {
 						var content = jQuery(parent).find('.infobox__content').html();
@@ -102,6 +103,39 @@
 
 					selection.moveToBookmark(bm);
 					tinyMCE.activeEditor.undoManager.add()
+				}
+			});
+
+			// Register format for figure comment
+			//tinymce.activeEditor.formatter.register('figure_comment_format', {
+			//	inline: 'span',
+			//	styles: {
+			//		color: 'red',
+			//		background: 'green'
+			//	}
+			//});
+
+			editor.addButton('figure_comment', {
+				type: 'button',
+				text: 'Figurkommentar',
+				icon: false,
+				onclick: function() {
+					// Register format for figure comment
+					editor.formatter.register('figure_comment_format', {
+						inline: 'span',
+						classes: 'figurecomment'
+					});
+
+					editor.formatter.toggle('figure_comment_format');
+
+					// Add .active to toolbar-button
+					var btn = this;
+					editor.formatter.formatChanged('figure_comment_format', function(state) {
+						btn.active(state)
+					});
+
+
+
 				}
 			});
 
