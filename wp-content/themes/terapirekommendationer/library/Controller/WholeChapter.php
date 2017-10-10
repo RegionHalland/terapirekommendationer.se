@@ -29,7 +29,7 @@ class WholeChapter extends \Municipio\Controller\BaseController
 			'sort_order' => 'asc',
 			'sort_column' => 'menu_order',
 			//'child_of' => 0,
-			'parent' => $page_id,
+			'parent' => $page_id_chapter1,
 		);
 		$pages = get_pages($args);
 
