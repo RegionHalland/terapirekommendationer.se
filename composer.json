@@ -29,11 +29,11 @@
           "type": "package",
           "package": {
                 "name": "oasisworkflow/oasis-workflow-pro",
-                "version": "1.5.9",
+                "version": "5.0",
                 "type": "wordpress-plugin",
                 "dist": {
                     "type": "zip",
-                    "url": "https://www.oasisworkflow.com/index.php?eddfile=24519%3A429%3A0%3A0&ttl=1507862268&file=0&token=4a71776b0bd10440cbc44e61f024d535"
+                    "url": "https://www.oasisworkflow.com/index.php?eddfile=24519%3A429%3A0%3A0&ttl=1511315109&file=0&token=69070bb22aa1f771ac0bcbb4200e5a88"
                 }
             }
         }
@@ -48,7 +48,7 @@
         "wpackagist-plugin/simple-post-notes": "1.6",
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.0",
         "wpackagist-plugin/user-role-editor": "^4.35",
-        "oasisworkflow/oasis-workflow-pro": "^1.5",
+        "oasisworkflow/oasis-workflow-pro": "^5.0",
         "caxy/php-htmldiff": "^0.1.5",
         "gridonic/princexml-php": "^1.2",
         "wpackagist-plugin/wp-all-import": "3.4.5"
