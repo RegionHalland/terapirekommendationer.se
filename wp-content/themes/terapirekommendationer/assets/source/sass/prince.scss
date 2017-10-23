@@ -1,4 +1,3 @@
-
 //Sets the amount of chapters
 $chapterLength: 26;
 
@@ -10,6 +9,50 @@ $space-1: 2.5mm;
 $space-2: 5mm;
 $space-3: 10mm; 
 $space-4: 20mm;
+
+// Typography
+$font-sans: source-sans-pro, sans;
+$font-serif: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+
+
+// Fonts
+@font-face {
+	font-family: source-sans-pro;
+	src: url(../fonts/SourceSansPro-Regular.ttf);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: source-sans-pro;
+	src: url(../fonts/SourceSansPro-Italic.ttf);
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: source-sans-pro;
+	src: url(../fonts/SourceSansPro-SemiBold.ttf);
+	font-weight: 700;
+	font-style: normal;
+}
+
+// Normalize
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
 
 @media print {
 
@@ -33,7 +76,7 @@ $space-4: 20mm;
 
 	h1, h2, h3, h4, h5, h6 {
 		display: block;
-		font-family: source-sans-pro;
+		font-family: $font-sans;
 		-webkit-print-color-adjust: exact;
 		page-break-after: avoid; 
 	}
@@ -43,23 +86,25 @@ $space-4: 20mm;
 		column-span: all;
 		margin-bottom: $space-1;
 		page-break-before: always;
-		line-height: 1.2;
+		line-height: 1.125;
 		color: black;
 	}
 
 	h2 {
 		font-size: 18pt;
-		color: #004B93;
-		margin: $space-2 0 $space-1;
+		line-height: 1.25;
+		color: $blue;
+		margin: $space-2 $space-1;
 	}
 
 	h3 {
 		font-size: 12pt;
+		line-height: 1.25;
 		margin: $space-1 0;
 	}
 
 	h4 {
-		color: #004B93;
+		color: $blue;
 		margin: $space-1 0;
 	}
 
@@ -71,6 +116,12 @@ $space-4: 20mm;
 	
 	a {
 		word-wrap: break-word;
+	}
+	
+	// Show the actual link
+	a:link:after, 
+	a:visited:after { 
+		content: " ("attr(href)")";
 	}
 
 	p {
@@ -109,7 +160,7 @@ $space-4: 20mm;
 	}
 
 	figcaption {
-		font-family: source-sans-pro;
+		font-family: $font-sans;
 		font-style: italic;
 		font-size: 8pt;
 	}
@@ -128,7 +179,7 @@ $space-4: 20mm;
 		
 		.wp-caption-text {
 			margin: 0 0 $space-1;
-			font-family: source-sans-pro;
+			font-family: $font-sans;
 			font-style: italic;
 			font-size: 8pt;
 		}
@@ -185,7 +236,6 @@ $space-4: 20mm;
 		flow: static(chapterHeader);
 		content: counter(chapter); 
 		font-size:12pt;
-		font-family: source-sans-pro;
 		text-align: center;
 		padding:0.33em;
 		font-weight:bold;
@@ -360,7 +410,7 @@ $space-4: 20mm;
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: 700;
-		font-family: source-sans-pro;   
+		font-family: $font-sans;
 	}
 	
 	.infobox__content {
@@ -379,7 +429,7 @@ ul.segment {
 	padding:0;
 	margin:0;
 	li:first-child{
-		font-family: source-sans-pro;
+		font-family: $font-sans;
 		text-align: center;
 		background:$blue;
 		color:white;
@@ -390,92 +440,4 @@ ul.segment {
 	}li{
 		padding-left: 20px;
 	}
-}
-
-@font-face {
-  font-family: 'source-sans';
-  src:url('../fonts/SourceSansPro-SemiBold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/*@font-face {
-  //font-family: crimson-text;
-  src: url(../fonts/CrimsonText-Regular.ttf);
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  //font-family: crimson-text;
-  src: url(../fonts/CrimsonText-Italic.ttf);
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  //font-family: crimson-text;
-  src: url(../fonts/CrimsonText-SemiBold.ttf);
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  //font-family: crimson-text;
-  src: url(../fonts/CrimsonText-SemiBoldItalic.ttf);
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  //font-family: crimson-text;
-  src: url(../fonts/CrimsonText-Bold.ttf);
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  //font-family: crimson-text;
-  src: url(../fonts/CrimsonText-BoldItalic.ttf);
-  font-weight: 800;
-  font-style: italic;
-}*/
-
-@font-face {
-  font-family: source-sans-pro;
-  src: url(../fonts/SourceSansPro-Regular.ttf);
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: source-sans-pro;
-  src: url(../fonts/SourceSansPro-Italic.ttf);
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: source-sans-pro;
-  src: url(../fonts/SourceSansPro-SemiBold.ttf);
-  font-weight: 700;
-  font-style: normal;
-}
-
-
-/* From normalize */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
 }
