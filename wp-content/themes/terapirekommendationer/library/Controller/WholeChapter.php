@@ -40,7 +40,7 @@ class WholeChapter extends \Municipio\Controller\BaseController
 			$argsTwo = array(
 				'sort_order' => 'asc',
 				'sort_column' => 'menu_order',
-				'parent' => 183,
+				'parent' => $page_id_chapter1,
 			);
 			$pages[$key]->children = get_pages($argsTwo);
 

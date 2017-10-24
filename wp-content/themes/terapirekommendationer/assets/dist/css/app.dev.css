@@ -43,7 +43,7 @@ summary {
   body {
     font-family: serif;
     font-size: 10pt;
-    line-height: 1.3; }
+    line-height: 1.35; }
   h1, h2, h3, h4, h5, h6 {
     display: block;
     font-family: source-sans-pro, sans;
@@ -60,9 +60,9 @@ summary {
     color: black; }
   h2 {
     font-size: 18pt;
-    line-height: 1.25;
+    line-height: 1.125;
     color: #004B93;
-    margin: 5mm 2.5mm; }
+    margin: 5mm 0 2.5mm; }
   h3 {
     font-size: 12pt;
     line-height: 1.25;
@@ -73,7 +73,7 @@ summary {
   h5, h6 {
     font-size: 10pt;
     margin: 2.5mm 0;
-    color: black; }
+    color: #004B93; }
   a {
     word-wrap: break-word; }
   a:link:after,
@@ -82,7 +82,6 @@ summary {
   p {
     display: block;
     margin: 2.5mm 0;
-    text-align: justify;
     -webkit-hyphens: auto;
        -moz-hyphens: auto;
         -ms-hyphens: auto;
@@ -95,10 +94,19 @@ summary {
       padding: 0;
       margin: 2.5mm 0; }
   table {
+    font-family: source-sans-pro, sans;
     page-break-inside: avoid;
-    margin: 2.5mm 0; }
-  table[style], tr[style], td[style], thead[style] {
-    width: auto !important; }
+    margin: 2.5mm 0;
+    -webkit-column-span: none;
+       -moz-column-span: none;
+            column-span: none; }
+  table[style],
+  tr[style],
+  td[style],
+  thead[style],
+  tbody[style] {
+    width: auto !important;
+    max-width: 100% !important; }
   img {
     max-width: 100%;
     height: auto;
@@ -137,15 +145,16 @@ summary {
     border-collapse: collapse; }
   thead,
   th {
-    padding: 10px 15px;
-    background: #004B93;
-    text-align: center;
     text-transform: uppercase;
-    color: white; }
+    background: #004B93;
+    color: white;
+    text-align: center; }
   tbody tr:nth-child(odd) {
     background: #f5f5f5; }
   td {
-    padding: 1px 2px; }
+    padding: 1px 2px;
+    word-wrap: break-word;
+    overflow-wrap: break-word; }
   .section {
     counter-increment: chapter; }
     .section h1 {
@@ -153,14 +162,9 @@ summary {
       .section h1::before {
         content: "Kapitel " counter(chapter) " · "; }
   .chapter-header {
-    flow: static(chapterHeader);
-    content: counter(chapter);
+    background-color: #004B93;
     font-size: 12pt;
-    text-align: center;
-    padding: 0.33em;
-    font-weight: bold;
-    color: white;
-    background-color: #004B93; }
+    padding: .5mm; }
   @page :left {
     margin: 15mm 25mm 15mm 10mm; }
   @page :right {
@@ -1255,13 +1259,13 @@ summary {
   .infobox__content {
     padding: 2.5mm; }
   .column-span-all {
-    -webkit-column-span: all;
-       -moz-column-span: all;
-            column-span: all; }
+    -webkit-column-span: all !important;
+       -moz-column-span: all !important;
+            column-span: all !important; }
   .column-span-none {
-    -webkit-column-span: none;
-       -moz-column-span: none;
-            column-span: none; } }
+    -webkit-column-span: none !important;
+       -moz-column-span: none !important;
+            column-span: none !important; } }
 
 /* COMPONENTS */
 ul.segment {
