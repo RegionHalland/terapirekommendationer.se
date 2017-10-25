@@ -25,20 +25,22 @@ class CustomOwfDiff
 
 	function test_init(){
 		$revision_post_id = intval( $_GET['post'] );
+
 		$original_post_id = get_post_meta( $revision_post_id, '_oasis_original', true );
+
+		if(!$original_post_id) return;
 
 		$post = get_post( $original_post_id );
 		$revision_post = get_post( $revision_post_id );
 
-		$post_content = apply_filters('the_content', $post->post_content);
-		$post_content = str_replace(']]>', ']]&gt;', $post->post_content);
+		$post_content = html_entity_decode(apply_filters('the_content', $post->post_content));
+		$revision_post_content = html_entity_decode(apply_filters('the_content', $revision_post->post_content));
 
-		$revision_post_content = apply_filters('the_content', $revision_post->post_content);
-		$revision_post_content = str_replace(']]>', ']]&gt;', $revision_post->post_content);
+		$htmlDiffContent = new HtmlDiff($post_content, $revision_post_content);
+		$contentDiff = $htmlDiffContent->build();
 
-		$post_id = $_GET["post"];
-		$htmlDiff = new HtmlDiff($post_content, $revision_post_content);
-		$content = $htmlDiff->build();
+
+		echo '<link rel="stylesheet" type="text/css" href="https://regionhalland.github.io/styleguide-web/dist/css/hbg-prime-blue.min.css?ver=latest">';
 
 		echo '<style>ins {
     border: 1px solid rgb(192,255,192);
@@ -49,7 +51,7 @@ del {
 	text-decoration:none;
     border: 1px solid rgb(255,192,192);
     background: rgb(255,224,224);
-}</style><div style="padding-top:2em;width:50%;margin:auto;">' . $content . '</div>';
+}</style><div style="padding-top:2em;width:60%;margin:auto;">'. $contentDiff . '</div>';
 	}
 
 
@@ -57,7 +59,7 @@ del {
     	unset( $inbox_row_actions['compare'] );
 
 		/** Add a Thumbnail link **/
-		$link_info = "<span><a href=admin.php?page=test-plugin&post=". $post_id . " class='edit'>" . __( "Compare", "oasisworkflow" ) . "</a></span>";
+		$link_info = "<span><a href=admin.php?page=test-plugin&post=". $post_id["post_id"] . " class='edit'>" . __( "Compare", "oasisworkflow" ) . "</a></span>";
 
 		$my_custom_inbox_action = array(
 			'thumbnail' => $link_info

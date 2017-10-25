@@ -24,11 +24,43 @@ class Enqueue
         add_filter( 'mce_buttons_2', array($this, 'tr_remove_mce_2_buttons') );
         //add_filter( 'mce_buttons_3', array($this, 'tr_register_mce_3_buttons') );
         
+
         // Wrap all images in figure tag
         add_filter( 'image_send_to_editor', 'html5_insert_image', 10, 9 );
         
-
+        add_filter( 'revision_text_diff_options', array($this, 'modifyVersion') );
         
+        //add_filter( 'process_text_diff_html', array($this, 'custom_hook'), 10, 3 );
+
+        // Admin style
+        add_action('admin_enqueue_scripts', array($this, 'adminStyle'), 999);
+        
+    }
+
+    public function adminStyle()
+    {
+    }
+
+    function modifyVersion(){
+        $arrayName = array('show_split_view' => false);
+        return $arrayName;
+    }
+
+    function custom_hook( $processed_line, $line, $string ) {
+        //echo "<pre>" . $line . "</pre>";
+
+        //$line = html_entity_decode($line);
+        //$processed_line .= html_entity_decode($processed_line) . $string;
+        //echo $line;
+        //echo $string;
+        //echo "<br />";
+        //$line = html_entity_decode($line);
+        //$line = "asd";
+        //$processed_line = "asd2";
+        //echo "<pre>" . $line . $string . "</pre>";
+        
+        //$processed_line = $line;
+        return html_entity_decode($line);
     }
 
     function my_mce4_options( $init ) {
@@ -44,7 +76,7 @@ class Enqueue
         $init['textcolor_map'] = '['.$default_colours.']';
         //$init['textcolor_rows'] = 6; // expand colour grid to 6 rows
         return $init;
-}
+    }
 
         /**
      * Add stylesheet to editor
