@@ -10,6 +10,14 @@ class Enqueue
         add_action('wp_enqueue_scripts', array($this, 'style'));
         add_action('wp_enqueue_scripts', array($this, 'script'));
         add_action('admin_init', array($this, 'editorStyle'));
+
+        // Image plugin
+        add_action('wp_enqueue_media', $func =
+            function() {
+                remove_action('admin_footer', 'wp_print_media_templates');
+                add_action('admin_footer',  array($this, 'tr_custom_image_view') );
+            }
+        );
         
         // Attach callback to 'tiny_mce_before_init' 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
@@ -104,22 +112,30 @@ function tr_register_mce_buttons( $buttons ) {
     return $buttons;
 }
 
-// Wrap all images in figure tag
-// function html5_insert_image($html, $id, $caption, $title, $align, $url) {
-//     $url = wp_get_attachment_url($id);
-//     
-//     $html5 = "<figure id='post-$id media-$id' class='align-$align'>";
-//     $html5 .= "<img src='$url' alt='$title' />";
-//     
-//     if ($caption) {
-//         $html5 .= "<figcaption>$caption</figcaption>";
-//     }
-// 
-//     $html5 .= "</figure>";
-//     
-//     return $html5;
-// }
-
+// Add plugin to add options to images
+function tr_custom_image_view() {
+    ob_start();
+    wp_print_media_templates();
+    $tpl = ob_get_clean();
+    if ( ( $idx = strpos( $tpl, 'tmpl-image-details' ) ) !== false
+            && ( $before_idx = strpos( $tpl, '<div class="advanced-section">', $idx ) ) !== false ) {
+        ob_start();
+        ?>
+        <div class="my_setting-section">
+            <h2><?php _e( 'Tryck' ); ?></h2>
+            <div>
+                <label class="setting">
+                    <span style="margin: 0 1% 0"><?php _e( 'Fullbredd i tryck' ); ?></span>
+                        <input type="checkbox" data-setting="my_setting" value="{{ data.model.my_setting }}" />
+                    </label>
+                </div>
+            </div>
+        <?php
+        $my_section = ob_get_clean();
+        $tpl = substr_replace( $tpl, $my_section, $before_idx, 0 );
+    }
+    echo $tpl;
+}
 
 
 function tr_register_mce_target_audience( $buttons ) {
@@ -141,10 +157,11 @@ function tr_remove_mce_2_buttons( $buttons ) {
 }
 
 function myplugin_register_tinymce_javascript( $plugin_array ) {
-   $plugin_array['tr'] = $this->get_template_directory_child() . '/assets/dist/mce-js/mce_content_types_plugin.js';
+    $plugin_array['tr'] = $this->get_template_directory_child() . '/assets/dist/mce-js/mce_content_types_plugin.js';
     $plugin_array['table'] = $this->get_template_directory_child() . '/assets/dist/mce-js/mce_table_plugin.js';
+    $plugin_array['images'] = $this->get_template_directory_child() . '/assets/dist/mce-js/image_plugin.js';
 
-   return $plugin_array;
+    return $plugin_array;
 }
 
 /*
