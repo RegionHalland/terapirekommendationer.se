@@ -19,6 +19,7 @@ wp-content/*
 # Themes dependencies #
 ##########################
 wp-content/themes/*
+!wp-content/themes
 !wp-content/themes/terapirekommendationer
 wp-content/themes/terapirekommendationer/node_modules
 
