@@ -1986,6 +1986,22 @@ define(
               captionElm.innerHTML = !Env.ie ? '<br data-mce-bogus="1"/>' : '\u00a0';
               tableElm.insertBefore(captionElm, tableElm.firstChild);
             }
+
+            // Toggle print full on/off
+            if (!data.printFull) {
+              dom.removeClass(tableElm, 'column-span-all');
+            }
+
+            if (data.printFull) {
+              dom.addClass(tableElm, 'column-span-all')
+            }
+
+            if (!captionElm && data.caption) {
+              captionElm = dom.create('caption');
+              captionElm.innerHTML = !Env.ie ? '<br data-mce-bogus="1"/>' : '\u00a0';
+              tableElm.insertBefore(captionElm, tableElm.firstChild);
+            }
+
             unApplyAlign(tableElm);
             if (data.align) {
               editor.formatter.apply('align' + data.align, {}, tableElm);
@@ -2035,6 +2051,7 @@ define(
               getTDTHOverallStyle(tableElm, 'border'),
               borderColor: dom.getAttrib(tableElm, 'data-mce-border-color'),
               caption: !!dom.select('caption', tableElm)[0],
+              printFull: dom.hasClass(tableElm, 'column-span-all'),
               'class': dom.getAttrib(tableElm, 'class')
             };
 
@@ -2096,6 +2113,7 @@ define(
                 { label: 'Cell spacing', name: 'cellspacing' },
                 { label: 'Cell padding', name: 'cellpadding' },
                 { label: 'Border', name: 'border' },
+                { label: 'Fullbredd', name: 'printFull', type: 'checkbox' },
                 { label: 'Caption', name: 'caption', type: 'checkbox' }
               ] : [
                 colsCtrl,

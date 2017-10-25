@@ -24,6 +24,9 @@ class Enqueue
         add_filter( 'mce_buttons_2', array($this, 'tr_remove_mce_2_buttons') );
         //add_filter( 'mce_buttons_3', array($this, 'tr_register_mce_3_buttons') );
         
+        // Wrap all images in figure tag
+        add_filter( 'image_send_to_editor', 'html5_insert_image', 10, 9 );
+        
 
         
     }
@@ -69,8 +72,20 @@ function tr_register_mce_buttons( $buttons ) {
     return $buttons;
 }
 
+// Wrap all images in figure tag
+function html5_insert_image($html, $id, $caption, $title, $align, $url) {
+  $html5 = "<figure id='post-$id media-$id' class='align-$align'>";
+  $html5 .= "<img src='$url' alt='$title' />";
+  if ($caption) {
+    $html5 .= "<figcaption>$caption</figcaption>";
+  }
+  $html5 .= "</figure>"; 
+  return $html5;
+}
+
+
 function tr_register_mce_target_audience( $buttons ) {
-    array_push( $buttons, 'figure_comment', 'infobox_background', 'infobox_border', 'infobox_elder', 'infobox_children' );
+    array_push( $buttons, 'figure_comment', 'infobox_background', 'infobox_border', 'infobox_elder', 'infobox_children', 'print_formats' );
 
     return $buttons;
 }
