@@ -2113,8 +2113,8 @@ define(
                 { label: 'Cell spacing', name: 'cellspacing' },
                 { label: 'Cell padding', name: 'cellpadding' },
                 { label: 'Border', name: 'border' },
-                { label: 'Fullbredd', name: 'printFull', type: 'checkbox' },
-                { label: 'Caption', name: 'caption', type: 'checkbox' }
+                { label: 'Caption', name: 'caption', type: 'checkbox' },
+                { label: 'Fullbredd i tryck', name: 'printFull', type: 'checkbox' },
               ] : [
                 colsCtrl,
                 rowsCtrl,
