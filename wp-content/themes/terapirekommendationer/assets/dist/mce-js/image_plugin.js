@@ -1,0 +1,1 @@
+!function(a,e){wp.media.events.on("editor:image-edit",function(a){a.metadata.my_setting=a.editor.dom.hasClass(a.image,"column-span-all")}),wp.media.events.on("editor:image-update",function(a){a.metadata.my_setting?a.editor.dom.addClass(a.image,"column-span-all"):a.editor.dom.removeClass(a.image,"column-span-all")})}(jQuery,_);
