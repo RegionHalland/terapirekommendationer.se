@@ -55,7 +55,7 @@ del {
 	text-decoration:none;
     border: 1px solid rgb(255,192,192);
     background: rgb(255,224,224);
-}</style><div style="padding-top:2em;width:60%;margin:auto;">'. $content . '</div>';
+}</style><div style="padding-top:2em;width:60%;margin:auto;"><article>'. $content . '</article></div>';
 	}
 
 
