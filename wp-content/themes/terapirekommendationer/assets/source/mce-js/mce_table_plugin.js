@@ -4210,7 +4210,7 @@ define(
       function insertTable(cols, rows) {
         var y, x, html, tableElm;
 
-        html = '<table id="__mce"><thead class="table__header"><tr><td colspan='+ cols +'>Tabellhuvud</td></tr></thead><tbody><tr class="table__subheader"><td colspan=' + cols + '>Tabellbeskrivning</td></tr>';
+        html = '<table id="__mce"><thead class="table__header"><tr><td colspan='+ cols +'>Ange tabellrubrik här</td></tr></thead><tbody><tr class="table__subheader"><td colspan=' + cols + '>Ange tabellbeskrivning här </td></tr>';
 
         for (y = 0; y < rows; y++) {
           html += '<tr>';
