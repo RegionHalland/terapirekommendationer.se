@@ -35,6 +35,7 @@ class Enqueue
 
     public function adminStyle()
     {
+        wp_enqueue_style('tr-admin', get_stylesheet_directory_uri(). '/assets/dist/css/admin.min.css', '', '');
     }
 
     function modifyVersion(){
