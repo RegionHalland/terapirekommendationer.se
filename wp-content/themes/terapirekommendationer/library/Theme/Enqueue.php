@@ -18,7 +18,8 @@ class Enqueue
                 add_action('admin_footer',  array($this, 'tr_custom_image_view') );
             }
         );
-        
+
+
         // Attach callback to 'tiny_mce_before_init' 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
         //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init') );
@@ -32,6 +33,9 @@ class Enqueue
         add_filter( 'mce_buttons_2', array($this, 'tr_remove_mce_2_buttons') );
         //add_filter( 'mce_buttons_3', array($this, 'tr_register_mce_3_buttons') );
         
+
+        add_filter( 'image_send_to_editor', array($this, 'html5_insert_image'), 10, 8 );
+
         // Wrap all images in figure tag
         // add_filter( 'image_send_to_editor', array($this, 'html5_insert_image'), 10, 8 );
         
@@ -111,6 +115,59 @@ function tr_register_mce_buttons( $buttons ) {
 
     return $buttons;
 }
+
+// Insert figure tag around image
+// function html5_insert_image($html, $id, $caption, $title, $align, $url, $size, $alt) {
+// $url = wp_get_attachment_url($id);
+// $src = wp_get_attachment_image_src( $id, $size, false );
+// $html5 = "<a href='$url'><figure class='align$align'>";
+// $html5 .= "<img src='$src[0]' alt='$alt' />";
+// if ($caption) {
+// $html5 .= "<figcaption>$caption</figcaption>";
+// }
+// $html5 .= "</figure></a>";
+// return $html5;
+// }
+function html5_insert_image($html, $id, $caption, $title, $align, $url, $size, $alt ) {
+  //Always return an image with a <figure> tag, regardless of link or caption
+
+  //Grab the image tag
+  $image_tag = get_image_tag($id, '', $title, $align, $size);
+
+  //Let's see if this contains a link
+  $linkptrn = "/<a[^>]*>/";
+  $found = preg_match($linkptrn, $html, $a_elem);
+
+  // If no link, do nothing
+  if($found > 0) {
+    $a_elem = $a_elem[0];
+
+    if(strstr($a_elem, "class=\"") !== false){ // If link already has class defined inject it to attribute
+        $a_elem = str_replace("class=\"", "class=\"colorbox ", $a_elem);
+    } else { // If no class defined, just add class attribute
+        $a_elem = str_replace("<a ", "<a class=\"colorbox\" ", $a_elem);
+    }
+  } else {
+    $a_elem = "";
+  }
+  // Set up the attributes for the caption <figure>
+  $attributes  = (!empty($id) ? ' id="attachment_' . esc_attr($id) . '"' : '' );
+  $attributes .= ' class="thumbnail wp-caption ' . 'align'.esc_attr($align) . '"';
+  $output  = '<figure' . $attributes .'>';
+  //add the image back in
+  $output .= $a_elem;
+  $output .= $image_tag;
+  if($a_elem != "") {
+    $output .= '</a>';
+  }
+  
+  if ($caption) {
+    $output .= '<figcaption class="caption wp-caption-text">'.$caption.'</figcaption>';
+  }
+  $output .= '</figure>';
+  return $output;
+}
+
 
 // Add plugin to add options to images
 function tr_custom_image_view() {
