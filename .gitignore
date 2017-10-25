@@ -12,6 +12,7 @@ wp-config.php
 wp/
 vendor/
 wp-content/*
+!wp-content/plugins/oasis-workflow-pro
 !wp-content/mu-plugins
 !wp-content/mu-plugins/*
 !wp-content/object-cache.php
