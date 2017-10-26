@@ -19,7 +19,7 @@
             @foreach($chapters as $key=>$chapter)
                 <div class="section" id="{{$key+1}}">
                     <h1>{{$chapter->post_title}}</h1>
-                    <div class="chapter-header"></div>
+                    <div class="chapter-header">1</div>
                     @foreach($chapter->children as $k=>$children)
                         <h2 id="{{$key+1}}.{{$k+1}}">{{$children->post_title}}</h2>
                         {!! apply_filters('the_content', $children->post_content) !!}

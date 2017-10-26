@@ -169,9 +169,15 @@ summary {
       .section h1::before {
         content: "Kapitel " counter(chapter) " · "; }
   .chapter-header {
-    background-color: #004B93;
+    flow: static(chapterHeader);
+    content: counter(chapter);
     font-size: 12pt;
-    padding: .5mm; }
+    font-family: source-sans-pro;
+    text-align: center;
+    padding: 0.33em;
+    font-weight: bold;
+    color: white;
+    background-color: #004B93; }
   @page :left {
     margin: 15mm 25mm 15mm 10mm; }
   @page :right {

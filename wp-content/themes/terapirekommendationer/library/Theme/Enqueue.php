@@ -22,6 +22,7 @@ class Enqueue
 
         // Attach callback to 'tiny_mce_before_init' 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
+        add_filter( 'tiny_mce_before_init', array($this, 'tr_extended_valid_elements') );
         //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init') );
         add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
         
@@ -228,6 +229,11 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 function tr_modify_block_formats( $init ) {
     $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3=h5;Mellanrubrik 4=h6;';
 
+    return $init;
+}
+
+function tr_extended_valid_elements( $init ) {
+    $init['extended_valid_elements'] = 'svg[*],use[*],text[*]';
     return $init;
 }
 
