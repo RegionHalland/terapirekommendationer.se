@@ -35,6 +35,7 @@ class Enqueue
         
 
         add_filter( 'image_send_to_editor', array($this, 'html5_insert_image'), 10, 8 );
+        add_filter( 'disable_captions', create_function('$a', 'return true;') );
 
         // Wrap all images in figure tag
         // add_filter( 'image_send_to_editor', array($this, 'html5_insert_image'), 10, 8 );

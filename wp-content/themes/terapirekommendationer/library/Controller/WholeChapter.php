@@ -29,20 +29,29 @@ class WholeChapter extends \Municipio\Controller\BaseController
 			'sort_order' => 'asc',
 			'sort_column' => 'menu_order',
 			//'child_of' => 0,
-			'parent' => $page_id_chapter1,
+			'parent' => $page_id,
 		);
 		$pages = get_pages($args);
 
-		/*var_dump($pages);
-		die();*/
+		$chapters = array();
 
-		foreach ($pages as $key => $children) {
+		foreach ($pages as $key => $value) {
+			if ($key < 9) {
+				array_push($chapters, $value);
+			}
+		}
+		
+
+		// var_dump($chapters);
+		// die();
+
+		foreach ($chapters as $key => $chapter) {
 			$argsTwo = array(
 				'sort_order' => 'asc',
 				'sort_column' => 'menu_order',
-				'parent' => $page_id_chapter1,
+				'parent' => $chapter->ID,
 			);
-			$pages[$key]->children = get_pages($argsTwo);
+			$chapters[$key]->children = get_pages($argsTwo);
 
 			/*foreach ($pages[$key]->children as $k => $grand) {
 				# code...
@@ -102,7 +111,7 @@ class WholeChapter extends \Municipio\Controller\BaseController
     	
     	echo $myString = $blade->view()->make('print', [
     		"chapter_one" => $chapterOne,
-    		"chapters" => $pages
+    		"chapters" => $chapters
     	])->render();
 
 		/*$file = 'tr.html';

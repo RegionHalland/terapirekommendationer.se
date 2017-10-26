@@ -6,15 +6,15 @@
     <link rel="stylesheet" type="text/css" href="/wp-content/themes/terapirekommendationer/assets/dist/css/app.dev.css">
 </head>
 <body>
-    <h2 class="table-of-contents__header">Table of contents</h2>
+    <h2 class="table-of-contents__header">Innehållsförteckning</h2>
     <ul class="table-of-contents">
         @foreach($chapters as $key => $chapter)
-            <li class="table-of-contents__chapter">Kapitel {{$key+1}} · {{$chapter->post_title}}<a href="#1"></a></li>
-             @foreach($chapter->children as $k => $children)
-                <li class="table-of-contents__subchapter">{{$children->post_title}}<a href="#1.1"></a></li>
+            <li class="table-of-contents__chapter">{{$chapter->post_title}}<a href="#{{$key+1}}"></a></li>
+            @foreach($chapter->children as $k => $children)
+                <li class="table-of-contents__subchapter">{{$children->post_title}}<a href="#{{$key+1}}.{{$k+1}}"></a></li>
             @endforeach
         @endforeach
-    </ul>
+    </ul> 
     <main class="main" role="main">
             @foreach($chapters as $key=>$chapter)
                 <div class="section" id="{{$key+1}}">

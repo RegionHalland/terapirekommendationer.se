@@ -166,6 +166,7 @@ summary {
 	table[style] {
 		width: 100% !important;
 		max-width: 100% !important;
+		height: auto !important;
 	}
 
 	tr[style], 
@@ -173,6 +174,7 @@ summary {
 	thead[style],
 	tbody[style] {
 		width: auto !important;
+		height: auto !important;
 	}
 
 	img {
