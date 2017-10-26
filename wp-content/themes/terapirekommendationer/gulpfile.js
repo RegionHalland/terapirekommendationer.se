@@ -35,6 +35,20 @@ gulp.task('sass-dev', function() {
             .pipe(browserSync.stream());
 });
 
+// Admin css
+gulp.task('admin-sass', function() {
+    return gulp.src('assets/source/sass/admin.scss')
+            .pipe(sass())
+            .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
+            .pipe(rename({suffix: '.min'}))
+            .pipe(cssnano({
+                mergeLonghand: false,
+                zindex: false
+            }))
+            .pipe(gulp.dest('assets/dist/css'))
+            .pipe(browserSync.stream());
+});
+
 // Concatenate & Minify JS
 gulp.task('scripts-dist', function() {
     gulp.src('assets/source/js/*.js')
@@ -64,16 +78,16 @@ gulp.task('watch-bs', function() {
         proxy: "tr.app"
     });
 
-    gulp.watch('assets/source/sass/**/*.scss', ['sass-dist', 'sass-dev', 'shorthand']);
+    gulp.watch('assets/source/sass/**/*.scss', ['sass-dist', 'admin-sass', 'sass-dev', 'shorthand']);
     gulp.watch(['assets/source/js/**/*.js', 'assets/source/mce-js/*.js'], ['scripts-dist']);
 });
 
 // Generate pdf with prince
-gulp.task('shorthand', ['sass-dev', 'sass-dist'], shell.task([
+gulp.task('shorthand', ['sass-dev', 'sass-dist', 'admin-sass'], shell.task([
   'prince -s ./assets/dist/css/app.dev.css assets/dist/html/tr.html'//,
   //'echo world'
 ]))
 
 // Default Task
-gulp.task('default', ['sass-dist', 'sass-dev', 'scripts-dist', 'watch']);
+gulp.task('default', ['sass-dist', 'sass-dev', 'admin-sass', 'scripts-dist', 'watch']);
 

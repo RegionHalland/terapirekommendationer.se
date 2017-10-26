@@ -1,4 +1,10 @@
-img{
+img {
 	max-width:100%;
 	height:auto;
+}
+
+// TinyMCE Editor styles
+
+.mce-menubtn.mce-fixed-width button {
+	width: 128px !important;
 }
