@@ -1272,7 +1272,9 @@ summary {
   .column-span-none {
     -webkit-column-span: none !important;
        -moz-column-span: none !important;
-            column-span: none !important; } }
+            column-span: none !important; }
+  .figurecomment {
+    display: none !important; } }
 
 /* COMPONENTS */
 ul.segment {
