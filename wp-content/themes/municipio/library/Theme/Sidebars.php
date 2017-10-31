@@ -78,7 +78,7 @@ class Sidebars
         /**
          * Footer Area
          */
-        $footerBeforeWidgetClass = get_field('footer_layout', 'option') == 'compressed' ? 'grid-lg-6' : 'grid-lg-4';
+        $footerBeforeWidgetClass = get_field('footer_layout', 'option') == 'compressed' ? 'lg-col-6' : 'lg-col-4';
         register_sidebar(array(
             'id'            => 'footer-area',
             'name'          => __('Footer', 'municipio'),
@@ -109,7 +109,7 @@ class Sidebars
             'id'            => 'content-area-top',
             'name'          => __('Content area (above article)', 'municipio'),
             'description'   => __('The area above the content', 'municipio'),
-            'before_widget' => '<div class="grid-sm-12"><div class="%2$s">',
+            'before_widget' => '<div class="col col-12 "><div class="%2$s">',
             'after_widget'  => '</div></div>'
         ));
 
@@ -120,7 +120,7 @@ class Sidebars
             'id'            => 'content-area',
             'name'          => __('Content area (below article)', 'municipio'),
             'description'   => __('The area below the content', 'municipio'),
-            'before_widget' => '<div class="grid-sm-12"><div class="%2$s">',
+            'before_widget' => '<div class="col col-12"><div class="%2$s">',
             'after_widget'  => '</div></div>'
         ));
 
@@ -131,7 +131,7 @@ class Sidebars
             'id'            => 'content-area-bottom',
             'name'          => __('Main container bottom', 'municipio'),
             'description'   => __('The area below the main container', 'municipio'),
-            'before_widget' => '<div class="grid-sm-12 grid-md-6 grid-lg-6"><div class="%2$s">',
+            'before_widget' => '<div class="col col-12 md-col-6 lg-col-6"><div class="%2$s">',
             'after_widget'  => '</div></div>'
         ));
 
@@ -142,7 +142,7 @@ class Sidebars
             'id'            => 'left-sidebar',
             'name'          => __('Left sidebar', 'municipio'),
             'description'   => __('The left sidebar area', 'municipio'),
-            'before_widget' => '<div class="grid-xs-12"><div class="%2$s">',
+            'before_widget' => '<div class=""><div class="%2$s">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2>',
             'after_title'   => '</h2>'
@@ -155,7 +155,7 @@ class Sidebars
             'id'            => 'left-sidebar-bottom',
             'name'          => __('Left sidebar bottom', 'municipio'),
             'description'   => __('The area below the left sidebar content', 'municipio'),
-            'before_widget' => '<div class="grid-xs-12"><div class="%2$s">',
+            'before_widget' => '<div class="col col-12"><div class="%2$s">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2>',
             'after_title'   => '</h2>'
@@ -168,7 +168,7 @@ class Sidebars
             'id'            => 'right-sidebar',
             'name'          => __('Right sidebar', 'municipio'),
             'description'   => __('The right sidebar area', 'municipio'),
-            'before_widget' => '<div class="grid-xs-12"><div class="%2$s">',
+            'before_widget' => '<div class="col-12"><div class="%2$s">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2>',
             'after_title'   => '</h2>'
