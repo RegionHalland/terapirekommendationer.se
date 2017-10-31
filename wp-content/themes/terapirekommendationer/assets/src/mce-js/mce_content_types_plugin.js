@@ -2,7 +2,7 @@
 	// Create plugin
 	tinymce.create('tinymce.plugins.tr', {
 		init: function(editor, url) {
-			
+
 			var parents;
 			var parent;
 
@@ -123,12 +123,7 @@
 					// Register format for figure comment
 					editor.formatter.register('figure_comment_format', {
 						inline: 'span',
-						classes: 'figurecomment',
-						styles: {
-							padding: '2px',
-							color: '#ff0000',
-							backgroundColor: '#ffbebe'
-						}
+						classes: 'figurecomment'
 					});
 
 					editor.formatter.toggle('figure_comment_format');
