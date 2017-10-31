@@ -84,11 +84,11 @@ class Enqueue
      */
     public function adminStyle()
     {
-        wp_register_style('helsingborg-se-admin', get_template_directory_uri(). '/assets/dist/' . \Municipio\Helper\CacheBust::name('css/admin.min.css'), '', null);
-        wp_enqueue_style('helsingborg-se-admin');
+        // wp_register_style('helsingborg-se-admin', get_template_directory_uri(). '/assets/dist/' . \Municipio\Helper\CacheBust::name('css/admin.min.css'), '', null);
+        // wp_enqueue_style('helsingborg-se-admin');
 
-        wp_register_script('helsingborg-se-admin', get_template_directory_uri() . '/assets/dist/' . \Municipio\Helper\CacheBust::name('js/admin.min.js'), '', null, true);
-        wp_enqueue_script('helsingborg-se-admin');
+        // wp_register_script('helsingborg-se-admin', get_template_directory_uri() . '/assets/dist/' . \Municipio\Helper\CacheBust::name('js/admin.min.js'), '', null, true);
+        // wp_enqueue_script('helsingborg-se-admin');
     }
 
     /**
@@ -106,15 +106,15 @@ class Enqueue
 
         //Load from local developement enviroment
         if ((defined('DEV_MODE') && DEV_MODE === true) || (isset($_GET['DEV_MODE']) && $_GET['DEV_MODE'] === 'true')) {
-            wp_register_style($this->defaultPrimeName, '//hbgprime.dev/dist/css/hbg-prime-' . self::getStyleguideTheme() . '.dev.css', '', '1.0.0');
+            // wp_register_style($this->defaultPrimeName, '//hbgprime.dev/dist/css/hbg-prime-' . self::getStyleguideTheme() . '.dev.css', '', '1.0.0');
         } else {
             wp_register_style($this->defaultPrimeName, $this->styleguideUri, '', 'latest');
         }
 
         wp_enqueue_style($this->defaultPrimeName);
 
-        wp_register_style('municipio', get_template_directory_uri(). '/assets/dist/' . \Municipio\Helper\CacheBust::name('css/app.min.css'), '', null);
-        wp_enqueue_style('municipio');
+        // wp_register_style('municipio', get_template_directory_uri(). '/assets/dist/' . \Municipio\Helper\CacheBust::name('css/main.min.css'), '', null);
+        // wp_enqueue_style('municipio');
     }
 
     /**

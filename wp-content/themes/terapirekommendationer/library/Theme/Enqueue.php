@@ -19,12 +19,12 @@ class Enqueue
             }
         );
 
-
         // Attach callback to 'tiny_mce_before_init' 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
         add_filter( 'tiny_mce_before_init', array($this, 'tr_extended_valid_elements') );
         //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init') );
         add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
+        add_filter( 'tiny_mce_before_init', array($this, 'tr_tinymce_body_class') );
         
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
         add_filter( 'mce_external_plugins', array($this, 'myplugin_register_tinymce_javascript'));
@@ -52,7 +52,7 @@ class Enqueue
 
     public function adminStyle()
     {
-        wp_enqueue_style('tr-admin', get_stylesheet_directory_uri(). '/assets/dist/css/admin.min.css', '', '');
+        // wp_enqueue_style('tr-admin', get_stylesheet_directory_uri(). '/assets/dist/css/admin.min.css', '', '');
     }
 
     function modifyVersion(){
@@ -92,13 +92,14 @@ class Enqueue
         return $init;
     }
 
-        /**
+    /**
      * Add stylesheet to editor
      * @return void
      */
     function editorStyle()
     {
-        // add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide-web/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
+        add_editor_style(apply_filters('Municipio/admin/main_stylesheet',   '/assets/dist/css/main.min.css'));
+        add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '/assets/dist/css/editor.min.css'));
     }
 
 // create a URL to the child theme
@@ -237,6 +238,11 @@ function tr_extended_valid_elements( $init ) {
     return $init;
 }
 
+function tr_tinymce_body_class( $mce ) {
+    $mce['body_class'] .= ' article';
+    return $mce;
+}
+
 // function tr_register_mce_3_buttons( $buttons ) {
 //     array_unshift( $buttons, 'styleselect' );
 //     return $buttons;
@@ -283,10 +289,7 @@ function tr_extended_valid_elements( $init ) {
      */
     public function style()
     {
-        // wp_register_style('hbg-prime', 'https://regionhalland.github.io/styleguide-web/dist/css/hbg-prime-blue.min.css?ver=latest', '', '1.0.0');
-        wp_enqueue_style('hbg-prime');
-
-        wp_enqueue_style('Terapirekommendationer-css', get_stylesheet_directory_uri(). '/assets/dist/css/app.min.css', '', filemtime(get_stylesheet_directory() . '/assets/dist/css/app.min.css'));
+        wp_enqueue_style('Terapirekommendationer-css', get_stylesheet_directory_uri(). '/assets/dist/css/main.min.css', '', filemtime(get_stylesheet_directory() . '/assets/dist/css/main.min.css'));
     }
 
     /**
