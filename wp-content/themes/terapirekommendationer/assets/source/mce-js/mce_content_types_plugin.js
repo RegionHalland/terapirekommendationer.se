@@ -117,7 +117,7 @@
 
 			editor.addButton('figure_comment', {
 				type: 'button',
-				text: 'Figurkommentar',
+				text: 'Kommentar till Redaktion',
 				icon: false,
 				onclick: function() {
 					// Register format for figure comment
