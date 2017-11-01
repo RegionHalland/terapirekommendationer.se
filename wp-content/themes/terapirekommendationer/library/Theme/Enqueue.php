@@ -11,6 +11,9 @@ class Enqueue
         add_action('wp_enqueue_scripts', array($this, 'script'));
         add_action('admin_init', array($this, 'editorStyle'));
 
+        // Enqueue admin styles
+        add_action( 'admin_enqueue_scripts', array($this, 'tr_admin_styles'));
+
         // Image plugin
         add_action('wp_enqueue_media', $func =
             function() {
@@ -44,16 +47,9 @@ class Enqueue
         add_filter( 'revision_text_diff_options', array($this, 'modifyVersion') );
         
         //add_filter( 'process_text_diff_html', array($this, 'custom_hook'), 10, 3 );
-
-        // Admin style
-        add_action('admin_enqueue_scripts', array($this, 'adminStyle'), 999);
         
     }
 
-    public function adminStyle()
-    {
-        // wp_enqueue_style('tr-admin', get_stylesheet_directory_uri(). '/assets/dist/css/admin.min.css', '', '');
-    }
 
     function modifyVersion(){
         $arrayName = array('show_split_view' => false);
@@ -98,9 +94,10 @@ class Enqueue
      */
     function editorStyle()
     {
-        add_editor_style(apply_filters('Municipio/admin/main_stylesheet',   '/assets/dist/css/main.min.css'));
-        add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '/assets/dist/css/editor.min.css'));
+        add_editor_style(apply_filters('Municipio/admin/main_stylesheet',   'assets/dist/css/main.min.css'));
+        add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', 'assets/dist/css/editor.min.css'));
     }
+
 
 // create a URL to the child theme
 function get_template_directory_child() {
@@ -282,6 +279,9 @@ function tr_tinymce_body_class( $mce ) {
    
 } */
 
+    function tr_admin_styles() {
+        wp_enqueue_style( 'tr_admin_css', get_stylesheet_directory_uri() . '/assets/dist/css/admin.min.css');
+    }
 
     /**
      * Enqueue styles
