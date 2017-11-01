@@ -50,7 +50,7 @@ class Enqueue
      */
     public function init()
     {
-        $this->styleguideUri = rtrim(apply_filters('Municipio/theme/styleguide_uri', "//regionhalland.github.io/styleguide/dist/css/main.css"), '/');
+        $this->styleguideUri = rtrim(apply_filters('Municipio/theme/styleguide_uri', "//regionhalland.github.io/styleguide/dist/css/main.min.css"), '/');
 
         if ($this->styleguideUri && !defined('MUNICIPIO_STYLEGUIDE_URI')) {
             define('MUNICIPIO_STYLEGUIDE_URI', $this->styleguideUri);
@@ -108,7 +108,7 @@ class Enqueue
         if ((defined('DEV_MODE') && DEV_MODE === true) || (isset($_GET['DEV_MODE']) && $_GET['DEV_MODE'] === 'true')) {
             // wp_register_style($this->defaultPrimeName, '//hbgprime.dev/dist/css/hbg-prime-' . self::getStyleguideTheme() . '.dev.css', '', '1.0.0');
         } else {
-            wp_register_style($this->defaultPrimeName, $this->styleguideUri, '', 'latest');
+            wp_register_style($this->defaultPrimeName, $this->styleguideUri, '', '');
         }
 
         wp_enqueue_style($this->defaultPrimeName);

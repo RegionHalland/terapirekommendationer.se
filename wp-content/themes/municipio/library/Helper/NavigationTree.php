@@ -249,7 +249,9 @@ class NavigationTree
         if (count($children) > 0) {
             $hasChildren = true;
             $attributes['class'][] = 'has-children';
-            $attributes['class'][] = 'has-sub-menu';
+            $attributes['class'][] = 'vertical-nav__item has-children';
+        } else {
+            $attributes['class'][] = 'vertical-nav__item';
         }
 
         if ($output) {
@@ -476,14 +478,14 @@ class NavigationTree
         }
 
         $this->addOutput(sprintf(
-            '<li%1$s><a href="%2$s">%3$s</a>',
+            '<li%1$s><a class="vertical-nav__link" href="%2$s">%3$s</a>',
             $this->attributes($attributes),
             $href,
             $title
         ));
 
         if ($outputSubmenuToggle) {
-            $this->addOutput('<button data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'municipio') . '</span><span class="icon"></span></button>');
+            $this->addOutput('<button data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'municipio') . '<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://regionhalland.github.io/styleguide/dist/icons/sprite-2.svg#chevron-bottom"></use></svg></button>');
         }
     }
 
@@ -559,7 +561,7 @@ class NavigationTree
             return;
         }
 
-        $this->addOutput('<ul class="sub-menu">');
+        $this->addOutput('<ul class="vertical-nav__sub-menu">');
     }
 
     /**
