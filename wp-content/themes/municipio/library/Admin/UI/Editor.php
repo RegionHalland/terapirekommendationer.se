@@ -69,9 +69,9 @@ class Editor
         }
 
         if (defined('STYLEGUIDE_VERSION') && STYLEGUIDE_VERSION != "") {
-            add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide/dist/css/main.css'));
+            add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide/dist/css/main.min.css'));
         } else {
-           add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide/dist/css/main.css'));
+           add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide/dist/css/main.min.css'));
         }
     }
 
