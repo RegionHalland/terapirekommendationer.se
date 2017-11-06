@@ -11,9 +11,9 @@ class CustomTemplates
 
     public function addCampaignTemplate()
     {
-        \Municipio\Helper\Template::add(
-            __('Whole chapter', 'municipio'),
-            \Municipio\Helper\Template::locateTemplate('whole-chapter.blade.php'),
+        \Halland\Helper\Template::add(
+            __('Whole chapter', 'halland'),
+            \Halland\Helper\Template::locateTemplate('whole-chapter.blade.php'),
             'all'
         );
     }

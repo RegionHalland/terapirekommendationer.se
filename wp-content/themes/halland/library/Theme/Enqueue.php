@@ -17,7 +17,7 @@ class Enqueue
     */
     public function style()
     {
-        wp_register_style('halland', HALLAND_PATH . '/assets/dist/' . \Municipio\Helper\CacheBust::name('css/main.min.css'), '', null);
+        wp_register_style('halland', HALLAND_PATH . '/assets/dist/' . \Halland\Helper\CacheBust::name('css/main.min.css'), '', null);
         wp_enqueue_style('halland');
     }
 
