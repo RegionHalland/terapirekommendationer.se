@@ -485,7 +485,7 @@ class NavigationTree
         ));
 
         if ($outputSubmenuToggle) {
-            $this->addOutput('<button data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'municipio') . '<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://regionhalland.github.io/styleguide/dist/icons/sprite-2.svg#chevron-bottom"></use></svg></button>');
+            $this->addOutput('<button data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'municipio') . '<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-bottom"></use></svg></button>');
         }
     }
 
