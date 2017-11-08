@@ -1,9 +1,6 @@
 === Oasis Workflow Pro ===
 Contributors: nuggetsol
 Tags: workflow, work flow, review, assignment, publish, inbox, workflow history, audit
-Requires at least: 4.4
-Tested up to: 4.8.1
-Stable tag: 5.0
 
 Automate your WordPress Editorial Workflow with Oasis Workflow.
 
