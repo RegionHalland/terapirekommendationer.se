@@ -36,7 +36,7 @@ class WholeChapter extends \Municipio\Controller\BaseController
 		$chapters = array();
 
 		foreach ($pages as $key => $value) {
-			if ($key < 9) {
+			if ($key < 27) {
 				array_push($chapters, $value);
 			}
 		}
