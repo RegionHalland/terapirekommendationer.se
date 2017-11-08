@@ -1,8 +1,8 @@
 <?php
 
-namespace Municipio\Controller;
+namespace RegionHalland\Controller;
 
-class Archive extends \Municipio\Controller\BaseController
+class Archive extends \RegionHalland\Controller\BaseController
 {
     private static $gridSize;
 

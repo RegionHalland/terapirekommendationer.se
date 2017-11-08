@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Helper;
+namespace RegionHalland\Helper;
 
 class Navigation
 {
@@ -96,12 +96,12 @@ class Navigation
         if (get_field('nav_primariy_second_level', 'option')) {
             $classes[] = 'nav-multilevel';
             $args['depth'] = 2;
-            $args['walker'] = new \Municipio\Walker\MainMenuSecondary();
+            $args['walker'] = new \RegionHalland\Walker\MainMenuSecondary();
             $args['items_section_wrap'] = $args['items_wrap'];
             $args['items_wrap'] = '%3$s';
         }
 
-        $args['menu_class'] = implode(' ', apply_filters('Municipio/main_menu_classes', $classes)) . ' ' . apply_filters('Municipio/desktop_menu_breakpoint', 'hidden-xs hidden-sm');
+        $args['menu_class'] = implode(' ', apply_filters('RegionHalland/main_menu_classes', $classes)) . ' ' . apply_filters('RegionHalland/desktop_menu_breakpoint', 'hidden-xs hidden-sm');
 
         return wp_nav_menu($args);
     }
@@ -122,17 +122,17 @@ class Navigation
                 $classes[] = 'nav-' . get_field('nav_primary_align', 'option');
             }
 
-            $menu = new \Municipio\Helper\NavigationTree(array(
+            $menu = new \RegionHalland\Helper\NavigationTree(array(
                 'theme_location' => 'main-menu',
                 'include_top_level' => true,
                 'render' => get_field('nav_primary_render', 'option'),
                 'depth' => 1,
                 'sublevel' => get_field('nav_primariy_second_level', 'option'),
-                'classes' => implode(' ', apply_filters('Municipio/main_menu_classes', $classes)) . ' ' . apply_filters('Municipio/desktop_menu_breakpoint', 'hidden-xs hidden-sm')
+                'classes' => implode(' ', apply_filters('RegionHalland/main_menu_classes', $classes)) . ' ' . apply_filters('RegionHalland/desktop_menu_breakpoint', 'hidden-xs hidden-sm')
             ));
 
             if (isset($menu) && $menu->itemCount() > 0) {
-                $markup = apply_filters('Municipio/main_menu/items', $menu->render(false));
+                $markup = apply_filters('RegionHalland/main_menu/items', $menu->render(false));
             }
 
             return $markup;
@@ -147,7 +147,7 @@ class Navigation
      */
     public function mobileMenuAuto()
     {
-        $transientHash = \Municipio\Helper\Hash::short(\Municipio\Helper\Url::getCurrent());
+        $transientHash = \RegionHalland\Helper\Hash::short(\RegionHalland\Helper\Url::getCurrent());
 
         $transientType = '';
         if (is_user_logged_in()) {
@@ -165,7 +165,7 @@ class Navigation
                 $mobileMenuArgs['top_level_type'] = 'mobile';
             }
 
-            $menu = new \Municipio\Helper\NavigationTree($mobileMenuArgs);
+            $menu = new \RegionHalland\Helper\NavigationTree($mobileMenuArgs);
 
             //set_transient('mobile_menu_' . $transientHash . $transientType, $menu, 60*60*168);
         }
@@ -222,7 +222,7 @@ class Navigation
                 'link_after' => '',
                 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                 'fallback_cb' => '__return_false',
-                'walker' => new \Municipio\Walker\SidebarMenu(),
+                'walker' => new \RegionHalland\Walker\SidebarMenu(),
                 'child_menu' => true
             ));
         }
@@ -253,7 +253,7 @@ class Navigation
         $menu = false;
 
         if (!$menu || (isset($_GET['menu_cache']) && $_GET['menu_cache'] == 'false')) {
-            $menu = new \Municipio\Helper\NavigationTree(array(
+            $menu = new \RegionHalland\Helper\NavigationTree(array(
                 'include_top_level' => !empty(get_field('nav_sub_include_top_level', 'option')) ? get_field('nav_sub_include_top_level', 'option') : false,
                 'render' => get_field('nav_sub_render', 'option'),
                 'depth' => get_field('nav_sub_depth', 'option') ? get_field('nav_sub_depth', 'option') : -1,

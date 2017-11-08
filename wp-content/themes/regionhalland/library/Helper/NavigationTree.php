@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Helper;
+namespace RegionHalland\Helper;
 
 class NavigationTree
 {
@@ -521,7 +521,7 @@ class NavigationTree
         $wrapperStart = explode('%3$s', $this->args['wrapper'])[0];
 
         if ($filters) {
-            $wrapperStart = apply_filters('Municipio/main_menu/wrapper_start', $wrapperStart, $this->args);
+            $wrapperStart = apply_filters('RegionHalland/main_menu/wrapper_start', $wrapperStart, $this->args);
         }
 
         $this->addOutput(sprintf(
@@ -540,7 +540,7 @@ class NavigationTree
         $wrapperEnd = explode('%3$s', $this->args['wrapper'])[1];
 
         if ($filters) {
-            $wrapperEnd = apply_filters('Municipio/main_menu/wrapper_end', $wrapperEnd, $this->args);
+            $wrapperEnd = apply_filters('RegionHalland/main_menu/wrapper_end', $wrapperEnd, $this->args);
         }
 
         $this->addOutput(sprintf(

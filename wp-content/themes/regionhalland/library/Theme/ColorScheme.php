@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Theme;
+namespace RegionHalland\Theme;
 
 class ColorScheme
 {
@@ -24,16 +24,16 @@ class ColorScheme
 
     public function getRemoteColorScheme($manifestId = "") : bool
     {
-        if (!defined('MUNICIPIO_STYLEGUIDE_URI')) {
+        if (!defined('REGIONHALLAND_STYLEGUIDE_URI')) {
             return false;
         }
 
         if (empty($manifestId)) {
-            $manifestId = apply_filters('Municipio/theme/key', get_field('color_scheme', 'option'));
+            $manifestId = apply_filters('RegionHalland/theme/key', get_field('color_scheme', 'option'));
         }
 
         //Get remote data
-        $request = wp_remote_get("https:" . MUNICIPIO_STYLEGUIDE_URI . "vars/" . $manifestId . '.json');
+        $request = wp_remote_get("https:" . REGIONHALLAND_STYLEGUIDE_URI . "vars/" . $manifestId . '.json');
 
         //Store if valid response
         if (wp_remote_retrieve_response_code($request) == 200) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Theme;
+namespace RegionHalland\Theme;
 
 class Enqueue
 {
@@ -49,10 +49,10 @@ class Enqueue
      */
     public function init()
     {
-        $this->styleguideUri = rtrim(apply_filters('Municipio/theme/styleguide_uri', "//helsingborg-stad.github.io/styleguide-web/dist/"), '/') . '/';
+        $this->styleguideUri = rtrim(apply_filters('RegionHalland/theme/styleguide_uri', "//helsingborg-stad.github.io/styleguide-web/dist/"), '/') . '/';
 
-        if ($this->styleguideUri && !defined('MUNICIPIO_STYLEGUIDE_URI')) {
-            define('MUNICIPIO_STYLEGUIDE_URI', $this->styleguideUri);
+        if ($this->styleguideUri && !defined('REGIONHALLAND_STYLEGUIDE_URI')) {
+            define('REGIONHALLAND_STYLEGUIDE_URI', $this->styleguideUri);
         }
     }
 
@@ -62,7 +62,7 @@ class Enqueue
      */
     public static function getStyleguideTheme()
     {
-        return apply_filters('Municipio/theme/key', get_field('color_scheme', 'option'));
+        return apply_filters('RegionHalland/theme/key', get_field('color_scheme', 'option'));
     }
 
     public function wrapGformCdataOpen($content)
@@ -83,10 +83,10 @@ class Enqueue
      */
     public function adminStyle()
     {
-        wp_register_style('helsingborg-se-admin', get_template_directory_uri(). '/assets/dist/' . \Municipio\Helper\CacheBust::name('css/admin.min.css'), '', null);
+        wp_register_style('helsingborg-se-admin', get_template_directory_uri(). '/assets/dist/' . \RegionHalland\Helper\CacheBust::name('css/admin.min.css'), '', null);
         wp_enqueue_style('helsingborg-se-admin');
 
-        wp_register_script('helsingborg-se-admin', get_template_directory_uri() . '/assets/dist/' . \Municipio\Helper\CacheBust::name('js/admin.min.js'), '', null, true);
+        wp_register_script('helsingborg-se-admin', get_template_directory_uri() . '/assets/dist/' . \RegionHalland\Helper\CacheBust::name('js/admin.min.js'), '', null, true);
         wp_enqueue_script('helsingborg-se-admin');
     }
 
@@ -98,7 +98,7 @@ class Enqueue
     {
 
         // Tell jquery dependents to wait for prime instead.
-        if (!apply_filters('Municipio/load-wp-jquery', false)) {
+        if (!apply_filters('RegionHalland/load-wp-jquery', false)) {
             wp_deregister_script('jquery');
             add_action('wp_enqueue_scripts', array($this, 'waitForPrime'));
         }
@@ -117,7 +117,7 @@ class Enqueue
 
         wp_enqueue_style($this->defaultPrimeName);
 
-        wp_register_style('municipio', get_template_directory_uri(). '/assets/dist/' . \Municipio\Helper\CacheBust::name('css/app.min.css'), '', null);
+        wp_register_style('municipio', get_template_directory_uri(). '/assets/dist/' . \RegionHalland\Helper\CacheBust::name('css/app.min.css'), '', null);
         wp_enqueue_style('municipio');
     }
 
@@ -168,7 +168,7 @@ class Enqueue
         wp_enqueue_script($this->defaultPrimeName);
 
         wp_register_script('municipio', get_template_directory_uri() . '/assets/dist/js/packaged.min.js', '', '1.0.0', true);
-        wp_localize_script('municipio', 'MunicipioLang', array(
+        wp_localize_script('municipio', 'RegionHallandLang', array(
             'printbreak' => array(
                 'tooltip' => __('Insert Print Page Break tag', 'municipio')
             )

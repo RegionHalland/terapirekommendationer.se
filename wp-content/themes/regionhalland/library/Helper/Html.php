@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Helper;
+namespace RegionHalland\Helper;
 
 class Html
 {
@@ -81,7 +81,7 @@ class Html
         }
 
         //Strip attributes
-        $atts = \Municipio\Helper\Html::getHtmlAttributes($content);
+        $atts = \RegionHalland\Helper\Html::getHtmlAttributes($content);
 
         if ($atts && !empty($atts)) {
             if (isset($allowedAtts) && is_array($allowedAtts)) {

@@ -1,7 +1,12 @@
 @extends('templates.master')
 
 @section('content')
+	
+	@include('partials.breadcrumbs')
 
-<div class="container main-container">
-    <h1>Page</h1>
+    @while(have_posts())
+	    {!! the_post() !!}
+
+	    @include('partials.article')
+	@endwhile
 @stop

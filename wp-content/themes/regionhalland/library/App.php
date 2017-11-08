@@ -1,103 +1,110 @@
 <?php
 
-namespace Municipio;
+namespace RegionHalland;
 
 class App
 {
-    public function __construct()
-    {
-        new \Municipio\Template();
-        //die("asd");
-        
-        /**
-         * Helpers
-         */
-       //new \Municipio\Helper\GravityForm();
+	public function __construct()
+	{
+		///**
+		// * Template
+		// */
+		new \RegionHalland\Template();
 
-       ///**
-       // * Template
-       // */
-       //new \Municipio\Template();
+		///**
+		// * Theme
+		// */
+		new \RegionHalland\Theme\Navigation();
+		
+		/**
+		 * Helpers
+		 */
+	   //new \RegionHalland\Helper\GravityForm();
 
-       ///**
-       // * Theme
-       // */
-       //new \Municipio\Theme\Enqueue();
-       //new \Municipio\Theme\Support();
-       //new \Municipio\Theme\Sidebars();
-       //new \Municipio\Theme\Navigation();
-       //new \Municipio\Theme\General();
-       //new \Municipio\Theme\OnTheFlyImages();
-       //new \Municipio\Theme\ImageSizeFilter();
-       //new \Municipio\Theme\CustomCodeInput();
-       //new \Municipio\Theme\Blog();
-       //new \Municipio\Theme\FileUploads();
-       //new \Municipio\Theme\Archive();
-       //new \Municipio\Theme\EventArchive();
-       //new \Municipio\Theme\CustomTemplates();
-       //new \Municipio\Theme\Font();
-       //new \Municipio\Theme\ColorScheme();
+	   ///**
+	   // * Template
+	   // */
+	   //new \RegionHalland\Template();
 
-       //new \Municipio\Search\General();
+	   ///**
+	   // * Theme
+	   // */
+	   //new \RegionHalland\Theme\Enqueue();
+	   //new \RegionHalland\Theme\Support();
+	   //new \RegionHalland\Theme\Sidebars();
+	   //new \RegionHalland\Theme\Navigation();
+	   //new \RegionHalland\Theme\General();
+	   //new \RegionHalland\Theme\OnTheFlyImages();
+	   //new \RegionHalland\Theme\ImageSizeFilter();
+	   //new \RegionHalland\Theme\CustomCodeInput();
+	   //new \RegionHalland\Theme\Blog();
+	   //new \RegionHalland\Theme\FileUploads();
+	   //new \RegionHalland\Theme\Archive();
+	   //new \RegionHalland\Theme\EventArchive();
+	   //new \RegionHalland\Theme\CustomTemplates();
+	   //new \RegionHalland\Theme\Font();
+	   //new \RegionHalland\Theme\ColorScheme();
 
-       ///**
-       // * Content
-       // */
-       //new \Municipio\Content\CustomPostType();
-       //new \Municipio\Content\CustomTaxonomy();
-       //new \Municipio\Content\PostFilters();
-       //new \Municipio\Content\ShortCode();
-       //new \Municipio\Content\Cache();
+	   //new \RegionHalland\Search\General();
 
-       ///**
-       // * Widget
-       // */
-       //new \Municipio\Widget\RichEditor();
-       //new \Municipio\Widget\Contact();
+	   ///**
+	   // * Content
+	   // */
+	   //new \RegionHalland\Content\CustomPostType();
+	   //new \RegionHalland\Content\CustomTaxonomy();
+	   //new \RegionHalland\Content\PostFilters();
+	   //new \RegionHalland\Content\ShortCode();
+	   //new \RegionHalland\Content\Cache();
 
-       ///**
-       // * Comments
-       // */
-       //new \Municipio\Comment\HoneyPot();
-       //new \Municipio\Comment\LikeButton();
-       //new \Municipio\Comment\CommentsFilters();
+	   ///**
+	   // * Widget
+	   // */
+	   //new \RegionHalland\Widget\RichEditor();
+	   //new \RegionHalland\Widget\Contact();
 
-       //add_action('widgets_init', function () {
-       //    register_widget('\Municipio\Widget\Contact');
-       //});
+	   ///**
+	   // * Comments
+	   // */
+	   //new \RegionHalland\Comment\HoneyPot();
+	   //new \RegionHalland\Comment\LikeButton();
+	   //new \RegionHalland\Comment\CommentsFilters();
 
-        /**
-         * Admin
-         
-        new \Municipio\Admin\General();
-        new \Municipio\Admin\Customizer();
+	   //add_action('widgets_init', function () {
+	   //    register_widget('\RegionHalland\Widget\Contact');
+	   //});
 
-        new \Municipio\Admin\Options\Theme();
-        new \Municipio\Admin\Options\Timestamp();
-        new \Municipio\Admin\Options\Favicon();
-        new \Municipio\Admin\Options\GoogleTranslate();
-        new \Municipio\Admin\Options\Archives();
-        new \Municipio\Admin\Options\ContentEditor();
+		/**
+		 * Admin
+		 
+		new \RegionHalland\Admin\General();
+		new \RegionHalland\Admin\Customizer();
 
-        new \Municipio\Admin\Roles\General();
-        new \Municipio\Admin\Roles\Editor();
+		new \RegionHalland\Admin\Options\Theme();
+		new \RegionHalland\Admin\Options\Timestamp();
+		new \RegionHalland\Admin\Options\Favicon();
+		new \RegionHalland\Admin\Options\GoogleTranslate();
+		new \RegionHalland\Admin\Options\Archives();
+		new \RegionHalland\Admin\Options\ContentEditor();
 
-        new \Municipio\Admin\UI\VarnishPurge();
-        new \Municipio\Admin\UI\BackEnd();
-        new \Municipio\Admin\UI\FrontEnd();
-        new \Municipio\Admin\UI\Editor();
+		new \RegionHalland\Admin\Roles\General();
+		new \RegionHalland\Admin\Roles\Editor();
 
-        new \Municipio\Admin\TinyMce\LoadPlugins();
+		new \RegionHalland\Admin\UI\VarnishPurge();
+		new \RegionHalland\Admin\UI\BackEnd();
+		new \RegionHalland\Admin\UI\FrontEnd();
+		new \RegionHalland\Admin\UI\Editor();
 
-        /**
-         * Api
-         
-        new \Municipio\Api\Navigation();
+		new \RegionHalland\Admin\TinyMce\LoadPlugins();
 
-        add_filter('Modularity/CoreTemplatesSearchPaths', function ($paths) {
-            $paths[] = get_stylesheet_directory() . '/views';
-            $paths[] = get_template_directory() . '/views';
-            return $paths;
-        });*/
-    }
+		/**
+		 * Api
+		 
+		new \RegionHalland\Api\Navigation();
+
+		add_filter('Modularity/CoreTemplatesSearchPaths', function ($paths) {
+			$paths[] = get_stylesheet_directory() . '/views';
+			$paths[] = get_template_directory() . '/views';
+			return $paths;
+		});*/
+	}
 }

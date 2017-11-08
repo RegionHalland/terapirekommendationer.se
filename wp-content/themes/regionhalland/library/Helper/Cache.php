@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Helper;
+namespace RegionHalland\Helper;
 
 class Cache
 {
@@ -76,7 +76,7 @@ class Cache
         wp_cache_delete($post->post_type, self::getKeyGroup());
 
         // Empty post type for all sites in network (?)
-        if (function_exists('is_multisite') && is_multisite() && apply_filters('Municipio\Cache\EmptyForAllBlogs', false, $post)) {
+        if (function_exists('is_multisite') && is_multisite() && apply_filters('RegionHalland\Cache\EmptyForAllBlogs', false, $post)) {
             $blogs = get_sites();
 
             foreach ($blogs as $blog) {
@@ -212,7 +212,7 @@ class Cache
 
 /*
 Usage example:
-$cache = new Municipio\Helper\Cache($post->Id);
+$cache = new RegionHalland\Helper\Cache($post->Id);
 if ($cache->start()) {
     // Your cacheable content here
     $cache->stop();

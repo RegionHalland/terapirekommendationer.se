@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Helper;
+namespace RegionHalland\Helper;
 
 abstract class Ajax
 {

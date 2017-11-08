@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Theme;
+namespace RegionHalland\Theme;
 
 class Navigation
 {
@@ -10,7 +10,7 @@ class Navigation
 
         if (in_array('mainmenu', (array)get_field('search_display', 'option'))) {
             add_filter('wp_nav_menu_items', array($this, 'addSearchMagnifier'), 10, 2);
-            add_filter('Municipio/main_menu/wrapper_end', array($this, 'addSearchMagnifier'), 10, 2);
+            add_filter('RegionHalland/main_menu/wrapper_end', array($this, 'addSearchMagnifier'), 10, 2);
         }
 
         if (!empty(get_field('google_translate_menu', 'option')) && !empty(get_field('show_google_translate', 'option')) && get_field('show_google_translate', 'option') !== 'false') {
@@ -29,7 +29,7 @@ class Navigation
             return;
         }
 
-        $submenu = new \Municipio\Helper\NavigationTree(
+        $submenu = new \RegionHalland\Helper\NavigationTree(
             array(
                 'include_top_level' => false,
                 'depth' => 2,
@@ -168,7 +168,7 @@ class Navigation
             $args = (object)$args;
         }
 
-        if ($args && $args->theme_location != apply_filters('Municipio/main_menu_theme_location', 'main-menu')) {
+        if ($args && $args->theme_location != apply_filters('RegionHalland/main_menu_theme_location', 'main-menu')) {
             return $items;
         }
 
@@ -266,7 +266,7 @@ class Navigation
             }
         }
 
-        $output = apply_filters('Municipio/Breadcrumbs/Items', $output, get_queried_object());
+        $output = apply_filters('RegionHalland/Breadcrumbs/Items', $output, get_queried_object());
 
         echo implode("\n", $output);
         echo '</ol>';

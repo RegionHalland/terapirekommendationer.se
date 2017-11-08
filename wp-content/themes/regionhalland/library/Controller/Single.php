@@ -1,8 +1,8 @@
 <?php
 
-namespace Municipio\Controller;
+namespace RegionHalland\Controller;
 
-class Single extends \Municipio\Controller\BaseController
+class Single extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {
@@ -23,7 +23,7 @@ class Single extends \Municipio\Controller\BaseController
         );
         $this->data['g_recaptcha_key'] = defined('G_RECAPTCHA_KEY') ? G_RECAPTCHA_KEY : '';
 
-        if(defined('MUNICIPIO_BLOCK_AUTHOR_PAGES') && ! MUNICIPIO_BLOCK_AUTHOR_PAGES) {
+        if(defined('REGIONHALLAND_BLOCK_AUTHOR_PAGES') && ! REGIONHALLAND_BLOCK_AUTHOR_PAGES) {
             $this->data['authorPages'] = true;
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Controller;
+namespace RegionHalland\Controller;
 
 class BaseController
 {
@@ -15,11 +15,11 @@ class BaseController
         
     }
 
-    /*public function getFilterData()
+    public function getFilterData()
     {
         $this->data = array_merge(
             $this->data,
-            apply_filters('Municipio/controller/base/view_data', $this->data)
+            apply_filters('RegionHalland/controller/base/view_data', $this->data)
         );
     }
 
@@ -81,7 +81,7 @@ class BaseController
         // If 404, fragment cache the navigation and return
         if (is_404()) {
             if (!wp_cache_get('404-menus', 'municipio-navigation')) {
-                $navigation = new \Municipio\Helper\Navigation();
+                $navigation = new \RegionHalland\Helper\Navigation();
                 $this->data['navigation']['mainMenu'] = $navigation->mainMenu();
                 $this->data['navigation']['mobileMenu'] = $navigation->mobileMenu();
 
@@ -103,7 +103,7 @@ class BaseController
             return;
         }
 
-        $navigation = new \Municipio\Helper\Navigation();
+        $navigation = new \RegionHalland\Helper\Navigation();
         $this->data['navigation']['mainMenu'] = $navigation->mainMenu();
         $this->data['navigation']['mobileMenu'] = $navigation->mobileMenu();
 
@@ -183,7 +183,7 @@ class BaseController
         $abortFunction = true;
 
         //Check if these sidebars is active before running
-        $triggerBySidebar = apply_filters('Municipio/Menu/Vertical/EnabledSidebars', array('top-sidebar', 'bottom-sidebar'));
+        $triggerBySidebar = apply_filters('RegionHalland/Menu/Vertical/EnabledSidebars', array('top-sidebar', 'bottom-sidebar'));
         foreach ((array) $triggerBySidebar as $sidebar) {
             if (is_active_sidebar($sidebar)) {
                 $abortFunction = false;
@@ -196,7 +196,7 @@ class BaseController
         }
 
         //Return items to view. Format: array(array('title' => '', 'link' => ''))
-        $this->data['verticalNav'] = apply_filters('Municipio/Menu/Vertical/Items', array());
+        $this->data['verticalNav'] = apply_filters('RegionHalland/Menu/Vertical/Items', array());
 
         return true;
     }
@@ -216,7 +216,7 @@ class BaseController
      
     public static function registerTemplate()
     {
-        // \Municipio\Helper\Template::add('Front page', 'front-page.blade.php');
+        // \RegionHalland\Helper\Template::add('Front page', 'front-page.blade.php');
     }*/
 
     /**
@@ -225,6 +225,7 @@ class BaseController
      */
     public function getData()
     {
+        //return ["data" => "myData"];
         return apply_filters('HbgBlade/data', $this->data);
     }
 }

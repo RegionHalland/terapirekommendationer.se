@@ -1,8 +1,8 @@
 <?php
 
-namespace Municipio\Controller;
+namespace RegionHalland\Controller;
 
-class Search extends \Municipio\Controller\BaseController
+class Search extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {
@@ -33,7 +33,7 @@ class Search extends \Municipio\Controller\BaseController
      */
     public function googleSearch()
     {
-        $search = new \Municipio\Search\Google(get_search_query(), $this->getIndex());
+        $search = new \RegionHalland\Search\Google(get_search_query(), $this->getIndex());
         $this->data['search'] = $search;
         $this->data['results'] = $search->results;
     }

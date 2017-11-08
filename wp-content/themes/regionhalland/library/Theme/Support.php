@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Theme;
+namespace RegionHalland\Theme;
 
 class Support
 {
@@ -101,7 +101,7 @@ class Support
      */
     private static function addActions()
     {
-        add_action('after_setup_theme', '\Municipio\Theme\Support::themeSupport');
+        add_action('after_setup_theme', '\RegionHalland\Theme\Support::themeSupport');
     }
 
     /**
@@ -109,8 +109,8 @@ class Support
      */
     private static function addFilters()
     {
-        add_filter('intermediate_image_sizes_advanced', '\Municipio\Theme\Support::filterThumbnailSizes');
-        //add_filter('gettext', '\Municipio\Theme\Support::changeDefaultTemplateName', 10, 3);
+        add_filter('intermediate_image_sizes_advanced', '\RegionHalland\Theme\Support::filterThumbnailSizes');
+        //add_filter('gettext', '\RegionHalland\Theme\Support::changeDefaultTemplateName', 10, 3);
     }
 
     /**
@@ -203,9 +203,9 @@ class Support
         global $wp_query;
 
         if (
-            (defined('MUNICIPIO_BLOCK_AUTHOR_PAGES') && !MUNICIPIO_BLOCK_AUTHOR_PAGES)
+            (defined('REGIONHALLAND_BLOCK_AUTHOR_PAGES') && !REGIONHALLAND_BLOCK_AUTHOR_PAGES)
             ||
-            (get_field('page_link_to_author_archive', 'option') === true && (!defined('MUNICIPIO_BLOCK_AUTHOR_PAGES') || MUNICIPIO_BLOCK_AUTHOR_PAGES))
+            (get_field('page_link_to_author_archive', 'option') === true && (!defined('REGIONHALLAND_BLOCK_AUTHOR_PAGES') || REGIONHALLAND_BLOCK_AUTHOR_PAGES))
         ) {
             return;
         }

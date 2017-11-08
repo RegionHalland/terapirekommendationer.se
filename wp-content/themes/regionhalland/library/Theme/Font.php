@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Theme;
+namespace RegionHalland\Theme;
 
 class Font
 {
@@ -55,9 +55,9 @@ class Font
      */
     public function renderFontLibrary()
     {
-        if (!defined('WEB_FONT_REMOTE') && file_exists(MUNICIPIO_PATH . '/assets/source/js/font.js')) {
+        if (!defined('WEB_FONT_REMOTE') && file_exists(REGIONHALLAND_PATH . '/assets/source/js/font.js')) {
             echo '<script>';
-                readfile(MUNICIPIO_PATH . '/assets/source/js/font.js');
+                readfile(REGIONHALLAND_PATH . '/assets/source/js/font.js');
             echo '</script>';
         } else {
             wp_enqueue_script('webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), '1.0.0', false);

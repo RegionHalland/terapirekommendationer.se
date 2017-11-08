@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Theme;
+namespace RegionHalland\Theme;
 
 class General
 {
@@ -31,7 +31,7 @@ class General
      */
     public function removeDisplaySettings($postType)
     {
-        $publicPostTypes = array_keys(\Municipio\Helper\PostType::getPublic());
+        $publicPostTypes = array_keys(\RegionHalland\Helper\PostType::getPublic());
         $publicPostTypes[] = 'page';
 
         if (!in_array($postType, $publicPostTypes)) {
@@ -70,7 +70,7 @@ class General
 
         if (!$image && $logo = get_field('logotype_negative', 'option')) {
             $image = '<div class="box-image">
-               ' . \Municipio\Helper\Svg::extract($logo['url']) . '
+               ' . \RegionHalland\Helper\Svg::extract($logo['url']) . '
             </div>';
         }
 

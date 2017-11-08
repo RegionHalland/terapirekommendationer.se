@@ -1,8 +1,8 @@
 <?php
 
-namespace Municipio\Controller;
+namespace RegionHalland\Controller;
 
-class FullWidth extends \Municipio\Controller\BaseController
+class FullWidth extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {

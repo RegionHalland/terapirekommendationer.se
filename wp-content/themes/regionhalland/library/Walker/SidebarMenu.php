@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Walker;
+namespace RegionHalland\Walker;
 
 class SidebarMenu extends \Walker_Nav_Menu
 {

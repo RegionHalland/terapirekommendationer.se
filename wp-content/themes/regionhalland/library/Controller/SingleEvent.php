@@ -1,8 +1,8 @@
 <?php
 
-namespace Municipio\Controller;
+namespace RegionHalland\Controller;
 
-class SingleEvent extends \Municipio\Controller\BaseController
+class SingleEvent extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Municipio\Controller;
+namespace RegionHalland\Controller;
 
-class E404 extends \Municipio\Controller\BaseController
+class E404 extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {

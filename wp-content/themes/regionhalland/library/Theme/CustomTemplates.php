@@ -1,20 +1,20 @@
 <?php
 
-namespace Municipio\Theme;
+namespace RegionHalland\Theme;
 
 class CustomTemplates
 {
     public function __construct()
     {
-        \Municipio\Helper\Template::add(
+        \RegionHalland\Helper\Template::add(
             __('Full width', 'municipio'),
-            \Municipio\Helper\Template::locateTemplate('full-width.blade.php'),
+            \RegionHalland\Helper\Template::locateTemplate('full-width.blade.php'),
             'all'
         );
 
-        \Municipio\Helper\Template::add(
+        \RegionHalland\Helper\Template::add(
             __('One page (no article)', 'municipio'),
-            \Municipio\Helper\Template::locateTemplate('one-page.blade.php'),
+            \RegionHalland\Helper\Template::locateTemplate('one-page.blade.php'),
             'all'
         );
     }

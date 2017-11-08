@@ -1,12 +1,12 @@
 <?php
 
-namespace Municipio\Helper;
+namespace RegionHalland\Helper;
 
 class Template
 {
     /**
      * Add a template
-     * \Municipio\Helper\Template::add($templateName, $templatePath);
+     * \RegionHalland\Helper\Template::add($templateName, $templatePath);
      * @param string $templateName Template name
      * @param string $templatePath Template path (relative to theme path)
      * @param array  $postTypes Post types that can use the template (string "all" for all public psot types)
@@ -17,7 +17,7 @@ class Template
 
         add_action('init', function () use ($templateName, $templatePath, $postTypes, $templateFile) {
             if ((is_string($postTypes) && $postTypes === 'all') || (is_array($postTypes) && in_array('all', $postTypes))) {
-                $postTypes = array_keys(\Municipio\Helper\PostType::getPublic());
+                $postTypes = array_keys(\RegionHalland\Helper\PostType::getPublic());
                 $postTypes[] = 'page';
             }
 

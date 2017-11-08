@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio;
+namespace RegionHalland;
 
 use Philo\Blade\Blade as Blade;
 
@@ -21,7 +21,7 @@ class Template
         /**
          * Set paths
          */
-        $this->VIEWS_PATHS = apply_filters('Municipio/blade/view_paths', array(
+        $this->VIEWS_PATHS = apply_filters('RegionHalland/blade/view_paths', array(
             get_stylesheet_directory() . '/views',
             get_template_directory() . '/views'
         ));
@@ -46,7 +46,7 @@ class Template
             return;
         }
 
-        \Municipio\Helper\Template::add(__('Page', 'municipio'), \Municipio\Helper\Template::locateTemplate('page.blade.php'));
+        \RegionHalland\Helper\Template::add(__('Page', 'municipio'), \RegionHalland\Helper\Template::locateTemplate('page.blade.php'));
 
         add_filter('gettext', function ($translation, $text, $domain) {
             if ($text == 'Default Template') {
@@ -72,10 +72,10 @@ class Template
      
     public function initCustomTemplates()
     {
-        $directory = MUNICIPIO_PATH . 'library/Controller/';
+        $directory = REGIONHALLAND_PATH . 'library/Controller/';
 
         foreach (@glob($directory . "*.php") as $file) {
-            $class = '\Municipio\Controller\\' . basename($file, '.php');
+            $class = '\RegionHalland\Controller\\' . basename($file, '.php');
 
             if (!class_exists($class)) {
                 continue;
@@ -97,7 +97,7 @@ class Template
      
     public function getSearchForm($searchform)
     {
-        if ($view = \Municipio\Helper\Template::locateTemplate('searchform.blade.php')) {
+        if ($view = \RegionHalland\Helper\Template::locateTemplate('searchform.blade.php')) {
             $view = $this->cleanViewPath($view);
             $this->loadController($view);
             $this->render($view);
@@ -116,12 +116,12 @@ class Template
     public function load($template)
     {
         if ((is_page() || is_single() || is_front_page()) && !empty(get_page_template_slug()) && get_page_template_slug() != $template) {
-            if (\Municipio\Helper\Template::locateTemplate(get_page_template_slug())) {
+            if (\RegionHalland\Helper\Template::locateTemplate(get_page_template_slug())) {
                 $template = get_page_template_slug();
             }
         }
 
-        if (!\Municipio\Helper\Template::isBlade($template)) {
+        if (!\RegionHalland\Helper\Template::isBlade($template)) {
             $path = $template;
 
             // Return path if file exists, else default to page.blade.php
@@ -129,10 +129,10 @@ class Template
                 return $path;
             } else {
                 if (current_user_can('administrator')) {
-                    \Municipio\Helper\Notice::add('<strong>' . __('Admin notice', 'municipio') . ':</strong> ' . sprintf(__('View [%s] was not found. Defaulting to [page.blade.php].', 'municipio'), $template), 'warning', 'pricon pricon-notice-warning');
+                    \RegionHalland\Helper\Notice::add('<strong>' . __('Admin notice', 'municipio') . ':</strong> ' . sprintf(__('View [%s] was not found. Defaulting to [page.blade.php].', 'municipio'), $template), 'warning', 'pricon pricon-notice-warning');
                 }
 
-                $template = \Municipio\Helper\Template::locateTemplate('views/page.blade.php');
+                $template = \RegionHalland\Helper\Template::locateTemplate('views/page.blade.php');
             }
         }
 
@@ -162,7 +162,7 @@ class Template
     {
         $template = basename($template) . '.php';
 
-        do_action('Municipio/blade/before_load_controller');
+        do_action('RegionHalland/blade/before_load_controller');
 
         if (basename($template) == '404.php') {
             $template = 'e404.php';
@@ -170,25 +170,25 @@ class Template
 
         switch ($template) {
             case 'author.php':
-                if (!defined('MUNICIPIO_BLOCK_AUTHOR_PAGES') || MUNICIPIO_BLOCK_AUTHOR_PAGES) {
+                if (!defined('REGIONHALLAND_BLOCK_AUTHOR_PAGES') || REGIONHALLAND_BLOCK_AUTHOR_PAGES) {
                     $template = 'archive.php';
                 }
                 break;
         }
 
-        $controller = \Municipio\Helper\Controller::locateController($template);
+        $controller = \RegionHalland\Helper\Controller::locateController($template);
 
         if (!$controller) {
-            $controller = \Municipio\Helper\Controller::locateController('BaseController');
+            $controller = \RegionHalland\Helper\Controller::locateController('BaseController');
         }
 
-        $controller = apply_filters('Municipio/blade/controller', $controller);
+        $controller = apply_filters('RegionHalland/blade/controller', $controller);
 
         require_once $controller;
-        $namespace = \Municipio\Helper\Controller::getNamespace($controller);
+        $namespace = \RegionHalland\Helper\Controller::getNamespace($controller);
         $class = '\\' . $namespace . '\\' . basename($controller, '.php');
 
-        do_action('Municipio/blade/after_load_controller');
+        do_action('RegionHalland/blade/after_load_controller');
 
         return new $class();
     }
@@ -200,7 +200,7 @@ class Template
      */
     public function render($view, $data = array())
     {
-        $data = apply_filters('Municipio/blade/data', $data);
+        $data = apply_filters('RegionHalland/blade/data', $data);
 
         $blade = new Blade($this->VIEWS_PATHS, $this->CACHE_PATH);
         echo $blade->view()->make($view, $data)->render();
@@ -228,7 +228,7 @@ class Template
             'attachment' => 'attachment.blade.php',
         );
 
-        $types = apply_filters('Municipio/blade/template_types', $types);
+        $types = apply_filters('RegionHalland/blade/template_types', $types);
 
         if (isset($types) && !empty($types) && is_array($types)) {
             foreach ($types as $key => $type) {
@@ -237,13 +237,13 @@ class Template
                         $type = $types['front-page'];
                     }
 
-                    $templatePath = \Municipio\Helper\Template::locateTemplate($type);
+                    $templatePath = \RegionHalland\Helper\Template::locateTemplate($type);
 
                     // Look for post type archive
                     global $wp_query;
                     if (is_post_type_archive() && isset($wp_query->query['post_type'])) {
                         $search = 'archive-' . $wp_query->query['post_type'] . '.blade.php';
-                        $found = \Municipio\Helper\Template::locateTemplate($search);
+                        $found = \RegionHalland\Helper\Template::locateTemplate($search);
 
                         if ($found) {
                             $templatePath = $found;
@@ -253,7 +253,7 @@ class Template
                     // Look for post type single page
                     if (is_single() && isset($wp_query->query['post_type'])) {
                         $search = 'single-' . $wp_query->query['post_type'] . '.blade.php';
-                        $found = \Municipio\Helper\Template::locateTemplate($search);
+                        $found = \RegionHalland\Helper\Template::locateTemplate($search);
 
                         if ($found) {
                             $templatePath = $found;

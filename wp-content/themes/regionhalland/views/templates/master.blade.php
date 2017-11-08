@@ -19,6 +19,10 @@
     {!! wp_head() !!}
 </head>
 <body {!! body_class('no-js') !!}>
+    
+    <main id="main-content" class="clearfix main-content">
+        @yield('content')
+    </main>
 
     {!! wp_footer() !!}
 

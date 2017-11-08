@@ -1,6 +1,6 @@
 <?php
 
-namespace Municipio\Helper;
+namespace RegionHalland\Helper;
 
 class Controller
 {
@@ -31,7 +31,7 @@ class Controller
          * @since 0.1.0
          * @var   array
          */
-        $searchPaths = apply_filters('Municipio/blade/controllers_search_paths', $searchPaths);
+        $searchPaths = apply_filters('RegionHalland/blade/controllers_search_paths', $searchPaths);
 
         foreach ($searchPaths as $path) {
             foreach ($controllers as $controller) {
