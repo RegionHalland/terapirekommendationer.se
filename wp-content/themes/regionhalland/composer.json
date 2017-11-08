@@ -1,0 +1,7 @@
+{
+    "name": "regionhalland/regionhalland",
+    "type": "wordpress-theme",
+    "require": {
+        "philo/laravel-blade": "^3.1"
+    }
+}
