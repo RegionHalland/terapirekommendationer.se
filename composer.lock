@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "32cabc8d70af499b5eac56f7da033045",
+    "hash": "e68cbb2c7a7d46ad2797c814dea1e351",
+    "content-hash": "4f0f092b3f739cfb92f0216372cbe791",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -71,7 +72,7 @@
                 "diff",
                 "html"
             ],
-            "time": "2017-06-12T17:35:44+00:00"
+            "time": "2017-06-12 17:35:44"
         },
         {
             "name": "composer/installers",
@@ -188,7 +189,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-08-09T07:53:48+00:00"
+            "time": "2017-08-09 07:53:48"
         },
         {
             "name": "doctrine/inflector",
@@ -255,7 +256,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-07-22T12:18:28+00:00"
+            "time": "2017-07-22 12:18:28"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -302,7 +303,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2017-06-03T02:28:16+00:00"
+            "time": "2017-06-03 02:28:16"
         },
         {
             "name": "gridonic/princexml-php",
@@ -346,7 +347,7 @@
                 "princexml",
                 "xml"
             ],
-            "time": "2017-04-20T09:36:23+00:00"
+            "time": "2017-04-20 09:36:23"
         },
         {
             "name": "helsingborg-stad/acf-export-manager",
@@ -379,7 +380,7 @@
                 }
             ],
             "description": "ACF Export Manager is a extension that let's you automatically export specified your ACF fields on save.",
-            "time": "2017-06-30T09:42:13+00:00"
+            "time": "2017-06-30 09:42:13"
         },
         {
             "name": "helsingborg-stad/modularity",
@@ -416,7 +417,7 @@
                 }
             ],
             "description": "Modular component system for WordPress",
-            "time": "2017-10-13T08:30:11+00:00"
+            "time": "2017-10-13 08:30:11"
         },
         {
             "name": "helsingborg-stad/municipio",
@@ -462,7 +463,7 @@
                 }
             ],
             "description": "A bootstrap theme for creating municipality sites.",
-            "time": "2017-09-05T12:52:10+00:00"
+            "time": "2017-09-05 12:52:10"
         },
         {
             "name": "illuminate/container",
@@ -506,7 +507,7 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2017-08-14T18:00:01+00:00"
+            "time": "2017-08-14 18:00:01"
         },
         {
             "name": "illuminate/contracts",
@@ -550,7 +551,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-09-19T13:09:37+00:00"
+            "time": "2017-09-19 13:09:37"
         },
         {
             "name": "illuminate/events",
@@ -595,7 +596,7 @@
             ],
             "description": "The Illuminate Events package.",
             "homepage": "https://laravel.com",
-            "time": "2017-08-27T02:05:29+00:00"
+            "time": "2017-08-27 02:05:29"
         },
         {
             "name": "illuminate/filesystem",
@@ -645,7 +646,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2017-09-13T13:01:30+00:00"
+            "time": "2017-09-13 13:01:30"
         },
         {
             "name": "illuminate/support",
@@ -702,7 +703,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-10-17T12:18:29+00:00"
+            "time": "2017-10-17 12:18:29"
         },
         {
             "name": "illuminate/view",
@@ -750,7 +751,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2017-10-16T16:47:50+00:00"
+            "time": "2017-10-16 16:47:50"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -789,7 +790,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2017-09-19T22:27:16+00:00"
+            "time": "2017-09-19 22:27:16"
         },
         {
             "name": "johnpbloch/wordpress-core",
@@ -829,7 +830,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2017-09-19T22:27:11+00:00"
+            "time": "2017-09-19 22:27:11"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -878,7 +879,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-05-31T18:42:33+00:00"
+            "time": "2017-05-31 18:42:33"
         },
         {
             "name": "nesbot/carbon",
@@ -931,18 +932,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-16T07:55:07+00:00"
-        },
-        {
-            "name": "oasisworkflow/oasis-workflow-pro",
-            "version": "5.0",
-            "dist": {
-                "type": "zip",
-                "url": "https://www.oasisworkflow.com/index.php?eddfile=24519%3A429%3A0%3A0&ttl=1511315109&file=0&token=69070bb22aa1f771ac0bcbb4200e5a88",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "wordpress-plugin"
+            "time": "2017-01-16 07:55:07"
         },
         {
             "name": "philo/laravel-blade",
@@ -983,7 +973,7 @@
                 "blade",
                 "laravel"
             ],
-            "time": "2015-12-04T09:42:42+00:00"
+            "time": "2015-12-04 09:42:42"
         },
         {
             "name": "psr/container",
@@ -1032,7 +1022,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-02-14T16:28:37+00:00"
+            "time": "2017-02-14 16:28:37"
         },
         {
             "name": "psr/log",
@@ -1079,7 +1069,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "psr/simple-cache",
@@ -1127,7 +1117,7 @@
                 "psr-16",
                 "simple-cache"
             ],
-            "time": "2017-01-02T13:31:39+00:00"
+            "time": "2017-01-02 13:31:39"
         },
         {
             "name": "sunra/php-simple-html-dom-parser",
@@ -1175,24 +1165,24 @@
                 "html",
                 "parser"
             ],
-            "time": "2016-11-22T22:57:47+00:00"
+            "time": "2016-11-22 22:57:47"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.3.10",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd"
+                "reference": "7c13ae8ce1e2adbbd574fc39de7be498e1284e13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd",
-                "reference": "eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/7c13ae8ce1e2adbbd574fc39de7be498e1284e13",
+                "reference": "7c13ae8ce1e2adbbd574fc39de7be498e1284e13",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8",
+                "php": ">=5.5.9",
                 "psr/log": "~1.0"
             },
             "conflict": {
@@ -1231,24 +1221,24 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-02T06:42:24+00:00"
+            "time": "2017-07-28 15:27:31"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.3.10",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "773e19a491d97926f236942484cb541560ce862d"
+                "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/773e19a491d97926f236942484cb541560ce862d",
-                "reference": "773e19a491d97926f236942484cb541560ce862d",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/baea7f66d30854ad32988c11a09d7ffd485810c4",
+                "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8"
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
@@ -1280,7 +1270,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-02T06:42:24+00:00"
+            "time": "2017-06-01 21:01:25"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1339,24 +1329,24 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-10-11T12:05:26+00:00"
+            "time": "2017-10-11 12:05:26"
         },
         {
             "name": "symfony/translation",
-            "version": "v3.3.10",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "409bf229cd552bf7e3faa8ab7e3980b07672073f"
+                "reference": "35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/409bf229cd552bf7e3faa8ab7e3980b07672073f",
-                "reference": "409bf229cd552bf7e3faa8ab7e3980b07672073f",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3",
+                "reference": "35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8",
+                "php": ">=5.5.9",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
@@ -1404,7 +1394,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-02T06:42:24+00:00"
+            "time": "2017-06-24 16:45:30"
         },
         {
             "name": "wpackagist-plugin/advanced-custom-fields",
@@ -1457,7 +1447,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/simple-post-notes.1.6.zip",
-                "reference": null,
+                "reference": "tags/1.6",
                 "shasum": null
             },
             "require": {
@@ -1468,15 +1458,15 @@
         },
         {
             "name": "wpackagist-plugin/user-role-editor",
-            "version": "4.36.1",
+            "version": "4.37",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/user-role-editor/",
-                "reference": "tags/4.36.1"
+                "reference": "tags/4.37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/user-role-editor.4.36.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/user-role-editor.4.37.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1537,7 +1527,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wp-nested-pages.2.0.1.zip",
-                "reference": null,
+                "reference": "tags/2.0.1",
                 "shasum": null
             },
             "require": {

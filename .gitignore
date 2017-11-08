@@ -16,6 +16,13 @@ wp-content/*
 !wp-content/mu-plugins/*
 !wp-content/object-cache.php
 
+!wp-content/
+wp-content/*
+!wp-content/plugins/
+
+wp-content/plugins/*
+!wp-content/plugins/oasis-workflow-pro
+
 # Themes dependencies #
 ##########################
 wp-content/themes/*
