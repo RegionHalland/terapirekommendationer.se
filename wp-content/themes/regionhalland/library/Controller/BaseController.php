@@ -225,7 +225,8 @@ class BaseController
      */
     public function getData()
     {
-        //return ["data" => "myData"];
+        $navigation = new \RegionHalland\Helper\Navigation();
+        $this->data['navigation']['sidebarMenu'] = $navigation->sidebarMenu();
         return apply_filters('HbgBlade/data', $this->data);
     }
 }

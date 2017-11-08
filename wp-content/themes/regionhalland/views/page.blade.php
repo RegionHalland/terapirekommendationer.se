@@ -4,6 +4,8 @@
 	
 	@include('partials.breadcrumbs')
 
+	@include('partials.sidebar-left')
+
     @while(have_posts())
 	    {!! the_post() !!}
 

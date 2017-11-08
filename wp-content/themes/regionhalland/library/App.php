@@ -15,6 +15,7 @@ class App
 		// * Theme
 		// */
 		new \RegionHalland\Theme\Navigation();
+		new \RegionHalland\Theme\Enqueue();
 		
 		/**
 		 * Helpers

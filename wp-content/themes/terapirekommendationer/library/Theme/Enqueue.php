@@ -7,7 +7,7 @@ class Enqueue
     public function __construct()
     {
         // Enqueue scripts and styles
-        add_action('wp_enqueue_scripts', array($this, 'style'));
+        //add_action('wp_enqueue_scripts', array($this, 'style'));
         add_action('wp_enqueue_scripts', array($this, 'script'));
         add_action('admin_init', array($this, 'editorStyle'));
 
