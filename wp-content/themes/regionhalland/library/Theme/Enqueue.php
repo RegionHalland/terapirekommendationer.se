@@ -29,6 +29,7 @@ class Enqueue
     */
     public function script()
     {
+        wp_enqueue_script('regionhalland', get_template_directory_uri() . '/assets/dist/js/app.min.js');
         wp_enqueue_script('algolia', '//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js', true);
-    }
+    }    
 }

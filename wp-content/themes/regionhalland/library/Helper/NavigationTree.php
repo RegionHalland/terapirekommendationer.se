@@ -477,14 +477,14 @@ class NavigationTree
         }
 
         $this->addOutput(sprintf(
-            '<li%1$s><a href="%2$s">%3$s</a>',
+            '<li class="vertical-nav__item"%1$s><a class="vertical-nav__link" href="%2$s">%3$s</a>',
             $this->attributes($attributes),
             $href,
             $title
         ));
 
         if ($outputSubmenuToggle) {
-            $this->addOutput('<button data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'regionhalland') . '</span><span class="icon"></span></button>');
+            $this->addOutput('<button class="vertical-nav__toggle" data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'regionhalland') . '</span><svg class="icon--sm"><use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="#caret-bottom"></use></svg></button>');
         }
     }
 
@@ -560,7 +560,7 @@ class NavigationTree
             return;
         }
 
-        $this->addOutput('<ul class="sub-menu">');
+        $this->addOutput('<ul class="vertical-nav__sub-menu">');
     }
 
     /**
