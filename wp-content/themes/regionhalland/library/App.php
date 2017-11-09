@@ -22,6 +22,8 @@ class App
 		* Admin
 		*/
 		new \RegionHalland\Admin\Options\Theme();
+
+		new \RegionHalland\Search\Algolia();
 		
 		/**
 		 * Helpers
