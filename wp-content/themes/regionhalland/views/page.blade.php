@@ -10,11 +10,13 @@
                 <?php dynamic_sidebar('content-area-top'); ?>
             @endif
 
+            <article class="article">
             @while(have_posts())
                 {!! the_post() !!}
 
                 @include('partials.article')
             @endwhile
+            </article>
 
             @if (is_active_sidebar('content-area'))
                 <?php dynamic_sidebar('content-area'); ?>
