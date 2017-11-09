@@ -50,42 +50,13 @@ gulp.task('js:dist', () => {
 		.pipe(rename({suffix: '.min'}))
 		.pipe(uglify())
 		.pipe(gulp.dest('./assets/dist/js/'))
-
-	// TinyMCE Plugins
-	gulp.src('assets/src/mce-js/*.js')
-		.pipe(plumber({
-			errorHandler: error => {
-				gutil.beep()
-				console.log(error)
-			}
-		}))
-		.pipe(uglify())
-		.pipe(gulp.dest('./assets/dist/mce-js/'))
-})
-
-// Generate PDF with Prince
-// https://www.princexml.com/doc/8.1/command-line/
-gulp.task('generate-pdf', ['css:dist'], shell.task([
-	'prince -s ./assets/dist/css/print.min.css assets/dist/html/tr.html'
-]))
-
-// Browsersync
-gulp.task('browsersync', () => {
-	browsersync.init({
-		proxy: 'tr.app'
-	});
-})
-
-// Browsersync reload
-gulp.task('bs-reload', () => {
-	browsersync.reload();
 })
 
 // Watch
-gulp.task('watch', ['css:dist', 'browsersync'], () => {
-	gulp.watch('./assets/src/scss/**/*.scss', ['css:dist', 'bs-reload']);
-	gulp.watch('./assets/src/js/**/*.js', ['js:dist', 'bs-reload']);
+gulp.task('watch', ['css:dist'], () => {
+	gulp.watch('./assets/src/scss/**/*.scss', ['css:dist']);
+	gulp.watch('./assets/src/js/**/*.js', ['js:dist']);
 })
 
 // Default build
-gulp.task('default', ['css:dist', 'js:dist', 'generate-pdf'])
+gulp.task('default', ['css:dist', 'js:dist'])
