@@ -1,24 +1,14 @@
-<?php
-    global $searchFormNode;
-    $searchFormNode = ($searchFormNode) ? $searchFormNode+1 : 1;
-?>
-<div class="search" itemscope itemtype="http://schema.org/WebSite">
-    <meta itemprop="url" content="{{ home_url() }}">
-
-    <form method="get" action="{{ apply_filters('RegionHalland/search_form/action', home_url()) }}" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-        <meta itemprop="target" content="{{ home_url('?s=') }}{search_term_string}">
-
-        @if (is_front_page())
-            <label class="label label-lg label-theme" for="searchkeyword-{{ $searchFormNode }}">{{ get_field('search_label_text', 'option') ? get_field('search_label_text', 'option') : __('Search', 'regionhalland') }}</label>
-        @else
-            <label for="searchkeyword-{{ $searchFormNode }}" class="sr-only">{{ get_field('search_label_text', 'option') ? get_field('search_label_text', 'option') : __('Search', 'regionhalland') }}</label>
-        @endif
-
-        <div class="input-group input-group-lg">
-            <input itemprop="query-input" required id="searchkeyword-{{ $searchFormNode }}" autocomplete="off" class="form-control form-control-lg" type="search" name="s" placeholder="{{ get_field('search_placeholder_text', 'option') ? get_field('search_placeholder_text', 'option') : 'What are you looking for?' }}" value="<?php echo (!empty(get_search_query())) ? get_search_query() : ''; ?>">
-            <span class="input-group-addon-btn">
-                <input type="submit" class="btn btn-primary btn-lg" value="{{ get_field('search_button_text', 'option') ? get_field('search_button_text', 'option') : __('Search', 'regionhalland') }}">
-            </span>
+<section class="search-header clearfix">
+    <div class="search-header__inner  col-12 sm-col-12 md-col-12 lg-col-8">
+        <label class="search-header__label" for="search-header__input">Skriv för att börja söka i terapirekommendationerna</label>
+        <div class="search-header__input-wrapper">
+            <input class="search-header__input" type="search"  placeholder="Skriv här för att börja söka" id="search-header__input">
+             <svg class="search-header__icon  icon icon--md">
+                <use xlink:href="../dist/icons/sprite-2.svg#magnifying-glass"/>
+             </svg>
+             <div class="search-header__results">
+             </div>
         </div>
-    </form>
-</div>
+        <span class="search-header__example">Ex. Behandling luftrörskatarr</span>
+    </div>
+</section>
