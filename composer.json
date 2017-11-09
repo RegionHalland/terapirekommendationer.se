@@ -37,7 +37,8 @@
         "gridonic/princexml-php": "^1.2",
         "wpackagist-plugin/wp-all-import": "3.4.5",
         "wpackagist-plugin/enhanced-media-library": "2.4.5",
-        "wpackagist-plugin/wordpress-importer": "0.6.3"
+        "wpackagist-plugin/wordpress-importer": "0.6.3",
+        "wpackagist-plugin/search-by-algolia-instant-relevant-results": "^2.8"
     },
     "extra": {
         "path": "/",
