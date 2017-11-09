@@ -250,7 +250,8 @@ class NavigationTree
         if (count($children) > 0) {
             $hasChildren = true;
             $attributes['class'][] = 'has-children';
-            $attributes['class'][] = 'has-sub-menu';
+            // Municipio default
+            // $attributes['class'][] = 'has-sub-menu';
         }
 
         if ($output) {
@@ -450,13 +451,14 @@ class NavigationTree
         $this->itemCount++;
         $outputSubmenuToggle = false;
 
-        $attributes['class'][] = 'page-' . $item->ID;
+        $attributes['class'][] = 'vertical-nav__item page-' . $item->ID;
 
         if ($hasChildren && ($this->args['depth'] === -1 || $this->currentDepth < $this->args['depth'] + 1)) {
             $outputSubmenuToggle = true;
 
             if (array_search('has-children', $attributes['class']) > -1) {
-                unset($attributes['class'][array_search('has-children', $attributes['class'])]);
+                // Municipio default
+                // unset($attributes['class'][array_search('has-children', $attributes['class'])]);
             }
         }
 
@@ -477,7 +479,7 @@ class NavigationTree
         }
 
         $this->addOutput(sprintf(
-            '<li class="vertical-nav__item"%1$s><a class="vertical-nav__link" href="%2$s">%3$s</a>',
+            '<li %1$s><a class="vertical-nav__link" href="%2$s">%3$s</a>',
             $this->attributes($attributes),
             $href,
             $title
