@@ -13,4 +13,22 @@ var Terapirekommendationer;
 		document.body.insertBefore(div, document.body.childNodes[0]);
 	});
 
+
+	var client = algoliasearch('16DY3X1DMY', 'efd311c980dd4dc470f5629ab96a1377')
+	var index = client.initIndex('tr_wp_posts_page');
+	$('#search-input').autocomplete({ hint: false }, [
+	{
+		source: $.fn.autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+		displayKey: 'my_attribute',
+		templates: {
+			suggestion: function(suggestion) {
+				console.log(suggestion);
+	  			return suggestion._highlightResult.post_title.value;
+			}
+		}
+	}
+	]).on('autocomplete:selected', function(event, suggestion, dataset) {
+		console.log(suggestion, dataset);
+	});
+
 })( jQuery );
