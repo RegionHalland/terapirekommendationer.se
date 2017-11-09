@@ -50,6 +50,7 @@ class Template
 
         add_filter('gettext', function ($translation, $text, $domain) {
             if ($text == 'Default Template') {
+                //If front page should have a differend template than page
                 return __('Front page', 'regionhalland');
             }
 
