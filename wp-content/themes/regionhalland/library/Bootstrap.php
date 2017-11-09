@@ -17,7 +17,7 @@ if (file_exists(dirname(ABSPATH) . '/vendor/autoload.php')) {
 /**
  * Psr4ClassLoader
  */
-require_once REGIONHALLAND_PATH . 'library/Vendor/Psr4ClassLoader.php';
+require_once REGIONHALLAND_PATH . 'library/Psr4ClassLoader.php';
 require_once REGIONHALLAND_PATH . 'library/Public.php';
 
 /**
