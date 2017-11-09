@@ -49,12 +49,12 @@
                         <div class="grid">
                             @foreach ($results->items as $item)
                             <?php
-                            $date = apply_filters('Municipio/search_result/date', $search->getModifiedDate($item), false);
-                            $permalink = apply_filters('Municipio/search_result/permalink_url', $item->link, false);
-                            $permalinkText = apply_filters('Municipio/search_result/permalink_text', $item->htmlFormattedUrl, false);
-                            $title = apply_filters('Municipio/search_result/title', $item->htmlTitle, false);
+                            $date = apply_filters('RegionHalland/search_result/date', $search->getModifiedDate($item), false);
+                            $permalink = apply_filters('RegionHalland/search_result/permalink_url', $item->link, false);
+                            $permalinkText = apply_filters('RegionHalland/search_result/permalink_text', $item->htmlFormattedUrl, false);
+                            $title = apply_filters('RegionHalland/search_result/title', $item->htmlTitle, false);
                             $titleClass = isset($item->fileFormat) ? $search->getFiletypeClass($item->fileFormat) : '';
-                            $lead = apply_filters('Municipio/search_result/excerpt', trim($item->snippet), false);
+                            $lead = apply_filters('RegionHalland/search_result/excerpt', trim($item->snippet), false);
                             $thumbnail = false;
                             ?>
                                 @include('partials.search.result-item-grid')
@@ -64,12 +64,12 @@
                         <ul class="search-result-list">
                             @foreach ($results->items as $item)
                             <?php
-                            $date = apply_filters('Municipio/search_result/date', $search->getModifiedDate($item), false);
-                            $permalink = apply_filters('Municipio/search_result/permalink_url', $item->link, false);
-                            $permalinkText = apply_filters('Municipio/search_result/permalink_text', $item->htmlFormattedUrl, false);
-                            $title = apply_filters('Municipio/search_result/title', $item->htmlTitle, false);
+                            $date = apply_filters('RegionHalland/search_result/date', $search->getModifiedDate($item), false);
+                            $permalink = apply_filters('RegionHalland/search_result/permalink_url', $item->link, false);
+                            $permalinkText = apply_filters('RegionHalland/search_result/permalink_text', $item->htmlFormattedUrl, false);
+                            $title = apply_filters('RegionHalland/search_result/title', $item->htmlTitle, false);
                             $titleClass = isset($item->fileFormat) ? $search->getFiletypeClass($item->fileFormat) : '';
-                            $lead = apply_filters('Municipio/search_result/excerpt', trim($item->snippet), false);
+                            $lead = apply_filters('RegionHalland/search_result/excerpt', trim($item->snippet), false);
                             $thumbnail = false;
                             ?>
                             <li>

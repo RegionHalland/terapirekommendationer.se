@@ -1,4 +1,4 @@
-<div class="search-top {!! apply_filters('Municipio/desktop_menu_breakpoint','hidden-sm'); !!} hidden-print" id="search">
+<div class="search-top {!! apply_filters('RegionHalland/desktop_menu_breakpoint','hidden-sm'); !!} hidden-print" id="search">
     <div class="container">
         <div class="grid">
             <div class="grid-sm-12">
@@ -36,7 +36,7 @@
                 </div>
 
                 @if (strlen($navigation['mobileMenu']) > 0)
-                    <div class="grid-xs-4 grid-sm-4 text-right-sm text-right-xs {!! apply_filters('Municipio/mobile_menu_breakpoint','hidden-md hidden-lg'); !!}">
+                    <div class="grid-xs-4 grid-sm-4 text-right-sm text-right-xs {!! apply_filters('RegionHalland/mobile_menu_breakpoint','hidden-md hidden-lg'); !!}">
                         <a href="#mobile-menu" class=" menu-trigger" data-target="#mobile-menu"><span class="menu-icon"></span> <?php _e('Menu', 'regionhalland'); ?></a>
                     </div>
                 @endif
@@ -86,7 +86,7 @@
     </nav>
 
     @if (strlen($navigation['mobileMenu']) > 0)
-        <nav id="mobile-menu" class="nav-mobile-menu nav-toggle nav-toggle-expand {!! apply_filters('Municipio/mobile_menu_breakpoint','hidden-md hidden-lg'); !!} hidden-print">
+        <nav id="mobile-menu" class="nav-mobile-menu nav-toggle nav-toggle-expand {!! apply_filters('RegionHalland/mobile_menu_breakpoint','hidden-md hidden-lg'); !!} hidden-print">
             @include('partials.mobile-menu')
         </nav>
     @endif

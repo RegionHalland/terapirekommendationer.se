@@ -24,19 +24,11 @@
     {!! wp_head() !!}
 </head>
 <body {!! body_class() !!}>
-    <div id="wrapper">
         @include('partials.stripe')
 
-        <div class="container">
-            <div class="grid">
-                <div class="grid-sm-12">
-                    {!! regionhalland_get_logotype(!empty(get_field('404_error_logotype', 'options')) ? get_field('404_error_logotype', 'options') : 'standard')  !!}
-                </div>
-            </div>
-        </div>
+            {!! regionhalland_get_logotype(!empty(get_field('404_error_logotype', 'options')) ? get_field('404_error_logotype', 'options') : 'standard')  !!}
 
         @yield('content')
-     </div>
 
     {!! wp_footer() !!}
 

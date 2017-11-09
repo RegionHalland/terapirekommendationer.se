@@ -213,7 +213,7 @@ class Navigation
                 'container' => 'nav',
                 'container_class' => 'sidebar-menu',
                 'container_id' => 'sidebar-menu',
-                'menu_class' => 'nav-aside hidden-xs hidden-sm',
+                'menu_class' => 'vertical-nav',
                 'menu_id' => '',
                 'echo' => false,
                 'before' => '',
@@ -232,7 +232,7 @@ class Navigation
             'container' => 'nav',
             'container_class' => 'sidebar-menu',
             'container_id' => 'sidebar-menu',
-            'menu_class' => 'nav-aside hidden-xs hidden-sm',
+            'menu_class' => 'vertical-nav',
             'menu_id' => '',
             'echo' => false,
             'before' => '',
@@ -258,7 +258,7 @@ class Navigation
                 'render' => get_field('nav_sub_render', 'option'),
                 'depth' => get_field('nav_sub_depth', 'option') ? get_field('nav_sub_depth', 'option') : -1,
                 'start_depth' => get_field('nav_primariy_second_level', 'option') ? 3 : 1,
-                'classes' => 'nav-aside hidden-xs hidden-sm',
+                'classes' => 'vertical-nav',
                 'sidebar' => true
             ));
         }
@@ -267,7 +267,7 @@ class Navigation
             return '';
         }
 
-        return '<nav id="sidebar-menu">
+        return '<nav>
                     ' . $menu->render(false) . '
                 </nav>';
     }

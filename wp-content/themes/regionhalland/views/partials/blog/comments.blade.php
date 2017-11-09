@@ -39,9 +39,9 @@
                             {!! comment_text($comment->comment_ID); !!}
                         </div>
                         <div class="comment-footer">
-                            @if (Municipio\Controller\Single::likeButton($comment->comment_ID) !== null )
+                            @if (RegionHalland\Controller\Single::likeButton($comment->comment_ID) !== null )
                             <span class="like">
-                                {!! Municipio\Controller\Single::likeButton($comment->comment_ID) !!}
+                                {!! RegionHalland\Controller\Single::likeButton($comment->comment_ID) !!}
                             </span>
                             @endif
                             <span class="reply">
@@ -91,9 +91,9 @@
                                             {!! comment_text($answer->comment_ID); !!}
                                         </div>
                                         <div class="comment-footer">
-                                            @if (Municipio\Controller\Single::likeButton($answer->comment_ID) !== null )
+                                            @if (RegionHalland\Controller\Single::likeButton($answer->comment_ID) !== null )
                                             <span class="like">
-                                                {!! Municipio\Controller\Single::likeButton($answer->comment_ID) !!}
+                                                {!! RegionHalland\Controller\Single::likeButton($answer->comment_ID) !!}
                                             </span>
                                             @endif
                                             <span class="reply">

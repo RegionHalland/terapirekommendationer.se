@@ -23,12 +23,7 @@
     {!! wp_head() !!}
 </head>
 <body {!! body_class('no-js') !!}>
-    <a href="#main-menu" class="btn btn-default btn-block btn-lg btn-offcanvas" tabindex="1"><?php _e('Jump to the main menu', 'regionhalland'); ?></a>
-    <a href="#main-content" class="btn btn-default btn-block btn-lg btn-offcanvas" tabindex="2"><?php _e('Jump to the main content', 'regionhalland'); ?></a>
-
-    <div id="wrapper">
         @if (isset($notice) && !empty($notice))
-            <div class="notices">
             @if (!isset($notice['text']) && is_array($notice))
                 @foreach ($notice as $notice)
                     @include('partials.notice')
@@ -36,26 +31,15 @@
             @else
                 @include('partials.notice')
             @endif
-            </div>
-        @endif
-
-        @if (get_field('show_google_translate', 'option') == 'header')
-            @include('partials.translate')
         @endif
 
         @include('partials.header')
 
-        <main id="main-content" class="clearfix main-content">
             @yield('content')
 
             @if (is_active_sidebar('content-area-bottom'))
-            <div class="container gutter-xl gutter-vertical sidebar-content-area-bottom">
-                <div class="grid">
-                    <?php dynamic_sidebar('content-area-bottom'); ?>
-                </div>
-            </div>
+                <?php dynamic_sidebar('content-area-bottom'); ?>
             @endif
-        </main>
 
         @include('partials.footer')
 
@@ -64,7 +48,6 @@
         @if (in_array(get_field('show_google_translate', 'option'), array('footer', 'fold')))
             @include('partials.translate')
         @endif
-     </div>
 
     {!! wp_footer() !!}
 
