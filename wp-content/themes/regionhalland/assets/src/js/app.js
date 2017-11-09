@@ -16,10 +16,18 @@ var Terapirekommendationer;
 
 	var client = algoliasearch('16DY3X1DMY', 'efd311c980dd4dc470f5629ab96a1377')
 	var index = client.initIndex('tr_wp_posts_page');
-	$('#search-input').autocomplete({ hint: false }, [
+	$('#search-input').autocomplete({
+		hint: false,
+		cssClasses: {
+			root: ""
+		},
+		autoWidth: true,
+		templates: {
+    		dropdownMenu: '#my-custom-menu-template'
+      	} }, [
 	{
 		source: $.fn.autocomplete.sources.hits(index, { hitsPerPage: 5 }),
-		displayKey: 'my_attribute',
+		displayKey: 'post_title',
 		templates: {
 			suggestion: function(suggestion) {
 				console.log(suggestion);
@@ -29,6 +37,7 @@ var Terapirekommendationer;
 	}
 	]).on('autocomplete:selected', function(event, suggestion, dataset) {
 		console.log(suggestion, dataset);
+		window.location.href = suggestion.permalink;
 	});
 
 })( jQuery );
