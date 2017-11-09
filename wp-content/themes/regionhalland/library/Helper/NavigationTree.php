@@ -484,7 +484,7 @@ class NavigationTree
         ));
 
         if ($outputSubmenuToggle) {
-            $this->addOutput('<button data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'municipio') . '</span><span class="icon"></span></button>');
+            $this->addOutput('<button data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'regionhalland') . '</span><span class="icon"></span></button>');
         }
     }
 

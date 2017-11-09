@@ -6,16 +6,22 @@ class App
 {
 	public function __construct()
 	{
-		///**
-		// * Template
-		// */
+		/**
+		* Template
+		*/
 		new \RegionHalland\Template();
 
-		///**
-		// * Theme
-		// */
+		/**
+		* Theme
+		*/
 		new \RegionHalland\Theme\Navigation();
 		new \RegionHalland\Theme\Enqueue();
+
+
+		/**
+		* Admin
+		*/
+		new \RegionHalland\Admin\Options\Theme();
 		
 		/**
 		 * Helpers

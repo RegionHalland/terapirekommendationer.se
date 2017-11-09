@@ -81,8 +81,8 @@ class Sidebars
         $footerBeforeWidgetClass = get_field('footer_layout', 'option') == 'compressed' ? 'grid-lg-6' : 'grid-lg-4';
         register_sidebar(array(
             'id'            => 'footer-area',
-            'name'          => __('Footer', 'municipio'),
-            'description'   => __('The footer area', 'municipio'),
+            'name'          => __('Footer', 'regionhalland'),
+            'description'   => __('The footer area', 'regionhalland'),
             'before_widget' => '<div class="' . $footerBeforeWidgetClass . '"><div class="%2$s">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2 class="footer-title">',
@@ -94,8 +94,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'slider-area',
-            'name'          => __('Hero', 'municipio'),
-            'description'   => __('The hero area', 'municipio'),
+            'name'          => __('Hero', 'regionhalland'),
+            'description'   => __('The hero area', 'regionhalland'),
             'before_widget' => '<div class="%2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h3>',
@@ -107,8 +107,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'content-area-top',
-            'name'          => __('Content area (above article)', 'municipio'),
-            'description'   => __('The area above the content', 'municipio'),
+            'name'          => __('Content area (above article)', 'regionhalland'),
+            'description'   => __('The area above the content', 'regionhalland'),
             'before_widget' => '<div class="grid-sm-12"><div class="%2$s">',
             'after_widget'  => '</div></div>'
         ));
@@ -118,8 +118,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'content-area',
-            'name'          => __('Content area (below article)', 'municipio'),
-            'description'   => __('The area below the content', 'municipio'),
+            'name'          => __('Content area (below article)', 'regionhalland'),
+            'description'   => __('The area below the content', 'regionhalland'),
             'before_widget' => '<div class="grid-sm-12"><div class="%2$s">',
             'after_widget'  => '</div></div>'
         ));
@@ -129,8 +129,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'content-area-bottom',
-            'name'          => __('Main container bottom', 'municipio'),
-            'description'   => __('The area below the main container', 'municipio'),
+            'name'          => __('Main container bottom', 'regionhalland'),
+            'description'   => __('The area below the main container', 'regionhalland'),
             'before_widget' => '<div class="grid-sm-12 grid-md-6 grid-lg-6"><div class="%2$s">',
             'after_widget'  => '</div></div>'
         ));
@@ -140,8 +140,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'left-sidebar',
-            'name'          => __('Left sidebar', 'municipio'),
-            'description'   => __('The left sidebar area', 'municipio'),
+            'name'          => __('Left sidebar', 'regionhalland'),
+            'description'   => __('The left sidebar area', 'regionhalland'),
             'before_widget' => '<div class="grid-xs-12"><div class="%2$s">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2>',
@@ -153,8 +153,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'left-sidebar-bottom',
-            'name'          => __('Left sidebar bottom', 'municipio'),
-            'description'   => __('The area below the left sidebar content', 'municipio'),
+            'name'          => __('Left sidebar bottom', 'regionhalland'),
+            'description'   => __('The area below the left sidebar content', 'regionhalland'),
             'before_widget' => '<div class="grid-xs-12"><div class="%2$s">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2>',
@@ -166,8 +166,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'right-sidebar',
-            'name'          => __('Right sidebar', 'municipio'),
-            'description'   => __('The right sidebar area', 'municipio'),
+            'name'          => __('Right sidebar', 'regionhalland'),
+            'description'   => __('The right sidebar area', 'regionhalland'),
             'before_widget' => '<div class="grid-xs-12"><div class="%2$s">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2>',
@@ -179,8 +179,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'top-sidebar',
-            'name'          => __('Top sidebar (full-width)', 'municipio'),
-            'description'   => __('Sidebar that sits below the hero, takes up 100% of the widht.', 'municipio'),
+            'name'          => __('Top sidebar (full-width)', 'regionhalland'),
+            'description'   => __('Sidebar that sits below the hero, takes up 100% of the widht.', 'regionhalland'),
             'before_widget' => '<div class="%2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h3>',
@@ -192,8 +192,8 @@ class Sidebars
          */
         register_sidebar(array(
             'id'            => 'bottom-sidebar',
-            'name'          => __('Bottom sidebar (full-width)', 'municipio'),
-            'description'   => __('Sidebar that sits just before the footer, takes up 100% of the widht.', 'municipio'),
+            'name'          => __('Bottom sidebar (full-width)', 'regionhalland'),
+            'description'   => __('Sidebar that sits just before the footer, takes up 100% of the widht.', 'regionhalland'),
             'before_widget' => '<div class="%2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h3>',

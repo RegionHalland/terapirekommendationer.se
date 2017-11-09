@@ -8,7 +8,6 @@ class Enqueue
     {
         // Enqueue scripts and styles
         //add_action('wp_enqueue_scripts', array($this, 'style'));
-        add_action('wp_enqueue_scripts', array($this, 'script'));
         add_action('admin_init', array($this, 'editorStyle'));
 
         // Enqueue admin styles
@@ -94,15 +93,15 @@ class Enqueue
      */
     function editorStyle()
     {
-        add_editor_style(apply_filters('Municipio/admin/main_stylesheet',   'assets/dist/css/main.min.css'));
-        add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', 'assets/dist/css/editor.min.css'));
+        //add_editor_style(apply_filters('Municipio/admin/main_stylesheet',   'assets/dist/css/main.min.css'));
+        //add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', 'assets/dist/css/editor.min.css'));
     }
 
 
 // create a URL to the child theme
 function get_template_directory_child() {
     $directory_template = get_template_directory_uri(); 
-    $directory_child = str_replace('municipio', '', $directory_template) . 'terapirekommendationer';
+    $directory_child = str_replace('regionhalland', '', $directory_template) . 'terapirekommendationer';
 
     return $directory_child;
 }
@@ -292,15 +291,4 @@ function tr_tinymce_body_class( $mce ) {
         wp_enqueue_style('Terapirekommendationer-css', get_stylesheet_directory_uri(). '/assets/dist/css/main.min.css', '', filemtime(get_stylesheet_directory() . '/assets/dist/css/main.min.css'));
     }
 
-    /**
-     * Enqueue scripts
-     * @return void
-     */
-    public function script()
-    {
-        wp_register_script('hbg-prime', 'http://helsingborg-stad.github.io/styleguide-web-cdn/styleguide.dev/dist/js/hbg-prime.min.js', '', '1.0.0', true);
-        wp_enqueue_script('hbg-prime');
-
-        wp_enqueue_script('Terapirekommendationer-js', get_stylesheet_directory_uri(). '/assets/dist/js/app.min.js', '', filemtime(get_stylesheet_directory() . '/assets/dist/js/app.min.js'), true);
-    }
 }

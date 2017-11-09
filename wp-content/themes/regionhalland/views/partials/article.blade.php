@@ -2,7 +2,11 @@
 <article class="clearfix">
     <h1>{{ the_title() }}</h1>
 
-    <div class="article">
+    @include('partials.accessibility-menu')
+
+    @if (get_field('post_single_show_featured_image') === true)
+        <img src="{{ regionhalland_get_thumbnail_source(null, array(700,700)) }}" alt="{{ the_title() }}">
+    @endif
 
     @if (isset(get_extended($post->post_content)['main']) && strlen(get_extended($post->post_content)['main']) > 0 && isset(get_extended($post->post_content)['extended']) && strlen(get_extended($post->post_content)['extended']) > 0)
 
@@ -17,5 +21,5 @@
         @endif
 
     @endif
-    </div>
+
 </article>

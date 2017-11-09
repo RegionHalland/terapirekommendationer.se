@@ -16,7 +16,7 @@ class Template
         add_filter('template_include', array($this, 'load'));
         add_filter('get_search_form', array($this, 'getSearchForm'));
 
-        //$this->initCustomTemplates();
+        $this->initCustomTemplates();
 
         /**
          * Set paths
@@ -36,21 +36,21 @@ class Template
             }
         }
 
-        //add_action('init', array($this, 'adminFrontPageTemplates'));
-        //add_action('save_post', array($this, 'adminFrontPageTemplatesSave'));
+        add_action('init', array($this, 'adminFrontPageTemplates'));
+        add_action('save_post', array($this, 'adminFrontPageTemplatesSave'));
     }
 
-    /*public function adminFrontPageTemplates()
+    public function adminFrontPageTemplates()
     {
         if (!is_admin() || !isset($_GET['post']) || $_GET['post'] != get_option('page_on_front')) {
             return;
         }
 
-        \RegionHalland\Helper\Template::add(__('Page', 'municipio'), \RegionHalland\Helper\Template::locateTemplate('page.blade.php'));
+        \RegionHalland\Helper\Template::add(__('Page', 'regionhalland'), \RegionHalland\Helper\Template::locateTemplate('page.blade.php'));
 
         add_filter('gettext', function ($translation, $text, $domain) {
             if ($text == 'Default Template') {
-                return __('Front page', 'municipio');
+                return __('Front page', 'regionhalland');
             }
 
             return $translation;
@@ -69,7 +69,7 @@ class Template
     /**
      * Initializes custom templates
      * @return void
-     
+     */
     public function initCustomTemplates()
     {
         $directory = REGIONHALLAND_PATH . 'library/Controller/';
@@ -94,7 +94,7 @@ class Template
      * Get searchform template
      * @param  string $searchform Original markup
      * @return mixed
-     
+     */
     public function getSearchForm($searchform)
     {
         if ($view = \RegionHalland\Helper\Template::locateTemplate('searchform.blade.php')) {
@@ -105,7 +105,7 @@ class Template
         }
 
         return $searchform;
-    }*/
+    }
 
     /**
      * Load controller and view
@@ -129,7 +129,7 @@ class Template
                 return $path;
             } else {
                 if (current_user_can('administrator')) {
-                    \RegionHalland\Helper\Notice::add('<strong>' . __('Admin notice', 'municipio') . ':</strong> ' . sprintf(__('View [%s] was not found. Defaulting to [page.blade.php].', 'municipio'), $template), 'warning', 'pricon pricon-notice-warning');
+                    \RegionHalland\Helper\Notice::add('<strong>' . __('Admin notice', 'regionhalland') . ':</strong> ' . sprintf(__('View [%s] was not found. Defaulting to [page.blade.php].', 'regionhalland'), $template), 'warning', 'pricon pricon-notice-warning');
                 }
 
                 $template = \RegionHalland\Helper\Template::locateTemplate('views/page.blade.php');

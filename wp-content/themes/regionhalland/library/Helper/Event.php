@@ -14,7 +14,7 @@ class Event
     {
         $start = date('Y-m-d H:i:s', strtotime($start_date));
         $end = date('Y-m-d H:i:s', strtotime($end_date));
-        $date = mysql2date('j F Y', $start, true) . ', ' . mysql2date('H:i', $start, true) . ' ' . __('to', 'municipio') . ' ' . mysql2date('j F Y', $end, true) . ', ' . mysql2date('H:i', $end, true);
+        $date = mysql2date('j F Y', $start, true) . ', ' . mysql2date('H:i', $start, true) . ' ' . __('to', 'regionhalland') . ' ' . mysql2date('j F Y', $end, true) . ', ' . mysql2date('H:i', $end, true);
         if (date('Y-m-d', strtotime($start)) == date('Y-m-d', strtotime($end))) {
             $date = mysql2date('j F Y', $start, true) . ', ' . mysql2date('H:i', $start, true) . ' - ' . mysql2date('H:i', $end, true);
         }

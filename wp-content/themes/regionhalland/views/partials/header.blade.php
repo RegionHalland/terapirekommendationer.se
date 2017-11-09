@@ -2,7 +2,7 @@
     <div class="print-only container">
         <div class="grid">
             <div class="grid-sm-12">
-                {!! municipio_get_logotype('standard') !!}
+                {!! regionhalland_get_logotype('standard') !!}
             </div>
         </div>
     </div>

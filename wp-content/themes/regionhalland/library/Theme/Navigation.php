@@ -113,16 +113,16 @@ class Navigation
     public function registerMenus()
     {
         $menus = array(
-            'help-menu' => __('Help menu', 'municipio'),
-            'header-tabs-menu' => __('Header tabs menu', 'municipio')
+            'help-menu' => __('Help menu', 'regionhalland'),
+            'header-tabs-menu' => __('Header tabs menu', 'regionhalland')
         );
 
         if (get_field('nav_primary_enable', 'option')) {
-            $menus['main-menu'] = __('Main menu', 'municipio');
+            $menus['main-menu'] = __('Main menu', 'regionhalland');
         }
 
         if (get_field('nav_sub_enable', 'option')) {
-            $menus['sidebar-menu'] = __('Sidebar menu', 'municipio');
+            $menus['sidebar-menu'] = __('Sidebar menu', 'regionhalland');
         }
 
         register_nav_menus($menus);
@@ -177,7 +177,7 @@ class Navigation
             return $items;
         }
 
-        $search = '<li class="menu-item-search"><a href="#search" class="search-icon-btn toggle-search-top" aria-label="' . __('Search', 'municipio') . '"><span data-tooltip="' . __('Search', 'municipio') . '"><i class="pricon pricon-search"></i></span></a></li>';
+        $search = '<li class="menu-item-search"><a href="#search" class="search-icon-btn toggle-search-top" aria-label="' . __('Search', 'regionhalland') . '"><span data-tooltip="' . __('Search', 'regionhalland') . '"><i class="pricon pricon-search"></i></span></a></li>';
 
         if (isset($args->include_top_level)) {
             $items = $search . $items;

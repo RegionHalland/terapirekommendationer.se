@@ -155,7 +155,7 @@ class Support
     public static function changeDefaultTemplateName($translation, $text, $domain)
     {
         if ($text == 'Default Template') {
-            return __('Article', 'municipio');
+            return __('Article', 'regionhalland');
         }
 
         return $translation;

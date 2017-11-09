@@ -12,7 +12,15 @@ class BaseController
 
     public function __construct()
     {
-        
+        $this->getLogotype();
+        $this->getHeaderLayout();
+        $this->getFooterLayout();
+        $this->getNavigationMenus();
+        $this->getHelperVariables();
+        $this->getFilterData();
+        $this->getVerticalMenu();
+
+        $this->init();
     }
 
     public function getFilterData()
@@ -80,7 +88,7 @@ class BaseController
 
         // If 404, fragment cache the navigation and return
         if (is_404()) {
-            if (!wp_cache_get('404-menus', 'municipio-navigation')) {
+            if (!wp_cache_get('404-menus', 'regionhalland-navigation')) {
                 $navigation = new \RegionHalland\Helper\Navigation();
                 $this->data['navigation']['mainMenu'] = $navigation->mainMenu();
                 $this->data['navigation']['mobileMenu'] = $navigation->mobileMenu();
@@ -91,11 +99,11 @@ class BaseController
                         'mainMenu' => $this->data['navigation']['mainMenu'],
                         'mobileMenu' => $this->data['navigation']['mobileMenu']
                     ),
-                    'municipio-navigation',
+                    'regionhalland-navigation',
                     86400
                 );
             } else {
-                $cache = wp_cache_get('404-menus', 'municipio-navigation');
+                $cache = wp_cache_get('404-menus', 'regionhalland-navigation');
                 $this->data['navigation']['mainMenu'] = $cache['mainMenu'];
                 $this->data['navigation']['mobileMenu'] = $cache['mobileMenu'];
             }
@@ -204,20 +212,20 @@ class BaseController
     /**
      * Runs after construct
      * @return void
-     
+     */
     public function init()
     {
         // Method body
     }
 
-    /*
+    /**
      * Bind to a custom template file
      * @return void
-     
+     */
     public static function registerTemplate()
     {
         // \RegionHalland\Helper\Template::add('Front page', 'front-page.blade.php');
-    }*/
+    }
 
     /**
      * Returns the data
@@ -225,8 +233,6 @@ class BaseController
      */
     public function getData()
     {
-        $navigation = new \RegionHalland\Helper\Navigation();
-        $this->data['navigation']['sidebarMenu'] = $navigation->sidebarMenu();
         return apply_filters('HbgBlade/data', $this->data);
     }
 }

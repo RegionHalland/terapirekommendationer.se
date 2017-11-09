@@ -8,7 +8,7 @@ abstract class Ajax
     protected $data = array();
 
     //Default handle
-    protected $handle = 'municipio';
+    protected $handle = 'regionhalland';
 
     /**
      *  Localize - Pass data from PHP to JS
