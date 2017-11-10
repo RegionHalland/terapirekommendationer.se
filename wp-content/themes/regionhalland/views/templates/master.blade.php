@@ -33,7 +33,7 @@
             @endif
         @endif
 
-        @include('partials.header')
+            @include('partials.header')
 
             @yield('content')
 
@@ -41,9 +41,11 @@
                 <?php dynamic_sidebar('content-area-bottom'); ?>
             @endif
 
-        @include('partials.footer')
+        <div class="col col-12 px3">
+           <!-- @include('partials.footer') -->
+        </div>
 
-        @include('partials.vertical-menu')
+        <!-- @include('partials.vertical-menu') -->
 
         @if (in_array(get_field('show_google_translate', 'option'), array('footer', 'fold')))
             @include('partials.translate')

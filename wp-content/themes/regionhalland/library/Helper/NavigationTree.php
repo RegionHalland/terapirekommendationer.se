@@ -40,6 +40,7 @@ class NavigationTree
             'render' => 'active',
             'depth' => -1,
             'start_depth' => 1,
+            // Needs review
             'wrapper' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
             'classes' => 'nav',
             'id' => '',
@@ -617,7 +618,6 @@ class NavigationTree
             echo $this->output;
             return true;
         }
-
         return $this->output;
     }
 

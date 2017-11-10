@@ -1,6 +1,4 @@
-{!! regionhalland_get_logotype('standard') !!}
-
-@include('partials.header.' . $headerLayout['template'])
+@include('partials.header.default')
 
 @include('partials.hero')
 
