@@ -17,11 +17,15 @@ class App
 		new \RegionHalland\Theme\Navigation();
 		new \RegionHalland\Theme\Enqueue();
 
-
 		/**
 		* Admin
 		*/
 		new \RegionHalland\Admin\Options\Theme();
+
+		/**
+		* Algolia Search
+		*/
+		new \RegionHalland\Search\Algolia();
 		
 		/**
 		 * Helpers
