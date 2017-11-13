@@ -142,10 +142,11 @@ y),b(document.body).on("sticky_kit:recalc",y),a.on("sticky_kit:detach",H),setTim
 
 	$elements.waypoint(function() {
 		console.log($elements.index(this.element))
+		$contentNav.children().removeClass('active')
+		$contentNav.children().eq($elements.index(this.element)).addClass('active')
 	})
 
-	console.log($elements);
-
+	
 	function updateContentNavigation() {
 
 	}

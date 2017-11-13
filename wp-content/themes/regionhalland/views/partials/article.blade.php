@@ -1,5 +1,5 @@
 <?php global $post; ?>
-<article {{ isset($main) ? 'id=main' : '' }} class="article">
+<article id="main" class="article">
     <h1>{{ the_title() }}</h1>
 
     @include('partials.accessibility-menu')
