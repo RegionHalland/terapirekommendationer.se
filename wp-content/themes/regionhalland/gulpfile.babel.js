@@ -38,7 +38,7 @@ gulp.task('css:dist', () => {
 // Build JS
 gulp.task('js:dist', () => {
 	// App
-	gulp.src('./assets/src/js/*.js')
+	gulp.src(['./assets/src/js/vendor/*.js', './assets/src/js/*.js'])
 		.pipe(plumber({
 			errorHandler: error => {
 				gutil.beep()
