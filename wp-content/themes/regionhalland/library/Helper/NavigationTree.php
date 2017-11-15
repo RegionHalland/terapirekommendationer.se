@@ -31,6 +31,8 @@ class NavigationTree
             $this->isAjaxParent = true;
         }
 
+
+
         // Merge args
         $this->args = array_merge(array(
             'theme_location' => '',
@@ -46,6 +48,9 @@ class NavigationTree
             'id' => '',
             'sidebar' => false
         ), $args);
+
+        // Set classnames depending on sidebar
+        $this->args['sidebar'] ? $this->currentMenuType = 'vertical-' : $this->currentMenuType = 'main-';
 
         if ($this->args['depth'] > -1 && $this->args['start_depth'] > 1) {
             $this->args['depth'] += $this->args['start_depth'];
@@ -452,7 +457,7 @@ class NavigationTree
         $this->itemCount++;
         $outputSubmenuToggle = false;
 
-        $attributes['class'][] = 'vertical-nav__item page-' . $item->ID;
+        $attributes['class'][] = $this->currentMenuType . 'nav__item page-' . $item->ID;
 
         if ($hasChildren && ($this->args['depth'] === -1 || $this->currentDepth < $this->args['depth'] + 1)) {
             $outputSubmenuToggle = true;
@@ -480,14 +485,14 @@ class NavigationTree
         }
 
         $this->addOutput(sprintf(
-            '<li %1$s><a class="vertical-nav__link" href="%2$s">%3$s</a>',
+            '<li %1$s><a class="' . $this->currentMenuType . 'nav__link" href="%2$s">%3$s</a>',
             $this->attributes($attributes),
             $href,
             $title
         ));
 
         if ($outputSubmenuToggle) {
-            $this->addOutput('<button class="vertical-nav__toggle" data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'regionhalland') . '</span><svg class="icon--sm"><use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="#caret-bottom"></use></svg></button>');
+            $this->addOutput('<button class="'  . $this->currentMenuType .  'nav__toggle" data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'regionhalland') . '</span><svg class="icon--sm"><use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="#caret-bottom"></use></svg></button>');
         }
     }
 
@@ -563,7 +568,7 @@ class NavigationTree
             return;
         }
 
-        $this->addOutput('<ul class="vertical-nav__sub-menu">');
+        $this->addOutput('<ul class="' . $this->currentMenuType . 'nav__sub-menu">');
     }
 
     /**
