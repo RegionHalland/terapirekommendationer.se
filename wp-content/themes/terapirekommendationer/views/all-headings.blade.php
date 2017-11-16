@@ -28,7 +28,7 @@
 	@foreach($chapters as $key => $chapter)
 		<h1>{{$chapter->post_title}}</h1>
 			@foreach($chapter->children as $k => $children)
-	    		<h2>{{$children->post_title}}</h2>
+	    		<h2>Delkapitel - {{$children->post_title}}</h2>
 	    		@foreach($children->headings as $k => $heading)
 	    			<{{$heading->tagName}}> {{$heading->tagName}} - {{$heading->textContent}}</{{$heading->tagName}}>
 	    		@endforeach
