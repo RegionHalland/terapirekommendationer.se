@@ -138,7 +138,7 @@ class NavigationTree
      */
     protected function setNavWrapper($args)
     {
-        if (!$args['sidebar']) {
+        if (isset($args['sidebar'])) {
             return '<ul id="%1$s" class="%2$s">%3$s</ul>';
         }
 
