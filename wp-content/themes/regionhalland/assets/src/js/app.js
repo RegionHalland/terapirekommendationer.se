@@ -19,22 +19,32 @@ var Terapirekommendationer;
 	
 
 	$('#search-input').autocomplete({
-		appendTo: $('.search-header__inner'),
-		hint: false,
+		hint: true,
 		cssClasses: {
-			root: 'hello'
+			noPrefix: true,
+			root: 'col-12',
+			input: '',
+			dropdownMenu: 'search-header__results',
+			suggestions: 'search__suggestions',
+			// suggestion: 'search__suggestion',
+			dataset: 'search__dataset'
 		},
+      	templates: {
+        	dropdownMenu: '<ul class="search__dataset-1"></ul>',
+        	suggestion: '<h1 class="search__suggestionz"></h1>'
+        },
+		openOnFocus: true,
+		// autoselectOnBlur: false,
 		autoWidth: false,
-		templates: {
-    		dropdownMenu: '#my-custom-menu-template'
-      	} }, [
+	}, [
 	{
 		source: $.fn.autocomplete.sources.hits(index, { hitsPerPage: 5 }),
 		displayKey: 'post_title',
 		templates: {
+
 			suggestion: function(suggestion) {
-				console.log(suggestion);
-	  			return suggestion._highlightResult.post_title.value;
+
+	  			return '<span class="search-header__hit">' + suggestion._highlightResult.post_title.value + '</span>';
 			}
 		}
 	}
