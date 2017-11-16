@@ -33,9 +33,7 @@ class AllHeadings extends \RegionHalland\Controller\BaseController
 		$chapters = array();
 
 		foreach ($pages as $key => $value) {
-			if ($key < 9) {
-				array_push($chapters, $value);
-			}
+			array_push($chapters, $value);
 		}
 
 		foreach ($chapters as $key => $chapter) {
@@ -45,94 +43,41 @@ class AllHeadings extends \RegionHalland\Controller\BaseController
 				'parent' => $chapter->ID,
 			);
 			$chapters[$key]->children = get_pages($argsTwo);
+
 		}
 
-		die("test");
 
-		/*$views = __DIR__;
-		$cache = __DIR__;
-    	$blade = new Blade($views, $cache);
+
+		foreach ($chapters as $key => $value) {
+			foreach ($value->children as $k => $v) {
+					$v->headings = array();
+					
+					if ($v->post_content !== "") {
+						$domd = new \DOMDocument();
+						libxml_use_internal_errors(true);
+						$domd->loadHTML(mb_convert_encoding($v->post_content, 'HTML-ENTITIES', 'UTF-8'));
+						libxml_use_internal_errors(false);
+						$domx = new \DOMXPath($domd);
+						$items = $domx->query("//h3 | //h4 | //h5 | //h6");
+
+						foreach ($items as $k => $item) {
+							array_push($v->headings, $item);
+						}
+					}
+			}
+		}
+
+        $this->VIEWS_PATHS = apply_filters('RegionHalland/blade/view_paths', array(
+            get_stylesheet_directory() . '/views',
+            get_template_directory() . '/views'
+        ));
+		$this->CACHE_PATH = WP_CONTENT_DIR . '/uploads/cache/blade-cache';
+
+        $blade = new Blade($this->VIEWS_PATHS, $this->CACHE_PATH);
+        //echo $blade->view()->make($view, $data)->render();
     	
-    	echo $myString = $blade->view()->make('print', [
-    		"chapter_one" => $chapterOne,
+    	echo $myString = $blade->view()->make('all-headings', [
     		"chapters" => $chapters
     	])->render();
-
-		/*$file = 'tr.html';
-		// Open the file to get existing content
-		$current = file_get_contents($file);
-		// Append a new person to the file
-		$current .= "John Smith\n";
-		// Write the contents back to the file
-		file_put_contents($file, $current);
-
-		if (!is_dir('wp-content/themes/terapirekommendationer/assets/dist/html/')) {
-  			// dir doesn't exist, make it
-  			mkdir('wp-content/themes/terapirekommendationer/assets/dist/html/');
-		}
-
-		echo file_put_contents("wp-content/themes/terapirekommendationer/assets/dist/html/tr.html", $myString);
-
-    	die();
-
-
-
-
-    	$prince = new PrinceWrapper('/usr/bin/prince');
-    	$prince->addStyleSheet(__DIR__.'/min.css');
-		$err = [];
-		$prince->convert_string_to_file($myString, './tr.pdf', $err);
-		var_dump($err);
-
-    	die();*/
-    	//var_dump(Blade);
-		//echo $blade->view()->make('print', ['name' => 'James'])->render();
-
-    	//return \Illuminate::view('whole-chapter', ['name' => 'James']);
-
-    	/*$book = "";
-    	$page_id = 3913;
-    	$args = array(
-		    'post_type'      => 'page',
-		    'posts_per_page' => -1,
-		    //'p' => 473,
-		    'post_parent'    => $page_id,
-		    'order'          => 'ASC',
-		    'orderby'        => 'menu_order'
-		 );
-
-		$parent = new \WP_Query( $args );
-
-		/*foreach ($parent->posts as $key => $post) {
-			$book = boo $post->post_title;
-		}
-		
-		echo $book;
-		die();
-
-
-		$prince = new PrinceWrapper('/usr/bin/prince');
-		$err = [];
-		$prince->convert_string_to_file('', './tr.pdf', $err);
-		var_dump($err);
-
-		/* DO NOT REMOVE */
-		//die();
-    }
-
-
-    public function getChapters(){
-    	/*$page_id = get_the_id();
-    	
-    	$args = array(
-		    'post_type'      => 'page',
-		    'posts_per_page' => -1,
-		    'post_parent'    => $page_id,
-		    'order'          => 'ASC',
-		    'orderby'        => 'menu_order'
-		 );
-
-		$parent = new \WP_Query( $args );
-    	return $parent;*/
     }
 }
