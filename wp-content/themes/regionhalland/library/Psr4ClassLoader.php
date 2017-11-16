@@ -1,6 +1,6 @@
 <?php
 
-namespace RegionHalland\Vendor;
+namespace RegionHalland;
 
 /**
  * A PSR-4 compatible class loader.

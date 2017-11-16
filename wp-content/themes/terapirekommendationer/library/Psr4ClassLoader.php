@@ -1,6 +1,6 @@
 <?php
 
-namespace Terapirekommendationer\Vendor;
+namespace Terapirekommendationer;
 
 /**
  * A PSR-4 compatible class loader.

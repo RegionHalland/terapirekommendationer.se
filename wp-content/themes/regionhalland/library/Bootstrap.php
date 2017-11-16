@@ -35,7 +35,7 @@ if (file_exists(REGIONHALLAND_PATH . 'vendor/acf/acf.php') && !is_plugin_active(
 /**
  * Initialize autoloader (psr4)
  */
-$loader = new RegionHalland\Vendor\Psr4ClassLoader();
+$loader = new RegionHalland\Psr4ClassLoader();
 $loader->addPrefix('RegionHalland', REGIONHALLAND_PATH . 'library');
 $loader->addPrefix('RegionHalland', REGIONHALLAND_PATH . 'source/php/');
 $loader->register();
