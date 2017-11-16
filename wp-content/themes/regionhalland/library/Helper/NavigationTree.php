@@ -31,7 +31,13 @@ class NavigationTree
             $this->isAjaxParent = true;
         }
 
-
+        // Get valuable page information
+        if ($parent) {
+            $parent->post_parent = 0;
+            $this->currentPage = $parent;
+        } else {
+            $this->currentPage = $this->getCurrentPage();
+        }
 
         // Merge args
         $this->args = array_merge(array(
@@ -43,7 +49,7 @@ class NavigationTree
             'depth' => -1,
             'start_depth' => 1,
             // Needs review
-            'wrapper' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            'wrapper' => $this->setNavWrapper($args),
             'classes' => 'nav',
             'id' => '',
             'sidebar' => false
@@ -52,20 +58,17 @@ class NavigationTree
         // Set classnames depending on sidebar
         $this->args['sidebar'] ? $this->currentMenuType = 'vertical-' : $this->currentMenuType = 'main-';
 
+        // Add static list elements to vertical-nav
+        // if ($this->args['sidebar']) {
+        //     $this->output('<li><h1>what bitch</h1></li>');
+        // }
+
         if ($this->args['depth'] > -1 && $this->args['start_depth'] > 1) {
             $this->args['depth'] += $this->args['start_depth'];
         }
 
         if (is_user_logged_in()) {
             $this->postStatuses[] = 'private';
-        }
-
-        // Get valuable page information
-        if ($parent) {
-            $parent->post_parent = 0;
-            $this->currentPage = $parent;
-        } else {
-            $this->currentPage = $this->getCurrentPage();
         }
 
         $this->ancestors = array();
@@ -130,11 +133,32 @@ class NavigationTree
     }
 
     /**
+     * Set navigation wrapper
+     * @return string
+     */
+    protected function setNavWrapper($args)
+    {
+        if (!$args['sidebar']) {
+            return '<ul id="%1$s" class="%2$s">%3$s</ul>';
+        }
+
+        $wrapper  = '<ul id="%1$s" class="%2$s">';
+        $wrapper .= '<li class="vertical-nav__header">';
+        $wrapper .= '<span class="vertical-nav__heading--dynamic">' . $this->currentPage->post_title . '</span>';
+        $wrapper .= '<span class="vertical-nav__heading--static">Meny</span>';
+        $wrapper .= '<button class="vertical-nav__button"><svg class="vertical-nav__icon  icon"><use xlink:href="#menu"/></svg></button>';
+        $wrapper .= '</li>';
+        $wrapper .= '%3$s</ul>';
+
+        return $wrapper;
+    }
+
+    /**
      * Gets top level pages
      * @return void
      */
     protected function getTopLevelPages()
-    {
+    {   
         $topLevelQuery = new \WP_Query(array(
             'post_parent' => 0,
             'post_type' => 'page',
@@ -255,9 +279,7 @@ class NavigationTree
         $hasChildren = false;
         if (count($children) > 0) {
             $hasChildren = true;
-            $attributes['class'][] = 'has-children';
-            // Municipio default
-            // $attributes['class'][] = 'has-sub-menu';
+            $attributes['class'][] = 'has-sub-menu';
         }
 
         if ($output) {
@@ -492,7 +514,7 @@ class NavigationTree
         ));
 
         if ($outputSubmenuToggle) {
-            $this->addOutput('<button class="'  . $this->currentMenuType .  'nav__toggle" data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'regionhalland') . '</span><svg class="icon--sm"><use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="#caret-bottom"></use></svg></button>');
+            $this->addOutput('<button class="'  . $this->currentMenuType .  'nav__button" data-load-submenu="' . $objId . '"><span class="sr-only">' . __('Show submenu', 'regionhalland') . '</span><svg class="icon--sm"><use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="#caret-bottom"></use></svg></button>');
         }
     }
 

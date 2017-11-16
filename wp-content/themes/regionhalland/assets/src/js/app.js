@@ -16,12 +16,15 @@ var Terapirekommendationer;
 
 	var client = algoliasearch('16DY3X1DMY', 'efd311c980dd4dc470f5629ab96a1377')
 	var index = client.initIndex('tr_wp_posts_page');
+	
+
 	$('#search-input').autocomplete({
+		appendTo: $('.search-header__inner'),
 		hint: false,
 		cssClasses: {
-			root: ""
+			root: 'hello'
 		},
-		autoWidth: true,
+		autoWidth: false,
 		templates: {
     		dropdownMenu: '#my-custom-menu-template'
       	} }, [

@@ -11,9 +11,9 @@
         </div>
         <span class="search-header__example">Ex. Behandling luftrörskatarr</span>
     </div>
+    <script type="text/template" id="my-custom-menu-template">
+      <ul>
+        <div class="aa-dataset-1"></div>
+      </ul>
+    </script>
 </section>
-<script type="text/template" id="my-custom-menu-template">
-  <ul>
-    <div class="aa-dataset-1"></div>
-  </ul>
-</script>
