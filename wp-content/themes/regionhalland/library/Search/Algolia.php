@@ -28,6 +28,25 @@ class Algolia
         if(isset($breadcrumbs)){
             $shared_attributes['breadcrumbs'] = $breadcrumbs;
         }
+
+        //Add all sub-headings from post_content to Algolia
+        $content = $post->post_content;
+        preg_match_all("/<(h\d*)>(\w[^<]*)/i", $content, $matches);
+        if (isset($matches[0]) && isset($matches[1]) && isset($matches[2]) ){
+            $uniqueArr = array_unique($matches[1]);
+            $arrTwo = array_fill_keys($uniqueArr, []);
+            foreach ($matches[2] as $key => $value) {
+                array_push($arrTwo[$matches[1][$key]], [
+                        'post_title' => $value,
+                        'slug' => sanitize_title($value)
+                    ]
+                );
+            }
+            if (isset($arrTwo)){
+                $shared_attributes['headings'] = $arrTwo;
+            }
+        }
+
         // Always return the value we are filtering.
         return $shared_attributes;
     }

@@ -18,9 +18,48 @@ class AllHeadings extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {
-    	/*$page_id = 183;
+    	$page_id = 473;
     	$post = get_post($page_id);
-    	$breadcrumbs = \RegionHalland\Theme\Navigation::getBreadcrumbs($post);
+    	var_dump($content = $post->post_content);
+        preg_match_all("/<(h\d.*)>(\w[^<]*)/i", $content, $matches);
+        var_dump($matches);
+
+        
+        foreach ($matches[1] as $key => $value) {
+        	echo preg_match("/(h\d)/i", $value, $matchesTwo);
+        	//preg_match_all("/(h\d)/i", $value, $matchesTwo);
+        	# code...
+        	//var_dump(preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i",'<$1$2>', $value));
+        }
+
+        var_dump($matchesTwo);
+
+        //var_dump($matchesTwo);
+
+        
+        die();
+        if (isset($matches[0]) && isset($matches[1]) && isset($matches[2]) ){
+            $uniqueArr = array_unique($matches[1]);
+            $arrTwo = array_fill_keys($uniqueArr, []);
+            
+            /*foreach ($matches[2] as $key => $value) {
+                array_push($arrTwo[$matches[1][$key]], [
+                        'post_title' => $value,
+                        'slug' => sanitize_title($value)
+                    ]
+                );
+            }
+            if (isset($arrTwo)){
+            	var_dump($arrTwo);
+                //$shared_attributes['headings'] = $arrTwo;
+            }*/
+        }
+
+
+
+    	die();
+
+    	/*$breadcrumbs = \RegionHalland\Theme\Navigation::getBreadcrumbs($post);
 
     	var_dump($breadcrumbs);
     	die();
