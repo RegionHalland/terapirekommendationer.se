@@ -14,7 +14,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 	CreateContentNav.prototype.init = function() {
 		
 		this.contentNav = $('.content-nav');
-		this.headings = $('#main').children('h2, h3, h4, h5')
+		this.headings = $('#main').children('h2, h3, h4')
 		
 		if (!this.contentNav.length || typeof Waypoint !== 'function' || !this.headings.length) {
 			return;
@@ -25,33 +25,42 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
 	}
 
-
 	CreateContentNav.prototype.appendContent = function(target) {
-
-		// this.contentNav.append($('<ul class="content-nav__list"><span class="content-nav__heading">Innehållsmeny</span>'))
-		var heading = $('<span/>', {
-			class: 'content-nav__heading',
-			text: 'Innehållsmeny'
-		});
 
 		var list = $('<ul/>', {
 			class: 'content-nav__list'
 		});
 
+		$('<span/>', {
+			class: 'content-nav__heading',
+			text: 'Innehållsmeny'
+		}).appendTo(list);
+
 		var listItems = this.headings.each(function(i) {
-			$('<li/>', {
+			var li = $('<li/>', {
 				class: 'content-nav__item',
-				text: '<a href="#' + this.id + '">' + this.innerHTML + '</a>'
 			}).appendTo(list);
+
+			$('<a/>', {
+				 class: 'content-nav__link',
+				 href: '#' + this.id,
+				 text: this.innerHTML
+			}).appendTo(li);
 		});
 
 		this.contentNav.append(list);
 	}
 	
 	CreateContentNav.prototype.addWaypoints = function(target) {
+		// Add waypoints for headings
 		this.headings.waypoint(function() {
-			target.contentNavList.children().removeClass('active')
-			target.contentNavList.children().eq(target.headings.index(this.element)).addClass('active')
+			target.contentNav.children('ul').children().removeClass('active')
+			target.contentNav.children('ul').children().eq(target.headings.index(this.element)).addClass('active')
+		})
+
+		// Add waypoint for content-nav
+		target.contentNav.waypoint(function() {
+			target.contentNav.toggleClass('fixed top-0 mt4');
 		})
 	}
 
