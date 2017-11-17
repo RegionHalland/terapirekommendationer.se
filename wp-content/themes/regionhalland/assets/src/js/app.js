@@ -19,19 +19,19 @@ var Terapirekommendationer;
 	
 
 	$('#search-input').autocomplete({
+		debug: true,
 		hint: true,
 		cssClasses: {
 			noPrefix: true,
 			root: 'col-12',
 			input: '',
 			dropdownMenu: 'search-header__results',
-			suggestions: 'search__suggestions',
-			// suggestion: 'search__suggestion',
+			suggestions: 'search-header__suggestions',
+			suggestion: 'search-header__suggestion',
 			dataset: 'search__dataset'
 		},
       	templates: {
-        	dropdownMenu: '<ul class="search__dataset-1"></ul>',
-        	suggestion: '<h1 class="search__suggestionz"></h1>'
+        	dropdownMenu: '<div class="search__dataset-1"></div>'
         },
 		openOnFocus: true,
 		// autoselectOnBlur: false,
@@ -43,8 +43,15 @@ var Terapirekommendationer;
 		templates: {
 
 			suggestion: function(suggestion) {
+				var markup  = '<span class="search-header__hit">' + suggestion._highlightResult.post_title.value + '</span>';
+	  				markup += '<div class="search-header__breadcrumbs">';
 
-	  			return '<span class="search-header__hit">' + suggestion._highlightResult.post_title.value + '</span>';
+	  			for (var i = 0; i < suggestion.breadcrumbs.length; i++) {
+	  				markup += '<span class="search-header__breadcrumb h6">' + suggestion.breadcrumbs[i] + '</span>';
+	  			}
+	  				markup += '</div>';
+
+	  			return markup;
 			}
 		}
 	}

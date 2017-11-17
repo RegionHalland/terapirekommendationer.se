@@ -57,12 +57,7 @@ class NavigationTree
 
         // Set classnames depending on sidebar
         $this->args['sidebar'] ? $this->currentMenuType = 'vertical-' : $this->currentMenuType = 'main-';
-
-        // Add static list elements to vertical-nav
-        // if ($this->args['sidebar']) {
-        //     $this->output('<li><h1>what bitch</h1></li>');
-        // }
-
+        
         if ($this->args['depth'] > -1 && $this->args['start_depth'] > 1) {
             $this->args['depth'] += $this->args['start_depth'];
         }
@@ -138,7 +133,7 @@ class NavigationTree
      */
     protected function setNavWrapper($args)
     {
-        if (isset($args['sidebar'])) {
+        if (!isset($args['sidebar'])) {
             return '<ul id="%1$s" class="%2$s">%3$s</ul>';
         }
 
