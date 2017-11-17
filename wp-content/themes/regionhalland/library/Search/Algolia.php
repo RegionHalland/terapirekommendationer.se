@@ -24,7 +24,10 @@ class Algolia
         }
         // Get the field value with the 'get_field' method and assign it to the attributes array.
         // @see https://www.advancedcustomfields.com/resources/get_field/
-        $shared_attributes['test123'] = "test";
+        $breadcrumbs = \RegionHalland\Theme\Navigation::getBreadcrumbs($post);
+        if(isset($breadcrumbs)){
+            $shared_attributes['breadcrumbs'] = $breadcrumbs;
+        }
         // Always return the value we are filtering.
         return $shared_attributes;
     }

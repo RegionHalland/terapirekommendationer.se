@@ -18,6 +18,22 @@ class AllHeadings extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {
+    	/*$page_id = 183;
+    	$post = get_post($page_id);
+    	$breadcrumbs = \RegionHalland\Theme\Navigation::getBreadcrumbs($post);
+
+    	var_dump($breadcrumbs);
+    	die();
+    	/*$breadcrumbsArray = [];
+    	foreach ($breadcrumbs as $key => $value) {
+    		$breadcrumbsArray[] = trim(strip_tags($value));
+    	}
+    	if (isset($breadcrumbsArray[0])) {
+    		unset($breadcrumbsArray[0]);
+    	}
+    	var_dump($breadcrumbsArray);
+    	die();*/
+
     	$page_id = 3913;
     	$page_id_chapter1 = 183;
     	$chapterOne = get_page($page_id_chapter1);

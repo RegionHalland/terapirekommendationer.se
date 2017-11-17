@@ -204,6 +204,7 @@ class Navigation
         $post_type = get_post_type_object($post->post_type);
         $output = array();
 
+        
         echo '<ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">';
 
         if (!is_front_page()) {
@@ -268,7 +269,17 @@ class Navigation
 
         $output = apply_filters('RegionHalland/Breadcrumbs/Items', $output, get_queried_object());
 
+        
         echo implode("\n", $output);
         echo '</ol>';
+    }
+
+    public static function getBreadcrumbs(\WP_Post $post)
+    {
+        $breadcrumbs = array();
+        array_push($breadcrumbs, get_the_title($post->post_parent));
+        array_push($breadcrumbs,  get_the_title($post->ID));
+
+        return $breadcrumbs;
     }
 }
