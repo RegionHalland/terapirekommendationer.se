@@ -1,0 +1,1 @@
+{{ \RegionHalland\Theme\Navigation::outputContentHeadings() }}

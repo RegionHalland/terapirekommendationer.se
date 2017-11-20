@@ -282,4 +282,48 @@ class Navigation
 
         return $breadcrumbs;
     }
+
+    /**
+     * Gets all headings in a post
+     * @return array
+     */
+    public static function getContentHeadings(\WP_Post $post)
+    {   
+        $content = $post->post_content;
+        preg_match_all("/<(h3*)>(\w[^<]*)/i", $content, $matches);
+        
+        return $matches;
+    }
+
+    /**
+     * Outputs all headings in a post
+     * @return void
+     */
+    public static function outputContentHeadings()
+    {   
+        global $post;
+
+        if (!is_a($post, 'WP_Post')) {
+            return;
+        }
+
+        $headings = Navigation::getContentHeadings($post);
+        
+
+        if (isset($headings[0]) && isset($headings[1]) && isset($headings[2])) {
+            $output  = '<span class="content-nav__heading">Innehållsmeny</span>';
+            $output .= '<ul class="content-nav__list">';
+
+            foreach ($headings[2] as $key => $value) {
+                $output .= '<li class="content-nav__item">';
+                $output .= '<a class=content-nav__link" href="#' . sanitize_title($value) . '">';
+                $output .= (string)$value;
+                $output .= '</a></li>';
+            }
+
+            $output .= '</ul>';
+
+            echo $output;
+        }     
+    }  
 }
