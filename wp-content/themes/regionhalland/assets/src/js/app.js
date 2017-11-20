@@ -48,7 +48,6 @@ var Terapirekommendationer;
 
 	  			for (var i = 0; i < suggestion.breadcrumbs.length; i++) {
 	  				markup += '<span class="search-header__breadcrumb h6">' + suggestion.breadcrumbs[i] + '</span>';
-	  				console.log('i: ' + i + ' - len: ' + suggestion.breadcrumbs.length)
 	  				if (i !== suggestion.breadcrumbs.length - 1) {
 	  					markup += '<svg aria-hidden="true" class="search-header__breadcrumb  icon"><use xlink:href="#arrow-right"/></svg>';
 	  				}
@@ -60,7 +59,7 @@ var Terapirekommendationer;
 		}
 	}
 	]).on('autocomplete:selected', function(event, suggestion, dataset) {
-		console.log(suggestion, dataset);
+		// console.log(suggestion, dataset);
 		window.location.href = suggestion.permalink;
 	});
 

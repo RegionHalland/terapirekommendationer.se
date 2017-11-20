@@ -54,13 +54,14 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 	CreateContentNav.prototype.addWaypoints = function(target) {
 		// Add waypoints for headings
 		this.headings.waypoint(function() {
+			console.log('hit heading');
 			target.contentNav.children('ul').children().removeClass('active')
 			target.contentNav.children('ul').children().eq(target.headings.index(this.element)).addClass('active')
 		})
 
 		// Add waypoint for content-nav
 		target.contentNav.waypoint(function() {
-			target.contentNav.toggleClass('fixed top-0 mt4');
+			target.contentNav.toggleClass('fixed top-0');
 		})
 	}
 
@@ -219,7 +220,6 @@ var Terapirekommendationer;
 
 	  			for (var i = 0; i < suggestion.breadcrumbs.length; i++) {
 	  				markup += '<span class="search-header__breadcrumb h6">' + suggestion.breadcrumbs[i] + '</span>';
-	  				console.log('i: ' + i + ' - len: ' + suggestion.breadcrumbs.length)
 	  				if (i !== suggestion.breadcrumbs.length - 1) {
 	  					markup += '<svg aria-hidden="true" class="search-header__breadcrumb  icon"><use xlink:href="#arrow-right"/></svg>';
 	  				}
@@ -231,7 +231,7 @@ var Terapirekommendationer;
 		}
 	}
 	]).on('autocomplete:selected', function(event, suggestion, dataset) {
-		console.log(suggestion, dataset);
+		// console.log(suggestion, dataset);
 		window.location.href = suggestion.permalink;
 	});
 
