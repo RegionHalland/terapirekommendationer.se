@@ -280,6 +280,9 @@ function tr_tinymce_body_class( $mce ) {
 
     function tr_admin_styles() {
         wp_enqueue_style( 'tr_admin_css', get_stylesheet_directory_uri() . '/assets/dist/css/admin.min.css');
+        add_editor_style( get_stylesheet_directory_uri() . '/assets/dist/css/editor.min.css');
+
+
     }
 
     /**
