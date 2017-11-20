@@ -33,10 +33,7 @@
 
 
             <div class="col col-12 md-col-3 px3">
-                @include('partials.sidebar-right')
-                    <nav class="content-nav">    
-                        @include('partials.content-nav')
-                    </nav>
+                @include('partials.content-nav')
             </div>
         </div>
     </div>

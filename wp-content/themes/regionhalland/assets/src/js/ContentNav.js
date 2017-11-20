@@ -31,14 +31,14 @@
 			return;
 		}
 
-		this.headings.waypoint( function(direction) {
+		this.headings.waypoint(function(direction) {
 			if (direction === 'down') {
 				target.contentNavItems.removeClass('active')
 				target.contentNavItems.eq(target.headings.index(this.element)).addClass('active')
 			}
 		}, { offset: '2' })
 
-		this.headings.waypoint( function(direction) {
+		this.headings.waypoint(function(direction) {
 			if (direction === 'up') {
 				target.contentNavItems.removeClass('active')
 				target.contentNavItems.eq(target.headings.index(this.element)).addClass('active')

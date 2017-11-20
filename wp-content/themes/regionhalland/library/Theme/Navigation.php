@@ -310,8 +310,9 @@ class Navigation
         $headings = Navigation::getContentHeadings($post);
         
 
-        if (isset($headings[0]) && isset($headings[1]) && isset($headings[2])) {
-            $output  = '<span class="content-nav__heading">Innehållsmeny</span>';
+        if (isset($headings[0]) && isset($headings[1]) && isset($headings[2]) && !empty($headings[0])) {
+            $output  = '<nav class="content-nav">';
+            $output .= '<span class="content-nav__heading">Innehållsmeny</span>';
             $output .= '<ul class="content-nav__list">';
 
             foreach ($headings[2] as $key => $value) {
@@ -321,7 +322,7 @@ class Navigation
                 $output .= '</a></li>';
             }
 
-            $output .= '</ul>';
+            $output .= '</ul></nav>';
 
             echo $output;
         }     
