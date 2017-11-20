@@ -11,6 +11,8 @@ class Enqueue
         add_action('wp_enqueue_scripts', array($this, 'style'));
         // Enqueue scripts
         add_action('wp_enqueue_scripts', array($this, 'script'));
+        // Add styleguide to tinymce editor
+        add_editor_style( '//regionhalland.github.io/styleguide/dist/css/main.min.css' );
     }
 
     /**
