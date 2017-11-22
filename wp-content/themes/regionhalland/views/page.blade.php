@@ -25,7 +25,7 @@
 
                     <hr>
                     
-                    <div class="col col-12 px3">
+                    <div class="col col-12">
                         @include('partials.page-footer')
                     </div>
             </div>
