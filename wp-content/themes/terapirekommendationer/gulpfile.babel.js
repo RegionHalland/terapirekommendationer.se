@@ -52,7 +52,7 @@ gulp.task('js:dist', () => {
 		.pipe(gulp.dest('./assets/dist/js/'))
 
 	// TinyMCE Plugins
-	gulp.src('assets/src/mce-js/*.js')
+	gulp.src('assets/src/mce-js/**/*.js')
 		.pipe(plumber({
 			errorHandler: error => {
 				gutil.beep()
@@ -82,9 +82,9 @@ gulp.task('bs-reload', () => {
 })
 
 // Watch
-gulp.task('watch', ['css:dist', 'browsersync'], () => {
+gulp.task('watch', ['js:dist', 'css:dist', 'browsersync'], () => {
 	gulp.watch('./assets/src/scss/**/*.scss', ['css:dist', 'bs-reload']);
-	gulp.watch('./assets/src/js/**/*.js', ['js:dist', 'bs-reload']);
+	gulp.watch(['./assets/src/js/**/*.js', 'assets/src/mce-js/**/*.js'], ['js:dist', 'bs-reload']);
 })
 
 // Default build

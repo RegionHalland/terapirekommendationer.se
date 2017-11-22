@@ -2,7 +2,7 @@
 	// Create plugin
 	tinymce.create('tinymce.plugins.tr', {
 		init: function(editor, url) {
-
+			
 			var parents;
 			var parent;
 
@@ -60,7 +60,7 @@
 
 			editor.addButton('infobox_children', {
 				type: 'button',
-				text: 'Målgrupp: Barn',
+				text: 'Målgrupp: Barn och Ungdomar',
 				icon: false,
 				onclick: function() {
 					var selection = tinyMCE.activeEditor.selection;
@@ -72,7 +72,7 @@
 						selection.setContent(content)
 					} else {
 						selection.setContent(
-							'<div class="infobox--children"><header class="infobox__header"><strong>Barn</strong></header><div class="infobox__content">'+ selection.getContent() +'</div></div>'
+							'<div class="infobox--children"><header class="infobox__header"><strong>Barn och Ungdomar</strong></header><div class="infobox__content">'+ selection.getContent() +'</div></div>'
 						);
 					}
 
@@ -117,13 +117,18 @@
 
 			editor.addButton('figure_comment', {
 				type: 'button',
-				text: 'Figurkommentar',
+				text: 'Kommentar till Redaktion',
 				icon: false,
 				onclick: function() {
 					// Register format for figure comment
 					editor.formatter.register('figure_comment_format', {
 						inline: 'span',
-						classes: 'figurecomment'
+						classes: 'figurecomment',
+						styles: {
+							padding: '2px',
+							color: '#ff0000',
+							backgroundColor: '#ffbebe'
+						}
 					});
 
 					editor.formatter.toggle('figure_comment_format');

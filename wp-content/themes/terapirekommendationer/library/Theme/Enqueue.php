@@ -7,7 +7,7 @@ class Enqueue
     public function __construct()
     {
         // Enqueue scripts and styles
-        //add_action('wp_enqueue_scripts', array($this, 'style'));
+        add_action('wp_enqueue_scripts', array($this, 'style'));
         add_action('admin_init', array($this, 'editorStyle'));
 
         // Enqueue admin styles
@@ -22,7 +22,7 @@ class Enqueue
         );
 
         // Attach callback to 'tiny_mce_before_init' 
-        add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
+        add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') ); 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_extended_valid_elements') );
         //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init') );
         add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
@@ -93,8 +93,7 @@ class Enqueue
      */
     function editorStyle()
     {
-        //add_editor_style(apply_filters('Municipio/admin/main_stylesheet',   'assets/dist/css/main.min.css'));
-        //add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', 'assets/dist/css/editor.min.css'));
+        add_editor_style(apply_filters('editor', 'assets/dist/css/editor.min.css'));
     }
 
 
@@ -225,9 +224,9 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 */
 function tr_modify_block_formats( $init ) {
     $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3=h5;Mellanrubrik 4=h6;';
-
     return $init;
 }
+
 
 function tr_extended_valid_elements( $init ) {
     $init['extended_valid_elements'] = 'svg[*],use[*],text[*]';
@@ -238,6 +237,8 @@ function tr_tinymce_body_class( $mce ) {
     $mce['body_class'] .= ' article';
     return $mce;
 }
+
+
 
 // function tr_register_mce_3_buttons( $buttons ) {
 //     array_unshift( $buttons, 'styleselect' );
@@ -291,7 +292,8 @@ function tr_tinymce_body_class( $mce ) {
      */
     public function style()
     {
-        wp_enqueue_style('Terapirekommendationer-css', get_stylesheet_directory_uri(). '/assets/dist/css/main.min.css', '', filemtime(get_stylesheet_directory() . '/assets/dist/css/main.min.css'));
+        wp_register_style('tr_main_css', get_stylesheet_directory_uri() . '/assets/dist/css/main.min.css');
+        wp_enqueue_style('tr_main_css');
     }
 
 }
