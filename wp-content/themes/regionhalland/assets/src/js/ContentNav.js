@@ -21,7 +21,7 @@
 	ContentNav.prototype.stickContentNav = function(target) {
 		var stickContentNav = new Waypoint.Sticky({
   			element: target.contentNav,
-  			wrapper: '<div class="content-nav--fixed" />',
+  			wrapper: '<div/>',
   			stuckClass: 'fixed top-0'
 		})
 	}

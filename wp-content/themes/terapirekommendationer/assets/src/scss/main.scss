@@ -3,6 +3,7 @@
 */
 
 // Settings
+@import 'settings/settings';
 
 // Mixins
 
@@ -14,3 +15,4 @@
 @import 'components/figure-comments';
 @import 'components/infobox';
 @import 'components/table';
+@import 'components/content-nav';

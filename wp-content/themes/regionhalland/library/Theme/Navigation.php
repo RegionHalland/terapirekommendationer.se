@@ -308,7 +308,6 @@ class Navigation
         }
 
         $headings = Navigation::getContentHeadings($post);
-        
 
         if (isset($headings[0]) && isset($headings[1]) && isset($headings[2]) && !empty($headings[0])) {
             $output  = '<nav class="content-nav">';
