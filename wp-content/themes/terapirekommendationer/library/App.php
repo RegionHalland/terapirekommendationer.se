@@ -7,6 +7,6 @@ class App
     {
     	/* THEME */
         new \Terapirekommendationer\Theme\Enqueue();
-        // new \Terapirekommendationer\Theme\CustomTemplates();
+        new \Terapirekommendationer\Theme\CustomTemplates();
     }
 }
