@@ -8,7 +8,7 @@
 		this.contentNav = $('.content-nav');
 		this.contentNavList = $('.content-nav__list');
 		this.contentNavItems = this.contentNavList.children('.content-nav__item');
-		this.headings = $('#main').children('h3');
+		this.headings = $('#main').children('h3:not(:empty)');
 
 		if (!this.contentNav.length || typeof Waypoint !== 'function') {
 			return;
