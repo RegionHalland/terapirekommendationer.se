@@ -96,18 +96,34 @@ var Terapirekommendationer;
 	// 	window.location.href = suggestion.permalink;
 	// });
 
-	docsearch({
+	var search = docsearch({
 		apiKey: '6278d32db4b0c634970c4f20b22a230c',
 		indexName: 'terapirekommendationer',
 		inputSelector: '#search-input',
 		debug: true, // Set debug to true if you want to inspect the dropdown
-		autocompleteOptions: {	
-	 		templates: {
-	 			suggestion: function(suggestion) {
-               		console.log('röv')
-            	}
-	 		}
+		autocompleteOptions: {
+			cssClasses: {
+				prefix: 'none'
+			},
+			templates: {
+				suggestion: function(suggestion) {
+					var markup  = '<span class="search-header__hit">' + suggestion._highlightResult.post_title.value + '</span>';
+			 				markup += '<div class="search-header__breadcrumbs">';
+
+			 			for (var i = 0; i < suggestion.breadcrumbs.length; i++) {
+			 				markup += '<span class="search-header__breadcrumb h6">' + suggestion.breadcrumbs[i] + '</span>';
+			 				if (i !== suggestion.breadcrumbs.length - 1) {
+			 					markup += '<svg aria-hidden="true" class="search-header__breadcrumb  icon"><use xlink:href="#arrow-right"/></svg>';
+			 				}
+			 			}
+			 				markup += '</div>';
+
+			 			return markup;
+				}
+			}
 	 	}
 	 });
+
+	 console.log(search.autocompleteOptions)
 
 })( jQuery );

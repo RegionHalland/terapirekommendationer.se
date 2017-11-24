@@ -8,6 +8,7 @@ Author:      Sebastian Marcusson
 
 namespace CustomOwfDiff;
 use Caxy\HtmlDiff\HtmlDiff;
+use Caxy\HtmlDiff\HtmlDiffConfig;
 
 class CustomOwfDiff
 {
@@ -15,7 +16,26 @@ class CustomOwfDiff
     {
         \add_filter( 'owf_inbox_row_actions', array($this, 'custom_inbox_row_actions'), 10, 2 );
         \add_action('admin_menu', array($this, 'my_menu'));
-        //add_menu_page( 'Test Plugin Page', 'Test Plugin', 'manage_options', 'test-plugin', 'test_init' );
+
+		// $revision_post_id = intval( $_GET['post'] );
+
+		// $original_post_id = get_post_meta( $revision_post_id, '_oasis_original', true );
+
+		// if(!$original_post_id) return;
+
+		// $post = get_post( $original_post_id );
+		// $revision_post = get_post( $revision_post_id );
+
+		// $post_content = apply_filters('the_content', $post->post_content);
+
+		// $post_content = str_replace(']]>', ']]&gt;', $post->post_content);
+
+		// $revision_post_content = apply_filters('the_content', $revision_post->post_content);
+		// $revision_post_content = str_replace(']]>', ']]&gt;', $revision_post->post_content);
+
+  //       wp_die(file_put_contents('revision_post_content.txt', $revision_post_content));
+
+        // add_menu_page( 'Test Plugin Page', 'Test Plugin', 'manage_options', 'test-plugin', 'test_init' );
     }
 
     function my_menu() {
@@ -34,13 +54,19 @@ class CustomOwfDiff
 		$revision_post = get_post( $revision_post_id );
 
 		$post_content = apply_filters('the_content', $post->post_content);
+
 		$post_content = str_replace(']]>', ']]&gt;', $post->post_content);
 
 		$revision_post_content = apply_filters('the_content', $revision_post->post_content);
 		$revision_post_content = str_replace(']]>', ']]&gt;', $revision_post->post_content);
 
 		$post_id = $_GET["post"];
-		$htmlDiff = new HtmlDiff($post_content, $revision_post_content);
+		
+		$config = new HtmlDiffConfig();
+		$config
+			->setEncoding('UTF-8');
+		
+		$htmlDiff = new HtmlDiff($post_content, $revision_post_content, $config);
 		$content = $htmlDiff->build();
 
 
