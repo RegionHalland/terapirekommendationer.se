@@ -25,14 +25,24 @@
     </style>
 </head>
 <body>
-	@foreach($chapters as $key => $chapter)
-		<h1>{{$chapter->post_title}}</h1>
-			@foreach($chapter->children as $k => $children)
-	    		<h2>Delkapitel - {{$children->post_title}}</h2>
-	    		@foreach($children->headings as $k => $heading)
-	    			<{{$heading->tagName}}> {{$heading->tagName}} - {{$heading->textContent}}</{{$heading->tagName}}>
-	    		@endforeach
-			@endforeach
-			<hr>
-	@endforeach
+    <?php
+        $headingNames = array(
+            'h3' => "Mellanrubrik 1",
+            'h4' => "Mellanrubrik 2",
+            'h5' => "Mellanrubrik 3",
+            'h6' => "Mellanrubrik 4",
+        )
+    ?>
+    @if (isset($chapters)) :
+    	@foreach($chapters as $key => $chapter)
+    		<h1>{{$chapter->post_title}}</h1>
+    			@foreach($chapter->children as $k => $children)
+    	    		<h2>Delkapitel - {{$children->post_title}}</h2>
+    	    		@foreach($children->headings as $k => $heading)
+    	    			<{{$heading->tagName}}> {{$headingNames[$heading->tagName]}} - {{$heading->textContent}}</{{$heading->tagName}}>
+    	    		@endforeach
+    			@endforeach
+    			<hr>
+    	@endforeach
+    @endif
 </body>

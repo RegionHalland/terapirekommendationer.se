@@ -18,7 +18,7 @@ class AllHeadings extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {
-    	$page_id = 473;
+    	/*$page_id = 473;
     	$post = get_post($page_id);
     	var_dump($content = $post->post_content);
         preg_match_all("/<(h\d.*)>(\w[^<]*)/i", $content, $matches);
@@ -52,12 +52,12 @@ class AllHeadings extends \RegionHalland\Controller\BaseController
             if (isset($arrTwo)){
             	var_dump($arrTwo);
                 //$shared_attributes['headings'] = $arrTwo;
-            }*/
+            }
         }
 
 
 
-    	die();
+    	die();*/
 
     	/*$breadcrumbs = \RegionHalland\Theme\Navigation::getBreadcrumbs($post);
 
