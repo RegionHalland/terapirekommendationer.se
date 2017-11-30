@@ -16,26 +16,6 @@ class CustomOwfDiff
     {
         \add_filter( 'owf_inbox_row_actions', array($this, 'custom_inbox_row_actions'), 10, 2 );
         \add_action('admin_menu', array($this, 'my_menu'));
-
-		// $revision_post_id = intval( $_GET['post'] );
-
-		// $original_post_id = get_post_meta( $revision_post_id, '_oasis_original', true );
-
-		// if(!$original_post_id) return;
-
-		// $post = get_post( $original_post_id );
-		// $revision_post = get_post( $revision_post_id );
-
-		// $post_content = apply_filters('the_content', $post->post_content);
-
-		// $post_content = str_replace(']]>', ']]&gt;', $post->post_content);
-
-		// $revision_post_content = apply_filters('the_content', $revision_post->post_content);
-		// $revision_post_content = str_replace(']]>', ']]&gt;', $revision_post->post_content);
-
-  //       wp_die(file_put_contents('revision_post_content.txt', $revision_post_content));
-
-        // add_menu_page( 'Test Plugin Page', 'Test Plugin', 'manage_options', 'test-plugin', 'test_init' );
     }
 
     function my_menu() {
@@ -53,10 +33,11 @@ class CustomOwfDiff
 		$post = get_post( $original_post_id );
 		$revision_post = get_post( $revision_post_id );
 
+		$post_title = $post->post_title;
 		$post_content = apply_filters('the_content', $post->post_content);
-
 		$post_content = str_replace(']]>', ']]&gt;', $post->post_content);
 
+		$revision_post_title = $revision_post->post_title;
 		$revision_post_content = apply_filters('the_content', $revision_post->post_content);
 		$revision_post_content = str_replace(']]>', ']]&gt;', $revision_post->post_content);
 
@@ -66,11 +47,13 @@ class CustomOwfDiff
 		$config
 			->setEncoding('UTF-8');
 		
+		$titleDiff = new HtmlDiff($post_title, $revision_post_title, $config);
 		$htmlDiff = new HtmlDiff($post_content, $revision_post_content, $config);
 		$content = $htmlDiff->build();
+		$titles = $titleDiff->build();
 
 
-		echo '<link rel="stylesheet" type="text/css" href="https://regionhalland.github.io/styleguide-web/dist/css/hbg-prime-blue.min.css?ver=latest">';
+		echo '<link rel="stylesheet" type="text/css" href="https://regionhalland.github.io/styleguide/dist/css/main.min.css?ver=4.9.1">';
 
 		echo '<style>ins {
     border: 1px solid rgb(192,255,192);
@@ -81,7 +64,7 @@ del {
 	text-decoration:none;
     border: 1px solid rgb(255,192,192);
     background: rgb(255,224,224);
-}</style><div style="padding-top:2em;width:60%;margin:auto;"><article>'. $content . '</article></div>';
+}</style><div class="mx-auto col-12 md-col-4 pt5"><article class="article"><h1>' . $titles . '</h1>' . $content . '</article></div>';
 	}
 
 
