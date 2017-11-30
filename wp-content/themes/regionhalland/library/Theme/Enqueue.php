@@ -5,7 +5,7 @@ namespace RegionHalland\Theme;
 class Enqueue
 {
 
-    public function __construct()
+    public function __construct() 
     {
         // Enqueue styles
         add_action('wp_enqueue_scripts', array($this, 'style'));
@@ -24,6 +24,10 @@ class Enqueue
         wp_register_style('regionhalland', "//regionhalland.github.io/styleguide/dist/css/main.min.css");
         wp_enqueue_style('regionhalland');
         wp_enqueue_style('docsearch', "//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css");
+        
+        wp_register_style('theme_css', get_template_directory_uri() . '/assets/dist/css/main.min.css');
+        wp_enqueue_style('theme_css');
+
     }
 
     /**
