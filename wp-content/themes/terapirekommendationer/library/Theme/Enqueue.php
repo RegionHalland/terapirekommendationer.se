@@ -8,8 +8,10 @@ class Enqueue
     {
         // Enqueue scripts and styles
         add_action('wp_enqueue_scripts', array($this, 'style'));
-        add_action('wp_enqueue_scripts', array($this, 'script'));
         add_action('admin_init', array($this, 'editorStyle'));
+
+        // Enqueue admin styles
+        add_action( 'admin_enqueue_scripts', array($this, 'tr_admin_styles'));
 
         // Image plugin
         add_action('wp_enqueue_media', $func =
@@ -19,12 +21,12 @@ class Enqueue
             }
         );
 
-
         // Attach callback to 'tiny_mce_before_init' 
-        add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') );
+        add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') ); 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_extended_valid_elements') );
         //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init') );
         add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
+        add_filter( 'tiny_mce_before_init', array($this, 'tr_tinymce_body_class') );
         
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
         add_filter( 'mce_external_plugins', array($this, 'myplugin_register_tinymce_javascript'));
@@ -44,16 +46,9 @@ class Enqueue
         add_filter( 'revision_text_diff_options', array($this, 'modifyVersion') );
         
         //add_filter( 'process_text_diff_html', array($this, 'custom_hook'), 10, 3 );
-
-        // Admin style
-        add_action('admin_enqueue_scripts', array($this, 'adminStyle'), 999);
         
     }
 
-    public function adminStyle()
-    {
-        wp_enqueue_style('tr-admin', get_stylesheet_directory_uri(). '/assets/dist/css/admin.min.css', '', '');
-    }
 
     function modifyVersion(){
         $arrayName = array('show_split_view' => false);
@@ -92,19 +87,20 @@ class Enqueue
         return $init;
     }
 
-        /**
+    /**
      * Add stylesheet to editor
      * @return void
      */
     function editorStyle()
     {
-        add_editor_style(apply_filters('Municipio/admin/editor_stylesheet', '//regionhalland.github.io/styleguide-web/dist/css/hbg-prime-' . \Municipio\Theme\Enqueue::getStyleguideTheme() . '.min.css'));
+        add_editor_style(apply_filters('editor', 'assets/dist/css/editor.min.css'));
     }
+
 
 // create a URL to the child theme
 function get_template_directory_child() {
     $directory_template = get_template_directory_uri(); 
-    $directory_child = str_replace('municipio', '', $directory_template) . 'terapirekommendationer';
+    $directory_child = str_replace('regionhalland', '', $directory_template) . 'terapirekommendationer';
 
     return $directory_child;
 }
@@ -228,14 +224,21 @@ function myplugin_register_tinymce_javascript( $plugin_array ) {
 */
 function tr_modify_block_formats( $init ) {
     $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3=h5;Mellanrubrik 4=h6;';
-
     return $init;
 }
+
 
 function tr_extended_valid_elements( $init ) {
     $init['extended_valid_elements'] = 'svg[*],use[*],text[*]';
     return $init;
 }
+
+function tr_tinymce_body_class( $mce ) {
+    $mce['body_class'] .= ' article';
+    return $mce;
+}
+
+
 
 // function tr_register_mce_3_buttons( $buttons ) {
 //     array_unshift( $buttons, 'styleselect' );
@@ -276,6 +279,12 @@ function tr_extended_valid_elements( $init ) {
    
 } */
 
+    function tr_admin_styles() {
+        wp_enqueue_style( 'tr_admin_css', get_stylesheet_directory_uri() . '/assets/dist/css/admin.min.css');
+        add_editor_style( get_stylesheet_directory_uri() . '/assets/dist/css/editor.min.css');
+
+
+    }
 
     /**
      * Enqueue styles
@@ -283,21 +292,8 @@ function tr_extended_valid_elements( $init ) {
      */
     public function style()
     {
-        wp_register_style('hbg-prime', 'https://regionhalland.github.io/styleguide-web/dist/css/hbg-prime-blue.min.css?ver=latest', '', '1.0.0');
-        wp_enqueue_style('hbg-prime');
-
-        wp_enqueue_style('Terapirekommendationer-css', get_stylesheet_directory_uri(). '/assets/dist/css/app.min.css', '', filemtime(get_stylesheet_directory() . '/assets/dist/css/app.min.css'));
+        wp_register_style('tr_main_css', get_stylesheet_directory_uri() . '/assets/dist/css/main.min.css');
+        wp_enqueue_style('tr_main_css');
     }
 
-    /**
-     * Enqueue scripts
-     * @return void
-     */
-    public function script()
-    {
-        wp_register_script('hbg-prime', 'http://helsingborg-stad.github.io/styleguide-web-cdn/styleguide.dev/dist/js/hbg-prime.min.js', '', '1.0.0', true);
-        wp_enqueue_script('hbg-prime');
-
-        wp_enqueue_script('Terapirekommendationer-js', get_stylesheet_directory_uri(). '/assets/dist/js/app.min.js', '', filemtime(get_stylesheet_directory() . '/assets/dist/js/app.min.js'), true);
-    }
 }

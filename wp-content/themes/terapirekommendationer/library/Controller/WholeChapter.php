@@ -14,7 +14,7 @@ use Philo\Blade\Blade;
  *    \Municipio\Helper\Template::add(__('Custom template', 'municipio'), \Municipio\Helper\Template::locateTemplate('custom-template-view.blade.php'));
  */
 
-class WholeChapter extends \Municipio\Controller\BaseController
+class WholeChapter extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {

@@ -1,0 +1,8 @@
+{
+    "name": "regionhalland/regionhalland",
+    "type": "wordpress-theme",
+    "require": {
+        "philo/laravel-blade": "^3.1",
+        "helsingborg-stad/acf-export-manager": ">=1.0.0"
+    }
+}

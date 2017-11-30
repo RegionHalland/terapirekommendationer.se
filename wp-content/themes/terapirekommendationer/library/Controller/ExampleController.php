@@ -10,7 +10,7 @@ namespace Terapirekommendationer\Controller;
  * Name your controller file Archive.php and the class should be named Archive.
  */
 
-class ExampleController extends \Municipio\Controller\BaseController
+class ExampleController extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {
