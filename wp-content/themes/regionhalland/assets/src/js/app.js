@@ -103,27 +103,9 @@ var Terapirekommendationer;
 		debug: true, // Set debug to true if you want to inspect the dropdown
 		autocompleteOptions: {
 			cssClasses: {
-				prefix: 'none'
-			},
-			templates: {
-				suggestion: function(suggestion) {
-					var markup  = '<span class="search-header__hit">' + suggestion._highlightResult.post_title.value + '</span>';
-			 				markup += '<div class="search-header__breadcrumbs">';
-
-			 			for (var i = 0; i < suggestion.breadcrumbs.length; i++) {
-			 				markup += '<span class="search-header__breadcrumb h6">' + suggestion.breadcrumbs[i] + '</span>';
-			 				if (i !== suggestion.breadcrumbs.length - 1) {
-			 					markup += '<svg aria-hidden="true" class="search-header__breadcrumb  icon"><use xlink:href="#arrow-right"/></svg>';
-			 				}
-			 			}
-			 				markup += '</div>';
-
-			 			return markup;
-				}
+				root: 'algolia-autocomplete col-12',
+				prefix: 'ds'
 			}
 	 	}
 	 });
-
-	 console.log(search.autocompleteOptions)
-
 })( jQuery );
