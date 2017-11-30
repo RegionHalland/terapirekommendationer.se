@@ -290,7 +290,7 @@ class Navigation
     public static function getContentHeadings(\WP_Post $post)
     {   
         $content = $post->post_content;
-        preg_match_all("/<(h3*)>(\w[^<]*)/i", $content, $matches);
+        preg_match_all("/<(h3.*)>(\w[^<]*)/i", $content, $matches);
         
         return $matches;
     }
