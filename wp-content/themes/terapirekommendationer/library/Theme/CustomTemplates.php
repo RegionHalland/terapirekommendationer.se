@@ -12,7 +12,7 @@ class CustomTemplates
     public function addCampaignTemplate()
     {
         \RegionHalland\Helper\Template::add(
-            __('Whole chapter', 'Terapirekommendationer'),
+            __('Whole Chapter', 'Terapirekommendationer'),
             \RegionHalland\Helper\Template::locateTemplate('whole-chapter.blade.php'),
             'all'
         );

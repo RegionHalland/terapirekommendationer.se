@@ -104,15 +104,28 @@ class WholeChapter extends \RegionHalland\Controller\BaseController
 		//print_r($pages);
 
 		//die()
+	    $this->VIEWS_PATHS = apply_filters('RegionHalland/blade/view_paths', array(
+        get_stylesheet_directory() . '/views',
+        get_template_directory() . '/views'
+        ));
+		$this->CACHE_PATH = WP_CONTENT_DIR . '/uploads/cache/blade-cache';
 
-		$views = __DIR__;
-		$cache = __DIR__;
-    	$blade = new Blade($views, $cache);
+        $blade = new Blade($this->VIEWS_PATHS, $this->CACHE_PATH);
+        //echo $blade->view()->make($view, $data)->render();
     	
-    	echo $myString = $blade->view()->make('print', [
+    	echo $myString = $blade->view()->make('whole-chapter', [
     		"chapter_one" => $chapterOne,
     		"chapters" => $chapters
     	])->render();
+
+		// $views = __DIR__;
+		// $cache = __DIR__;
+  //   	$blade = new Blade($views, $cache);
+    	
+  //   	echo $myString = $blade->view()->make('print', [
+  //   		"chapter_one" => $chapterOne,
+  //   		"chapters" => $chapters
+  //   	])->render();
 
 		/*$file = 'tr.html';
 		// Open the file to get existing content
