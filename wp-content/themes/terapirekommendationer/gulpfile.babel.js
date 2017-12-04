@@ -63,10 +63,16 @@ gulp.task('js:dist', () => {
 		.pipe(gulp.dest('./assets/dist/mce-js/'))
 })
 
+// Copy fonts to temporary directory
+gulp.task('fonts:dist', () => {
+	return gulp.src('./assets/src/fonts/*')
+		.pipe(gulp.dest('./assets/dist/fonts/'))
+});
+
 // Generate PDF with Prince
 // https://www.princexml.com/doc/8.1/command-line/
 gulp.task('generate-pdf', ['css:dist'], shell.task([
-	'prince -s ./assets/dist/css/print.min.css assets/dist/html/tr.html'
+	'prince --javascript -s ./assets/dist/css/print.min.css assets/dist/html/tr.html'
 ]))
 
 // Browsersync
@@ -82,10 +88,10 @@ gulp.task('bs-reload', () => {
 })
 
 // Watch
-gulp.task('watch', ['js:dist', 'css:dist', 'browsersync'], () => {
+gulp.task('watch', ['js:dist', 'css:dist', 'fonts:dist', 'browsersync'], () => {
 	gulp.watch('./assets/src/scss/**/*.scss', ['css:dist', 'bs-reload']);
 	gulp.watch(['./assets/src/js/**/*.js', 'assets/src/mce-js/**/*.js'], ['js:dist', 'bs-reload']);
 })
 
 // Default build
-gulp.task('default', ['css:dist', 'js:dist', 'generate-pdf'])
+gulp.task('default', ['css:dist', 'fonts:dist', 'js:dist', 'generate-pdf'])
