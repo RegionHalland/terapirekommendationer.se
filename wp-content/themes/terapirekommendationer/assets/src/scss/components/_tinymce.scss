@@ -9,4 +9,9 @@
 		color: #ff0000;
 		background: rgba(255, 0, 0, 0.1);
 	}
+
+	img[src*="generiskt-utbyte.svg"] {
+    	display: inline-block;
+    	width: 24px !important;
+	}
 }

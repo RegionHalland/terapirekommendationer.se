@@ -36,7 +36,7 @@ class WholeChapter extends \RegionHalland\Controller\BaseController
 		$chapters = array();
 
 		foreach ($pages as $key => $value) {
-			if ($key < 27) {
+			if ($key == 2) {
 				array_push($chapters, $value);
 			}
 		}
