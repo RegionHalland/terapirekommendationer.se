@@ -42,16 +42,16 @@ class CustomOwfDiff
 		$revision_post_content = str_replace(']]>', ']]&gt;', $revision_post->post_content);
 
 		$post_id = $_GET["post"];
+
+
+		//$config = new HtmlDiffConfig();
+		//$config
+		//	->setEncoding('UTF-8');
 		
-		$config = new HtmlDiffConfig();
-		$config
-			->setEncoding('UTF-8');
-		
-		$titleDiff = new HtmlDiff($post_title, $revision_post_title, $config);
-		$htmlDiff = new HtmlDiff($post_content, $revision_post_content, $config);
+		$titleDiff = new HtmlDiff($post_title, $revision_post_title);
+		$htmlDiff = new HtmlDiff($post_content, $revision_post_content);
 		$content = $htmlDiff->build();
 		$titles = $titleDiff->build();
-
 
 		echo '<link rel="stylesheet" type="text/css" href="https://regionhalland.github.io/styleguide/dist/css/main.min.css?ver=4.9.1">';
 
