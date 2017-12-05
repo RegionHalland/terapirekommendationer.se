@@ -16,7 +16,7 @@ $space-3: 10mm;
 $space-4: 20mm;
 
 // Typography
-$font-sans: source-sans-pro, sans;
+$font-sans: scala-sans, sans;
 $font-serif: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 
 // Typescale
@@ -27,26 +27,52 @@ $font-serif: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, seri
 // $h5:;
 // $h6:;
 
-// Fonts
 @font-face {
-	font-family: source-sans-pro;
-	src: url(../fonts/SourceSansPro-Regular.ttf);
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: source-sans-pro;
-	src: url(../fonts/SourceSansPro-Italic.ttf);
-	font-weight: normal;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: source-sans-pro;
-	src: url(../fonts/SourceSansPro-SemiBold.ttf);
+	font-family: 'scala-sans';
+	src: url('../fonts/scalasans-bold-webfont.woff2') format('woff2'),
+		 url('../fonts/scalasans-bold-webfont.woff') format('woff');
 	font-weight: 700;
-	font-style: normal;
+	font-style:  normal;
+}
+
+@font-face {
+	font-family: 'scala-sans';
+	src: url('../fonts/scalasans-bolditalic-webfont.woff2') format('woff2'),
+		 url('../fonts/scalasans-bolditalic-webfont.woff') format('woff');
+	font-weight: 700;
+	font-style:  italic;
+}
+
+@font-face {
+	font-family: 'scala-sans-caps';
+	src: url('../fonts/scalasans-caps-webfont.woff2') format('woff2'),
+		 url('../fonts/scalasans-caps-webfont.woff') format('woff');
+	font-weight: 400;
+	font-style:  normal;
+}
+
+@font-face {
+	font-family: 'scala-sans-caps';
+	src: url('../fonts/scalasans-capsitalic-webfont.woff2') format('woff2'),
+		 url('../fonts/scalasans-capsitalic-webfont.woff') format('woff');
+	font-weight: 400;
+	font-style:  italic;
+}
+
+@font-face {
+	font-family: 'scala-sans';
+	src: url('../fonts/scalasans-italic-webfont.woff2') format('woff2'),
+		 url('../fonts/scalasans-italic-webfont.woff') format('woff');
+	font-weight: 400;
+	font-style:  italic;
+}
+
+@font-face {
+	font-family: 'scala-sans';
+	src: url('../fonts/scalasans-regular-webfont.woff2') format('woff2'),
+		 url('../fonts/scalasans-regular-webfont.woff') format('woff');
+	font-weight: 400;
+	font-style:  normal;
 }
 
 // Normalize
@@ -83,7 +109,7 @@ summary {
 	body {
 		font-family: serif;
 		font-size: 10pt;
-		line-height: 1.35;
+		line-height: 1.25;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -254,10 +280,10 @@ summary {
 	.section {
 		counter-increment: chapter;
 		h1 {
-			string-set: chapterName content();
-			&::before {
-				content: 'Kapitel ' counter(chapter) ' · '; 
-			} 
+			// string-set: chapterName content();
+			// &::before {
+			// 	content: 'Kapitel ' counter(chapter) ' · '; 
+			// } 
 		}
 	}
 
@@ -341,8 +367,9 @@ summary {
 
 	//Table of contents - Needs review
 	.table-of-contents {
-		padding:0;
-		margin:10mm 0mm 0mm 0mm;
+		font-family: $font-sans;
+		padding: 0;
+		margin: 10mm 0mm 0mm 0mm;
 		column-count:2;
 		column-gap:10mm;
 		page-break-after:always;
@@ -358,18 +385,16 @@ summary {
 			}
 		}
 		&__chapter {
-			font-size:10pt;
-			margin-top:2mm;
-			margin-bottom:2mm;
-			font-family: source-sans-pro;
-			font-weight:bold;
-			list-style:none;
-			color:$blue;
+			font-size: 10pt;
+			margin-top: 2mm;
+			margin-bottom: 2mm;		
+			font-weight: bold;
+			list-style: none;
+			color: $blue;
 		}
 		&__subchapter {
 			padding-left:1em;
 			font-size:10pt;
-			//font-family:source-sans-pro;
 		}
 	}
 
@@ -403,6 +428,7 @@ summary {
 	// Infoboxes
 	.infobox--background,
 	.infobox--border {
+		font-family: $font-sans;
 		display: inline-block;
 		width: 100%;
 		padding: 0 $space-1;
@@ -418,6 +444,7 @@ summary {
 	}
 
 	.infobox--elderly {
+		font-family: $font-sans;
 		background: #f0f4ed;
 		page-break-inside: avoid;
 	
@@ -428,6 +455,7 @@ summary {
 	}
 	
 	.infobox--children {
+		font-family: $font-sans;
 		background: #faf5ea;
 		page-break-inside: avoid;
 	
