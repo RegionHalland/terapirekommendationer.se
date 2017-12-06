@@ -19,10 +19,20 @@
     <script>
         var ajaxurl = '{!! apply_filters('RegionHalland/ajax_url_in_head', admin_url('admin-ajax.php')) !!}';
     </script>
-
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WZXT8CH');</script>
+    <!-- End Google Tag Manager -->
     {!! wp_head() !!}
 </head>
 <body {!! body_class('no-js') !!}>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZXT8CH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
         @if (isset($notice) && !empty($notice))
             @if (!isset($notice['text']) && is_array($notice))
                 @foreach ($notice as $notice)
