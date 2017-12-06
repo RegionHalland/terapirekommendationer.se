@@ -72,7 +72,7 @@ gulp.task('fonts:dist', () => {
 // Generate PDF with Prince
 // https://www.princexml.com/doc/8.1/command-line/
 gulp.task('generate-pdf', ['css:dist'], shell.task([
-	'prince --javascript -s ./assets/dist/css/print.min.css assets/dist/html/tr.html'
+	'prince --javascript assets/dist/html/tr.html'
 ]))
 
 // Browsersync
