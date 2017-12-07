@@ -12,6 +12,55 @@ Licensed under the MIT license.
 https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 */
 !function(){"use strict";function t(s){this.options=e.extend({},i.defaults,t.defaults,s),this.element=this.options.element,this.$element=e(this.element),this.createWrapper(),this.createWaypoint()}var e=window.jQuery,i=window.Waypoint;t.prototype.createWaypoint=function(){var t=this.options.handler;this.waypoint=new i(e.extend({},this.options,{element:this.wrapper,handler:e.proxy(function(e){var i=this.options.direction.indexOf(e)>-1,s=i?this.$element.outerHeight(!0):"";this.$wrapper.height(s),this.$element.toggleClass(this.options.stuckClass,i),t&&t.call(this,e)},this)}))},t.prototype.createWrapper=function(){this.options.wrapper&&this.$element.wrap(this.options.wrapper),this.$wrapper=this.$element.parent(),this.wrapper=this.$wrapper[0]},t.prototype.destroy=function(){this.$element.parent()[0]===this.wrapper&&(this.waypoint.destroy(),this.$element.removeClass(this.options.stuckClass),this.options.wrapper&&this.$element.unwrap())},t.defaults={wrapper:'<div class="sticky-wrapper" />',stuckClass:"stuck",direction:"down right"},i.Sticky=t}();
+// (function($) {
+	// var client = algoliasearch('16DY3X1DMY', 'efd311c980dd4dc470f5629ab96a1377')
+	// var index = client.initIndex('tr_wp_posts_page');
+
+	// $('#search-input').autocomplete({
+	// 	debug: true,
+	// 	hint: true,
+	// 	cssClasses: {
+	// 		noPrefix: true,
+	// 		root: 'col-12',
+	// 		input: '',
+	// 		dropdownMenu: 'search-header__results',
+	// 		suggestions: 'search-header__suggestions',
+	// 		suggestion: 'search-header__suggestion',
+	// 		dataset: 'search__dataset'
+	// 	},
+	//   	templates: {
+	//     	dropdownMenu: '<div class="search__dataset-1"></div>'
+	//     },
+	// 	openOnFocus: true,
+	// 	// autoselectOnBlur: false,
+	// 	autoWidth: false,
+	// }, [
+	// {
+	// 	source: $.fn.autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+	// 	displayKey: 'post_title',
+	// 	templates: {
+
+	// 		suggestion: function(suggestion) {
+	// 			var markup  = '<span class="search-header__hit">' + suggestion._highlightResult.post_title.value + '</span>';
+	//   				markup += '<div class="search-header__breadcrumbs">';
+
+	//   			for (var i = 0; i < suggestion.breadcrumbs.length; i++) {
+	//   				markup += '<span class="search-header__breadcrumb h6">' + suggestion.breadcrumbs[i] + '</span>';
+	//   				if (i !== suggestion.breadcrumbs.length - 1) {
+	//   					markup += '<svg aria-hidden="true" class="search-header__breadcrumb  icon"><use xlink:href="#arrow-right"/></svg>';
+	//   				}
+	//   			}
+	//   				markup += '</div>';
+
+	//   			return markup;
+	// 		}
+	// 	}
+	// }
+	// ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+	// 	// console.log(suggestion, dataset);
+	// 	window.location.href = suggestion.permalink;
+	// });
+// })( jQuery );
 (function($) {
 
 	function ContentNav() {
@@ -62,6 +111,48 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 	}
 
 	return new ContentNav();
+
+})( jQuery );
+(function($) {
+	var search = docsearch({
+		apiKey: '6278d32db4b0c634970c4f20b22a230c',
+		indexName: 'terapirekommendationer',
+		inputSelector: '#search-input',
+		debug: false, // Set debug to true if you want to inspect the dropdown
+		autocompleteOptions: {
+			cssClasses: {
+				root: 'algolia-autocomplete col-12',
+				prefix: 'ds'
+			}
+		}
+	});
+
+	// If no search results are shown
+	search.autocomplete.on('autocomplete:empty', debounce(function(e) {
+		ga('send', 'event', 'Search', 'search', 'Failed search');
+		ga('send', 'pageview', '/search?q=' + this.value);
+	}, 350));
+	
+	// If search results were found
+	search.autocomplete.on('autocomplete:shown', debounce(function(e) {
+		ga('send', 'pageview', '/search?q=' + this.value);
+	}, 350));
+
+	// Debounce
+	function debounce(func, wait, immediate) {
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	};
 
 })( jQuery );
 (function($) {
@@ -182,98 +273,4 @@ var Terapirekommendationer;
 	});
 
 
-	// var client = algoliasearch('16DY3X1DMY', 'efd311c980dd4dc470f5629ab96a1377')
-	// var index = client.initIndex('tr_wp_posts_page');
-	
-
-	// Smooth scrolling for anchor links
-	// https://css-tricks.com/snippets/jquery/smooth-scrolling/
-
-	// Select all links with hashes
-	// $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
-	// 	// On-page links
-	// 	if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-	// 		// Figure out element to scroll to
-	// 		var target = $(this.hash);
-	// 		target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-	// 		// Does a scroll target exist?
-	// 		if (target.length) {
-	// 			event.preventDefault();
-
-	// 			$('html, body').animate({
-	// 				scrollTop: target.offset().top - 10
-	// 			}, 800, function() {
-	// 				// Callback after animation
-	// 				// Must change focus!
-	// 				var $target = $(target);
-	// 				$target.focus();
-					
-	// 				if ($target.is(":focus")) { // Checking if the target was focused
-	// 					return false;
-	// 				}
-	// 				$target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-	// 				$target.focus(); // Set focus again
-	// 			});
-	// 		}
-	// 	}
-	// });
-
-
-	// $('#search-input').autocomplete({
-	// 	debug: true,
-	// 	hint: true,
-	// 	cssClasses: {
-	// 		noPrefix: true,
-	// 		root: 'col-12',
-	// 		input: '',
-	// 		dropdownMenu: 'search-header__results',
-	// 		suggestions: 'search-header__suggestions',
-	// 		suggestion: 'search-header__suggestion',
-	// 		dataset: 'search__dataset'
-	// 	},
-	//   	templates: {
-	//     	dropdownMenu: '<div class="search__dataset-1"></div>'
-	//     },
-	// 	openOnFocus: true,
-	// 	// autoselectOnBlur: false,
-	// 	autoWidth: false,
-	// }, [
-	// {
-	// 	source: $.fn.autocomplete.sources.hits(index, { hitsPerPage: 5 }),
-	// 	displayKey: 'post_title',
-	// 	templates: {
-
-	// 		suggestion: function(suggestion) {
-	// 			var markup  = '<span class="search-header__hit">' + suggestion._highlightResult.post_title.value + '</span>';
-	//   				markup += '<div class="search-header__breadcrumbs">';
-
-	//   			for (var i = 0; i < suggestion.breadcrumbs.length; i++) {
-	//   				markup += '<span class="search-header__breadcrumb h6">' + suggestion.breadcrumbs[i] + '</span>';
-	//   				if (i !== suggestion.breadcrumbs.length - 1) {
-	//   					markup += '<svg aria-hidden="true" class="search-header__breadcrumb  icon"><use xlink:href="#arrow-right"/></svg>';
-	//   				}
-	//   			}
-	//   				markup += '</div>';
-
-	//   			return markup;
-	// 		}
-	// 	}
-	// }
-	// ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-	// 	// console.log(suggestion, dataset);
-	// 	window.location.href = suggestion.permalink;
-	// });
-
-	var search = docsearch({
-		apiKey: '6278d32db4b0c634970c4f20b22a230c',
-		indexName: 'terapirekommendationer',
-		inputSelector: '#search-input',
-		debug: true, // Set debug to true if you want to inspect the dropdown
-		autocompleteOptions: {
-			cssClasses: {
-				root: 'algolia-autocomplete col-12',
-				prefix: 'ds'
-			}
-	 	}
-	 });
 })( jQuery );
