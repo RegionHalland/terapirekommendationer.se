@@ -150,8 +150,7 @@ var Terapirekommendationer;
 		ga('send', {
 			hitType: 'event',
 			eventCategory: 'Failed search',
-			eventAction: 'Searched for',
-			eventLabel: this.value
+			eventAction: this.value
 		});
 		ga('send', 'pageview', '/search?q=' + this.value);
 	}, 350));
