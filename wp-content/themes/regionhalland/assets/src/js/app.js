@@ -11,7 +11,4 @@ var Terapirekommendationer;
 		div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
 		document.body.insertBefore(div, document.body.childNodes[0]);
 	});
-
-	// Initialize google analytics
-	ga('create', 'UA-110777448-2', 'auto');
 })( jQuery );

@@ -25,9 +25,6 @@ var Terapirekommendationer;
 		div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
 		document.body.insertBefore(div, document.body.childNodes[0]);
 	});
-
-	// Initialize google analytics
-	ga('create', 'UA-110777448-2', 'auto');
 })( jQuery );
 
 // (function($) {
@@ -147,17 +144,22 @@ var Terapirekommendationer;
 
 	// If no search results are shown
 	search.autocomplete.on('autocomplete:empty', debounce(function(e) {
-		ga('send', {
-			hitType: 'event',
-			eventCategory: 'Failed search',
-			eventAction: this.value
-		});
-		ga('send', 'pageview', '/search?q=' + this.value);
+		window.dataLayer.push({
+			event: 'successfulSearch',
+			page: '/search?q=' + this.value
+		}, {
+            'event': 'failedSearch',
+            'eventCategory': 'Failed search',  
+            'eventAction': this.value
+        })
 	}, 350));
 	
 	// If search results were found
 	search.autocomplete.on('autocomplete:shown', debounce(function(e) {
-		ga('send', 'pageview', '/search?q=' + this.value);
+		window.dataLayer.push({
+			event: 'successfulSearch',
+			path: '/search?q=' + this.value
+		})
 	}, 350));
 
 	// Debounce
