@@ -11,7 +11,6 @@ import postcss from 'gulp-postcss'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import concat from 'gulp-concat'
-import order from 'gulp-order'
 import uglify from 'gulp-uglify'
 
 // Build CSS

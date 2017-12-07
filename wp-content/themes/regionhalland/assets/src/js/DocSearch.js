@@ -14,7 +14,12 @@
 
 	// If no search results are shown
 	search.autocomplete.on('autocomplete:empty', debounce(function(e) {
-		ga('send', 'event', 'Search', 'search', 'Failed search');
+		ga('send', {
+			hitType: 'event',
+			eventCategory: 'Search',
+			eventAction: 'search',
+			eventLabel: this.value
+		});
 		ga('send', 'pageview', '/search?q=' + this.value);
 	}, 350));
 	

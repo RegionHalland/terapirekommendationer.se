@@ -15,7 +15,6 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 var Terapirekommendationer;
 
 (function($) {
-	
 	// Load icon sprite
 	// Needs review, check browser support.
 	// https://github.com/jonathantneal/svg4everybody
@@ -27,7 +26,7 @@ var Terapirekommendationer;
 		document.body.insertBefore(div, document.body.childNodes[0]);
 	});
 
-	// Initialize GA
+	// Initialize google analytics
 	ga('create', 'UA-110777448-2', 'auto');
 })( jQuery );
 
@@ -148,7 +147,12 @@ var Terapirekommendationer;
 
 	// If no search results are shown
 	search.autocomplete.on('autocomplete:empty', debounce(function(e) {
-		ga('send', 'event', 'Search', 'search', 'Failed search');
+		ga('send', {
+			hitType: 'event',
+			eventCategory: 'Search',
+			eventAction: 'search',
+			eventLabel: this.value
+		});
 		ga('send', 'pageview', '/search?q=' + this.value);
 	}, 350));
 	

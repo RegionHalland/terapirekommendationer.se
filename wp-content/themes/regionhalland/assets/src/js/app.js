@@ -12,6 +12,6 @@ var Terapirekommendationer;
 		document.body.insertBefore(div, document.body.childNodes[0]);
 	});
 
-	// Initialize GA
+	// Initialize google analytics
 	ga('create', 'UA-110777448-2', 'auto');
 })( jQuery );
