@@ -16,8 +16,8 @@
 	search.autocomplete.on('autocomplete:empty', debounce(function(e) {
 		ga('send', {
 			hitType: 'event',
-			eventCategory: 'Search',
-			eventAction: 'search',
+			eventCategory: 'Failed search',
+			eventAction: 'Searched for',
 			eventLabel: this.value
 		});
 		ga('send', 'pageview', '/search?q=' + this.value);
