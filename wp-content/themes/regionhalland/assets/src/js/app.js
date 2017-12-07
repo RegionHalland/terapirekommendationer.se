@@ -1,7 +1,6 @@
 var Terapirekommendationer;
 
 (function($) {
-	
 	// Load icon sprite
 	// Needs review, check browser support.
 	// https://github.com/jonathantneal/svg4everybody
@@ -13,5 +12,6 @@ var Terapirekommendationer;
 		document.body.insertBefore(div, document.body.childNodes[0]);
 	});
 
-
+	// Initialize GA
+	ga('create', 'UA-110777448-2', 'auto');
 })( jQuery );

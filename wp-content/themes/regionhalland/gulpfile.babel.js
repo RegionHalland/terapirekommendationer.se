@@ -11,6 +11,7 @@ import postcss from 'gulp-postcss'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import concat from 'gulp-concat'
+import order from 'gulp-order'
 import uglify from 'gulp-uglify'
 
 // Build CSS
@@ -38,7 +39,7 @@ gulp.task('css:dist', () => {
 // Build JS
 gulp.task('js:dist', () => {
 	// App
-	gulp.src(['./assets/src/js/vendor/*.js', './assets/src/js/*.js'])
+	gulp.src(['./assets/src/js/vendor/*.js', './assets/src/js/app.js', './assets/src/js/*.js'])
 		.pipe(plumber({
 			errorHandler: error => {
 				gutil.beep()
