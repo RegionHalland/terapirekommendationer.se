@@ -10,3 +10,17 @@ thead,
 .table__subheader {
     background: #DDEEF9 !important;
 }
+
+.article table figure {
+	display: inline-block;
+	width: auto;
+	text-align: inherit;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+img[src*="generiskt-utbyte.svg"] {
+	display: inline-block;
+	width: 24px !important;
+	max-height: 36px !important;
+}

@@ -222,6 +222,25 @@ summary {
 			margin-top:    $space-pt-1;
 			margin-bottom: $space-pt-1;
 		}
+
+		// Remove figure tag in tables
+		figure {
+			display: inline-block;
+			width: auto;
+			text-align: inherit;
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+			border: 0;
+			
+			img {
+				padding: 0;
+			}
+		}
+
+		img[src*="generiskt-utbyte"] {
+			display: inline-block;
+			width: 24px !important;
+		}
 	}
 
 	thead,
