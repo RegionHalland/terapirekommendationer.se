@@ -1,6 +1,6 @@
 <ul>
     <li class="inline-block">
-        <a class="share-social-mail" data-action="share-popup" href="mailto:?mailto:?body={!! urlencode(wp_get_shortlink()) !!}" data-tooltip="<?php _e('Share on', 'regionhalland'); ?> Mail">
+        <a class="share-social-mail" data-action="share-popup" href="mailto:?mailto:?body={!! urlencode(the_permalink()) !!}" data-tooltip="<?php _e('Share on', 'regionhalland'); ?> Mail">
             <span><?php _e('Dela på ', 'regionhalland'); ?> Mail</span>
         </a>
     </li>
