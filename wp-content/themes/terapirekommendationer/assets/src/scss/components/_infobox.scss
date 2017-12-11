@@ -1,19 +1,12 @@
 .infobox--border,
 .infobox--background {
     display: inline-block;
+    background: #ddeef9;
     padding: 1rem 1rem 0    ;
 
     & > * {
         margin-top: 0 !important;
     }
-}
-
-.infobox--border {
-    border: 3px solid #00579d;
-}
-
-.infobox--background {
-    background: #ddeef9;
 }
 
 .infobox--elderly {
