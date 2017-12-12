@@ -22,6 +22,12 @@ class CustomTemplates
             \RegionHalland\Helper\Template::locateTemplate('all-headings.blade.php'),
             'all'
         );
+
+        \RegionHalland\Helper\Template::add(
+            __('All Reklistor', 'Terapirekommendationer'),
+            \RegionHalland\Helper\Template::locateTemplate('all-reklistor.blade.php'),
+            'all'
+        );
     }
 
 }

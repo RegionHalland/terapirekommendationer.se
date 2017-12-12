@@ -16,6 +16,9 @@ class Enqueue
         // Set front-page template
         add_action( 'init', array($this, 'tr_set_frontpage') );
 
+        // Get posts by post_title
+        add_filter( 'posts_where', array($this, 'title_like_posts_where'), 10, 2 );
+
         // Image plugin
         add_action('wp_enqueue_media', $func =
             function() {
@@ -106,6 +109,18 @@ class Enqueue
     function tr_set_frontpage() {
         $frontpageId = get_option('page_on_front');
         update_post_meta($frontpageId, '_wp_page_template', 'page.blade.php');
+    }
+
+    /**
+     * Add option to look for posts where post_title is *
+     * @return string
+     */
+    function title_like_posts_where( $where, $wp_query ) {
+        global $wpdb;
+        if ( $post_title_like = $wp_query->get( 'post_title_like' ) ) {
+            $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( $wpdb->esc_like( $post_title_like ) ) . '%\'';
+        }
+        return $where;
     }
 
 // create a URL to the child theme
