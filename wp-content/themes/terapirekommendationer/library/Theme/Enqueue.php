@@ -13,6 +13,9 @@ class Enqueue
         // Enqueue admin styles
         add_action( 'admin_enqueue_scripts', array($this, 'tr_admin_styles'));
 
+        // Set front-page template
+        add_action( 'init', array($this, 'tr_set_frontpage') );
+
         // Image plugin
         add_action('wp_enqueue_media', $func =
             function() {
@@ -95,7 +98,15 @@ class Enqueue
     {
         add_editor_style(apply_filters('editor', 'assets/dist/css/editor.min.css'));
     }
-
+    
+    /**
+     * Set front-page to page.blade.php
+     * @return void
+     */
+    function tr_set_frontpage() {
+        $frontpageId = get_option('page_on_front');
+        update_post_meta($frontpageId, '_wp_page_template', 'page.blade.php');
+    }
 
 // create a URL to the child theme
 function get_template_directory_child() {
