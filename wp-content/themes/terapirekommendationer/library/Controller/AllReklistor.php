@@ -16,12 +16,12 @@ use Philo\Blade\Blade;
 
 class AllReklistor extends \RegionHalland\Controller\BaseController
 {
-    public function init()
-    {	
+	public function init()
+	{	
 		$args = array(
 			'post_type'       => 'page',
 			'posts_per_page'  => -1,
-		    'post_title_like' => 'Rekommenderade läkemedel'
+			'post_title_like' => 'Rekommenderade läkemedel'
 		);
 		$pages = new \WP_Query( $args );
 		$pages = $pages->get_posts();
@@ -43,6 +43,26 @@ class AllReklistor extends \RegionHalland\Controller\BaseController
 			return $a->parent_menu_order <=> $b->parent_menu_order;
 		});
 
- 		$this->data['lists'] = $lists;
-    }
+		$this->data['lists'] = $lists;
+
+
+		// $this->VIEWS_PATHS = apply_filters('RegionHalland/blade/view_paths', array(
+		// 	get_stylesheet_directory() . '/views',
+		// 	get_template_directory() . '/views'
+		// ));
+		// $this->CACHE_PATH = WP_CONTENT_DIR . '/uploads/cache/blade-cache';
+
+		// $blade = new Blade($this->VIEWS_PATHS, $this->CACHE_PATH);
+
+		// $myString = $blade->view()->make('all-reklistor', [
+		// 	'lists' => $lists
+		// ])->render();
+
+		// $htmlDir = 'wp-content/themes/terapirekommendationer/assets/dist/html/';
+
+		// if ( !is_dir($htmlDir) ) {
+		// 	mkdir($htmlDir);
+		// }
+		// echo file_put_contents($htmlDir . 'rek.html', $myString);
+	}
 }

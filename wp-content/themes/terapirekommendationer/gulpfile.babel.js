@@ -75,6 +75,11 @@ gulp.task('generate-pdf', ['css:dist'], shell.task([
 	'prince --javascript assets/dist/html/tr.html'
 ]))
 
+gulp.task('generate-pdf:rek', ['css:dist'], shell.task([
+	'prince --javascript assets/dist/html/rek.html'
+]))
+
+
 // Browsersync
 gulp.task('browsersync', () => {
 	browsersync.init({
