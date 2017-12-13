@@ -27,6 +27,9 @@ class Enqueue
             }
         );
 
+        // Allow SVG uploads
+        add_filter('upload_mimes', array($this, 'cc_mime_types') );
+
         // Attach callback to 'tiny_mce_before_init' 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_modify_block_formats') ); 
         add_filter( 'tiny_mce_before_init', array($this, 'tr_extended_valid_elements') );
@@ -100,6 +103,11 @@ class Enqueue
     function editorStyle()
     {
         add_editor_style(apply_filters('editor', 'assets/dist/css/editor.min.css'));
+    }
+
+    function cc_mime_types($mimes) {
+        $mimes['svg'] = 'image/svg+xml';
+        return $mimes;
     }
     
     /**
