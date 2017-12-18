@@ -122,7 +122,7 @@ summary {
 	body {
 		font-family: $font-serif;
 		line-height: 1;
-		font-size: 10pt;
+		font-size: 8pt;
 
 		// Demonstrate the vertical rhythm at 6pt
 		// background-image: linear-gradient(rgba(255,0,0,0.125) 1pt, transparent 1pt);
@@ -151,7 +151,6 @@ summary {
 		margin-top: 18pt;
 		margin-bottom: $space-pt-1;
 		color: $blue;
-		page-break-inside: avoid;
 	}
 
 	h3 {
@@ -217,11 +216,6 @@ summary {
 		page-break-inside: avoid;
 		column-span: none;
 
-		&.column-span-all {
-			margin-top:    $space-pt-1;
-			margin-bottom: $space-pt-1;
-		}
-
 		// Remove figure tag in tables
 		figure {
 			display: inline-block;
@@ -236,9 +230,15 @@ summary {
 			}
 		}
 
-		img[src*="generiskt-utbyte"] {
+		img[src*="generiskt-utbyte.svg"],
+		img[src*="kommunalt_lakemedelsforrad.svg"] {
 			display: inline-block;
-			width: 24px !important;
+			width:      12pt !important;
+			min-width:  12pt !important;
+			max-width:  12pt !important;
+			height:     7pt !important;
+			min-height: 7pt !important;
+			max-height: 7pt !important;
 		}
 	}
 
@@ -253,7 +253,9 @@ summary {
 	}
 
 	.table__subheader {
-		background: $light-blue !important;
+		background: $blue !important;
+		font-size: 10pt;
+		color: white;
 		font-weight: 700 !important;
 	}
 
@@ -268,7 +270,7 @@ summary {
 	}
 
 	td {
-		padding: 4pt 4pt;
+		padding: 1pt 1pt;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 		box-sizing: border-box;
@@ -288,8 +290,8 @@ summary {
 	td[style],
 	thead[style],
 	tbody[style] {
-		width:  none !important;
-		height: none !important;
+		width:  auto!important;
+		height: auto!important;
 	}
 
 	img {
@@ -418,19 +420,30 @@ summary {
 		}
 	}
 
+	@page {
+		@bottom-center {
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13.36 8.07' fill='%23009640'%3E%3Cpath d='M13.36%2C1.75%2C10.34%2C0V1.25H2.42A2.35%2C2.35%2C0%2C0%2C0%2C.07%2C3.6V5.71l1-.58V3.6A1.34%2C1.34%2C0%2C0%2C1%2C2.42%2C2.25h7.92V3.49Z'/%3E%3Cpath d='M12.29%2C2.94V4.47a1.35%2C1.35%2C0%2C0%2C1-1.35%2C1.35H3V4.58L0%2C6.32%2C3%2C8.07V6.82h7.92a2.35%2C2.35%2C0%2C0%2C0%2C2.35-2.35V2.4Z'/%3E%3C/svg%3E");
+			background-size: 13px 8px;
+			background-repeat: no-repeat;
+			background-position: 83px 15px;
+			font-family: $font-sans;
+			font-size: 6pt;
+			line-height: 1;
+			content: ' = kan bli föremål för utbyte på apotek';
+		}
+	}
 
 	//Table of contents - Needs review
 	.table-of-contents {
 		font-family: $font-sans;
 		padding: 0;
-		margin: 10mm 0mm 0mm 0mm;
-		column-count:2;
-		column-gap:10mm;
-		page-break-after:always;
+		page-break-after: always;
 		list-style:none;
+
 		&__header {
 			color:black;
 		}
+
 		&__chapter, &__subchapter {
 			a {
 				text-decoration: none;
@@ -439,12 +452,9 @@ summary {
 			}
 		}
 		&__chapter {
-			font-size: 10pt;
-			margin-top: 2mm;
-			margin-bottom: 2mm;		
-			font-weight: bold;
+			margin-top:    1mm;
+			margin-bottom: 1mm;
 			list-style: none;
-			color: $blue;
 		}
 		&__subchapter {
 			padding-left:1em;
@@ -533,6 +543,14 @@ summary {
 	.column-span-none { column-span: none !important; }
 
 	.figurecomment { display: none !important; }
+
+	.hide {
+		height: 0;
+		width: 0;
+		opacity: 0;
+		position: absolute;
+	}
+
 }
 
 /* COMPONENTS */
