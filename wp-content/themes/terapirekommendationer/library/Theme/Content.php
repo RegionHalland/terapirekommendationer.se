@@ -33,8 +33,10 @@ class Content
     function auto_wrap_tables($content) {
         $content = HtmlDomParser::str_get_html($content);
         
-        foreach ($content->find('table') as $element) 
-            $element->outertext = '<div class="table-container">' . $element . '</div>';
+        if ($content) {
+            foreach ($content->find('table') as $element) 
+                $element->outertext = '<div class="table-container">' . $element . '</div>';
+        }
 
         return $content;
     }
