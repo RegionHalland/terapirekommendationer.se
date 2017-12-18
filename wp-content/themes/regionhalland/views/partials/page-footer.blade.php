@@ -4,7 +4,7 @@
 		<svg class="icon">
 			<use xlink:href="#share"/>
 		</svg>
-	    <strong><?php _e('Share the page', 'regionhalland'); ?>:</strong> {{ the_title() }}
+	    <strong><?php _e('Dela denna sida', 'regionhalland'); ?>:</strong> {{ the_title() }}
 	                    @include('partials.social-share')
 	@endif
 	<div>
