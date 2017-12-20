@@ -35,7 +35,7 @@ class Enqueue
         add_filter( 'tiny_mce_before_init', array($this, 'tr_extended_valid_elements') );
         //add_filter( 'tiny_mce_before_init', array($this, 'my_mce_before_init') );
         add_filter( 'tiny_mce_before_init', array($this, 'my_mce4_options') );
-        add_filter( 'tiny_mce_before_init', array($this, 'tr_tinymce_body_class') );
+        // add_filter( 'tiny_mce_before_init', array($this, 'tr_tinymce_body_class') );
         
         // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
         add_filter( 'mce_external_plugins', array($this, 'myplugin_register_tinymce_javascript'));
@@ -267,10 +267,10 @@ function tr_extended_valid_elements( $init ) {
     return $init;
 }
 
-function tr_tinymce_body_class( $mce ) {
-    $mce['body_class'] .= ' article';
-    return $mce;
-}
+// function tr_tinymce_body_class( $mce ) {
+//     $mce['body_class'] .= ' article';
+//     return $mce;
+// }
 
 
 

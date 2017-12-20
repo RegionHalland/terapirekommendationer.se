@@ -4,6 +4,7 @@ namespace Terapirekommendationer\Controller;
 
 use PrinceXMLPhp\PrinceWrapper;
 use Philo\Blade\Blade;
+use Sunra\PhpSimple\HtmlDomParser;
 
 /**
  * To add a custom template and load it's controller do the following:
@@ -14,37 +15,23 @@ use Philo\Blade\Blade;
  *    \Municipio\Helper\Template::add(__('Custom template', 'municipio'), \Municipio\Helper\Template::locateTemplate('custom-template-view.blade.php'));
  */
 
-class AllReklistor extends \RegionHalland\Controller\BaseController
+class AllReklistorSsk extends \RegionHalland\Controller\BaseController
 {
 	public function init()
 	{	
-		$args = array(
-			'post_type'       => 'page',
-			'posts_per_page'  => -1,
-			'post_title_like' => 'Rekommenderade läkemedel'
-		);
-		$pages = new \WP_Query( $args );
-		$pages = $pages->get_posts();
+		global $post;
+		
+		$content = HtmlDomParser::str_get_html($post->post_content);
+        
+        $lists = $content->find('table[class=table]');
 
-		$lists = array();
+       	foreach ($lists as $key => $list) {
+			$lists[$key]->heading =
+				$content->find('thead[class=table__header]', $key)->children(0)->children(0)->innertext;
+       	}
 
-		foreach ($pages as $key => $page) {
-			$parent = get_post($page->post_parent);
-
-			if ( isset($parent) ) {
-				$page->parent_menu_order = $parent->menu_order;
-				$page->parent_title = $parent->post_title;
-			}
-
-			array_push($lists, $page);
-		}
-
-		usort($lists, function($a, $b) {
-			return $a->parent_menu_order <=> $b->parent_menu_order;
-		});
-
-		$this->data['lists'] = $lists;
-
+        $this->data['lists'] = $lists;
+    
 		$this->VIEWS_PATHS = apply_filters('RegionHalland/blade/view_paths', array(
 			get_stylesheet_directory() . '/views',
 			get_template_directory() . '/views'
@@ -52,8 +39,10 @@ class AllReklistor extends \RegionHalland\Controller\BaseController
 		$this->CACHE_PATH = WP_CONTENT_DIR . '/uploads/cache/blade-cache';
 
 		$blade = new Blade($this->VIEWS_PATHS, $this->CACHE_PATH);
+		
+		$blade->view()->make('all-reklistor')->render();
 
-		$myString = $blade->view()->make('all-reklistor', [
+		$myString = $blade->view()->make('all-reklistor-ssk', [
 			'lists' => $lists
 		])->render();
 
@@ -62,6 +51,6 @@ class AllReklistor extends \RegionHalland\Controller\BaseController
 		if ( !is_dir($htmlDir) ) {
 			mkdir($htmlDir);
 		}
-		echo file_put_contents($htmlDir . 'rek.html', $myString);
+		echo file_put_contents($htmlDir . 'rek-ssk.html', $myString);
 	}
 }

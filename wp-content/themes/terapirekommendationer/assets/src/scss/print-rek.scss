@@ -38,6 +38,14 @@ $h6: 10pt;
 // $h6:;
 
 @font-face {
+	font-family: 'custom-icon-font';
+	src: url('../fonts/custom-icons.woff') format('woff');
+	font-weight: 700;
+	font-style:  normal;
+}
+
+
+@font-face {
 	font-family: 'scala-sans';
 	src: url('../fonts/scalasans-bold-webfont.woff2') format('woff2'),
 		 url('../fonts/scalasans-bold-webfont.woff') format('woff');
@@ -205,6 +213,14 @@ summary {
 		line-height: 1.25;
 	}
 
+	.list {
+		page-break-after: always;
+	}
+
+	table.table thead {
+		display: table-header-group;
+	}
+
 	table {
 		// table-layout: fixed;
 		width: 100%;
@@ -344,17 +360,17 @@ summary {
 	}
 
 	//Styles for chapter marker
-    .chapter-header {
-        flow: static(chapterHeader);
-        content: counter(chapter); 
-        font-size:12pt;
-        font-family: source-sans-pro;
-        text-align: center;
-        padding:0.33em;
-        font-weight:bold;
-        color:white;
-        background-color:$blue;
-    }
+	.chapter-header {
+		flow: static(chapterHeader);
+		content: counter(chapter); 
+		font-size:12pt;
+		font-family: source-sans-pro;
+		text-align: center;
+		padding:0.33em;
+		font-weight:bold;
+		color:white;
+		background-color:$blue;
+	}
 
 	//Adjusts margins for print
 	@page :left {
@@ -367,69 +383,50 @@ summary {
 	// Loops through chapters and adds page numbers, chapter title and lastly chapter number 
 	// based on hardcoded chapter-number div
 	@for $i from 1 through $chapterLength {
-		.section:nth-child(#{$chapterLength}n + #{$i}) {
+		.list:nth-child(#{$chapterLength}n + #{$i}) {
 			page:chapter#{$i};
 		}
-		@page chapter#{$i} {
-			@right-top {
-				padding-top:#{$i * 0.25}cm;
-			}
-			@left-top{
-				padding-top:#{$i * 0.25}cm;
-			}
-		}
+
 		@page chapter#{$i}:left {
 			@bottom-left { 
-			  content: counter(page); 
-			  font-family: source-sans-pro;
-			  font-size:10pt;
-			  font-weight:bold;
-			  margin-left:5mm;
-			  margin-bottom:5mm;
+				content: counter(page);
+				font-family: $font-sans; 
+				font-size: 8pt;
+				font-weight: bold;
 			}
+			
 			@left-top { 
-			  content: element(chapterHeader);
-			}
-			@bottom-right {
-			  content: 'Kapitel ' counter(chapter) ' · ' string(chapterName); 
-			  font-size:10pt;
-			  margin-right:5mm;
-			  margin-bottom:5mm;
-			  font-family: source-sans-pro;
+				content: element(chapterHeader);
 			}
 		}
+
 		@page chapter#{$i}:right {
 			@bottom-right { 
 				content: counter(page);
-				font-family: source-sans-pro; 
-				font-size:10pt;
-				font-weight:bold;
-				margin-right:5mm;
-				margin-bottom:5mm;
+				font-family: $font-sans; 
+				font-size: 8pt;
+				font-weight: bold;
 			}
+			
 			@right-top { 
 				content: element(chapterHeader);
 			}
-			@bottom-left {
-				content: 'Kapitel ' counter(chapter) ' · ' string(chapterName);
-				font-family: source-sans-pro;
-				font-size:10pt;
-				margin-left:5mm;
-				margin-bottom:5mm;
-			}
 		}
-	}
 
-	@page {
-		@bottom-center {
-			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13.36 8.07' fill='%23009640'%3E%3Cpath d='M13.36%2C1.75%2C10.34%2C0V1.25H2.42A2.35%2C2.35%2C0%2C0%2C0%2C.07%2C3.6V5.71l1-.58V3.6A1.34%2C1.34%2C0%2C0%2C1%2C2.42%2C2.25h7.92V3.49Z'/%3E%3Cpath d='M12.29%2C2.94V4.47a1.35%2C1.35%2C0%2C0%2C1-1.35%2C1.35H3V4.58L0%2C6.32%2C3%2C8.07V6.82h7.92a2.35%2C2.35%2C0%2C0%2C0%2C2.35-2.35V2.4Z'/%3E%3C/svg%3E");
-			background-size: 13px 8px;
-			background-repeat: no-repeat;
-			background-position: 83px 15px;
-			font-family: $font-sans;
-			font-size: 6pt;
-			line-height: 1;
-			content: ' = kan bli föremål för utbyte på apotek';
+		// Adds "generiskt utbyte" icon to the bottom of the page
+		@page chapter#{$i} {
+			@bottom-center {
+				background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13.36 8.07' fill='%23009640'%3E%3Cpath d='M13.36%2C1.75%2C10.34%2C0V1.25H2.42A2.35%2C2.35%2C0%2C0%2C0%2C.07%2C3.6V5.71l1-.58V3.6A1.34%2C1.34%2C0%2C0%2C1%2C2.42%2C2.25h7.92V3.49Z'/%3E%3Cpath d='M12.29%2C2.94V4.47a1.35%2C1.35%2C0%2C0%2C1-1.35%2C1.35H3V4.58L0%2C6.32%2C3%2C8.07V6.82h7.92a2.35%2C2.35%2C0%2C0%2C0%2C2.35-2.35V2.4Z'/%3E%3C/svg%3E");
+				background-size: 13px 8px;
+				background-repeat: no-repeat;
+				background-position: 43px 15px;
+				font-family: $font-sans;
+				font-size: 6pt;
+				line-height: 1;
+				width: 60%;
+				padding-left: 24px;
+				content: ' = kan bli föremål för utbyte på apotek';
+			}
 		}
 	}
 
