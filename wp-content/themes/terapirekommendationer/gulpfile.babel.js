@@ -79,11 +79,15 @@ gulp.task('generate-pdf:rek', ['css:dist'], shell.task([
 	'prince --javascript assets/dist/html/rek.html'
 ]))
 
+gulp.task('generate-pdf:rek-ssk', ['css:dist'], shell.task([
+	'prince --javascript assets/dist/html/rek-ssk.html'
+]))
+
 
 // Browsersync
 gulp.task('browsersync', () => {
 	browsersync.init({
-		proxy: 'tr.app'
+		proxy: 'tr.test'
 	});
 })
 
@@ -95,8 +99,10 @@ gulp.task('bs-reload', () => {
 // Watch
 gulp.task('watch', ['js:dist', 'css:dist', 'fonts:dist', 'browsersync'], () => {
 	gulp.watch('./assets/src/scss/**/*.scss', ['css:dist', 'bs-reload']);
+	gulp.watch('./assets/src/scss/print-rek.scss', ['css:dist', 'generate-pdf:rek']);
+	gulp.watch('./assets/src/scss/print.scss', ['css:dist', 'generate-pdf']);
 	gulp.watch(['./assets/src/js/**/*.js', 'assets/src/mce-js/**/*.js'], ['js:dist', 'bs-reload']);
 })
 
 // Default build
-gulp.task('default', ['css:dist', 'fonts:dist', 'js:dist', 'generate-pdf'])
+gulp.task('default', ['css:dist', 'fonts:dist', 'js:dist', 'generate-pdf', 'generate-pdf:rek'])
