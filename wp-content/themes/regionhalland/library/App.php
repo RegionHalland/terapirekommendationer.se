@@ -16,7 +16,6 @@ class App
 		*/
 		new \RegionHalland\Theme\Navigation();
 		new \RegionHalland\Theme\Enqueue();
-		new \RegionHalland\Theme\General();
 
 		/**
 		* Admin
@@ -43,7 +42,7 @@ class App
 	   // */
 	   //new \RegionHalland\Theme\Enqueue();
 	   //new \RegionHalland\Theme\Support();
-	   //new \RegionHalland\Theme\Sidebars();
+	   new \RegionHalland\Theme\Sidebars();
 	   //new \RegionHalland\Theme\Navigation();
 	   //new \RegionHalland\Theme\General();
 	   //new \RegionHalland\Theme\OnTheFlyImages();
