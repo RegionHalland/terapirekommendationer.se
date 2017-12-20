@@ -28,6 +28,19 @@ class CustomTemplates
             \RegionHalland\Helper\Template::locateTemplate('all-reklistor.blade.php'),
             'all'
         );
+
+        \RegionHalland\Helper\Template::add(
+            __('All Reklistor (Sjuksköterskor)', 'Terapirekommendationer'),
+            \RegionHalland\Helper\Template::locateTemplate('all-reklistor-ssk.blade.php'),
+            'all'
+        );
+
+        // Demo
+        \RegionHalland\Helper\Template::add(
+            __('Demo', 'Terapirekommendationer'),
+            \RegionHalland\Helper\Template::locateTemplate('demo.blade.php'),
+            'all'
+        );        
     }
 
 }
