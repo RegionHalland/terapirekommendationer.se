@@ -6,12 +6,14 @@
 @import 'settings/settings';
 
 // Mixins
+@import 'mixins/palette';
 
 // Base
 
 // Config
 
 // Components
+@import 'components/article';
 @import 'components/figure-comments';
 @import 'components/infobox';
 @import 'components/table';
