@@ -440,9 +440,11 @@ summary {
 		column-gap:10mm;
 		page-break-after:always;
 		list-style:none;
+		
 		&__header {
 			color:black;
 		}
+
 		&__chapter, &__subchapter {
 			a {
 				text-decoration: none;
@@ -450,6 +452,7 @@ summary {
 				content: leader('.') target-counter(attr(href, url), page);
 			}
 		}
+
 		&__chapter {
 			font-size: 10pt;
 			margin-top: 2mm;
@@ -458,9 +461,15 @@ summary {
 			list-style: none;
 			color: $blue;
 		}
+
 		&__subchapter {
 			padding-left:1em;
 			font-size:10pt;
+		}
+
+		a:link:after, 
+		a:visited:after { 
+			content: '';
 		}
 	}
 
