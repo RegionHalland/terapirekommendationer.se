@@ -25,7 +25,8 @@ $space-pt-6: 36pt;
 
 // Typography
 $font-sans: scala-sans, sans;
-$font-serif: TimesNewRoman, "Times New Roman", Times, Georgia, Baskerville, serif;
+$font-sans-caps: scala-sans-caps, sans;
+$font-serif: minion-pro, TimesNewRoman, "Times New Roman", Times, Georgia, Baskerville, serif;
 
 // Typescale
 $h1: 24pt;
@@ -85,6 +86,39 @@ $h6: 10pt;
 	font-style:  normal;
 }
 
+@font-face {
+    font-family: 'minion-pro';
+    src: url('../fonts/MinionPro-It.woff2') format('woff2'),
+        url('../fonts/MinionPro-It.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'minion-pro';
+    src: url('../fonts/MinionPro-BoldIt.woff2') format('woff2'),
+        url('../fonts/MinionPro-BoldIt.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'minion-pro';
+    src: url('../fonts/MinionPro-Bold.woff2') format('woff2'),
+        url('../fonts/MinionPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minion-pro';
+    src: url('../fonts/MinionPro-Regular.woff2') format('woff2'),
+        url('../fonts/MinionPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 // Normalize
 article,
 aside,
@@ -103,6 +137,11 @@ summary {
 }
 
 @media print {
+
+	@page {
+		prince-bleed: 3mm;
+		marks: crop;
+	}
 
 	/*@prince-pdf {
 		prince-pdf-page-layout: two-column
@@ -151,9 +190,12 @@ summary {
 		font-size: $h2;
 		line-height: 1;
 		margin-top: 18pt;
-		margin-bottom: $space-pt-1;
+		padding-bottom: $space-pt-1;
+		margin-bottom: $space-pt-2;
 		color: $blue;
 		page-break-inside: avoid;
+		column-span: all;
+		border-bottom: 0.5pt solid #d5d5d5;
 	}
 
 	h3 {
@@ -179,6 +221,7 @@ summary {
 	}
 	
 	a {
+		color: $blue;
 		word-wrap: break-word;
 	}
 	
@@ -188,8 +231,13 @@ summary {
 		content: " ("attr(href)")";
 	}
 
-	p {
+	p {	
+		font-family: $font-serif;
+		line-height: 1;
+		font-size: 10pt;
 		display: block;
+		text-align: justify;
+		prince-text-justify: auto;
 		font-size: 10pt;
 		line-height: 1.25;
 		margin-bottom: $space-pt-1;
@@ -209,7 +257,8 @@ summary {
 	}
 
 	table {
-		// table-layout: fixed;
+		// table-layout: auto;
+		// float: bottom;
 		width: 100%;
 		box-sizing: border-box;
 		border-collapse: collapse;
@@ -256,6 +305,7 @@ summary {
 		background: $blue;
 		letter-spacing: 0.25pt;
 		color: white;
+		font-weight: 700;
 		text-align: center;
 	}
 
@@ -275,7 +325,7 @@ summary {
 	}
 
 	td {
-		padding: 4pt 4pt;
+		padding: 4pt;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 		box-sizing: border-box;
@@ -341,7 +391,7 @@ summary {
 	.section {
 		counter-increment: chapter;
 		h1 {
-			// string-set: chapterName content();
+			string-set: chapterName content();
 			// &::before {
 			// 	content: 'Kapitel ' counter(chapter) ' · '; 
 			// } 
@@ -357,13 +407,13 @@ summary {
     .chapter-header {
         flow: static(chapterHeader);
         content: counter(chapter); 
-        font-size:12pt;
-        font-family: source-sans-pro;
+        font-size: 12pt;
+        font-family: $font-sans;
         text-align: center;
-        padding:0.33em;
-        font-weight:bold;
-        color:white;
-        background-color:$blue;
+        padding: $space-pt-1;
+        font-weight: bold;
+        color: white;
+        background-color: $blue;
     }
 
 	//Adjusts margins for print
@@ -377,9 +427,11 @@ summary {
 	// Loops through chapters and adds page numbers, chapter title and lastly chapter number 
 	// based on hardcoded chapter-number div
 	@for $i from 1 through $chapterLength {
+		
 		.section:nth-child(#{$chapterLength}n + #{$i}) {
 			page:chapter#{$i};
 		}
+
 		@page chapter#{$i} {
 			@right-top {
 				padding-top:#{$i * 0.25}cm;
@@ -388,44 +440,54 @@ summary {
 				padding-top:#{$i * 0.25}cm;
 			}
 		}
+
 		@page chapter#{$i}:left {
 			@bottom-left { 
-			  content: counter(page); 
-			  font-family: source-sans-pro;
-			  font-size:10pt;
-			  font-weight:bold;
-			  margin-left:5mm;
-			  margin-bottom:5mm;
+				content: counter(page); 
+				font-family: $font-sans;
+				font-weight: 400;
+				font-size: 9pt;
+				margin-left: 5mm;
+				margin-bottom: 5mm;
 			}
+
 			@left-top { 
-			  content: element(chapterHeader);
+				content: element(chapterHeader);
 			}
+
 			@bottom-right {
-			  content: 'Kapitel ' counter(chapter) ' · ' string(chapterName); 
-			  font-size:10pt;
-			  margin-right:5mm;
-			  margin-bottom:5mm;
-			  font-family: source-sans-pro;
+				// content: 'Kapitel ' counter(chapter) ' · ' string(chapterName);
+				content: string(chapterName); 
+				font-family: $font-sans;
+				font-weight: 400;
+				font-size: 9pt;			  
+				margin-right: 5mm;
+				margin-bottom: 5mm;
 			}
 		}
+
 		@page chapter#{$i}:right {
-			@bottom-right { 
+			@bottom-right {
 				content: counter(page);
-				font-family: source-sans-pro; 
-				font-size:10pt;
-				font-weight:bold;
-				margin-right:5mm;
-				margin-bottom:5mm;
+				font-family: $font-sans;
+				font-weight: 400;
+				font-size: 9pt;
+				margin-right: 5mm;
+				margin-bottom: 5mm;
 			}
+
 			@right-top { 
 				content: element(chapterHeader);
 			}
+
 			@bottom-left {
-				content: 'Kapitel ' counter(chapter) ' · ' string(chapterName);
-				font-family: source-sans-pro;
-				font-size:10pt;
-				margin-left:5mm;
-				margin-bottom:5mm;
+				// content: 'Kapitel ' counter(chapter) ' · ' string(chapterName);
+				content: string(chapterName);
+				font-family: $font-sans;
+				font-weight: 400;
+				font-size: 9pt;
+				margin-left: 5mm;
+				margin-bottom: 5mm;
 			}
 		}
 	}
@@ -437,18 +499,18 @@ summary {
 		padding: 0;
 		margin: 10mm 0mm 0mm 0mm;
 		column-count:2;
-		column-gap:10mm;
+		column-gap: 10mm;
 		page-break-after:always;
 		list-style:none;
-		
+
 		&__header {
-			color:black;
+			color: black;
 		}
 
 		&__chapter, &__subchapter {
 			a {
 				text-decoration: none;
-				color:$blue;
+				color: $blue;
 				content: leader('.') target-counter(attr(href, url), page);
 			}
 		}
@@ -463,8 +525,8 @@ summary {
 		}
 
 		&__subchapter {
-			padding-left:1em;
-			font-size:10pt;
+			padding-left: 1em;
+			font-size: 10pt;
 		}
 
 		a:link:after, 
@@ -491,7 +553,7 @@ summary {
 		height: 400px;
 		-webkit-print-color-adjust: exact; 
 		width: 100%;
-		background:#eaeaea;
+		background: #eaeaea;
 	}
 
 	// Infoboxes
@@ -543,6 +605,7 @@ summary {
 		text-transform: uppercase;
 		font-weight: 700;
 		font-family: $font-sans;
+		padding: 4pt;
 	}
 	
 	.infobox__content {
