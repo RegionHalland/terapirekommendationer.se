@@ -226,10 +226,10 @@ summary {
 	}
 	
 	// Show the actual link
-	a:link:after, 
-	a:visited:after { 
-		content: " ("attr(href)")";
-	}
+	// a:link:after, 
+	// a:visited:after { 
+	// 	content: " ("attr(href)")";
+	// }
 
 	p {	
 		font-family: $font-serif;
@@ -268,8 +268,16 @@ summary {
 		column-span: none;
 
 		&.column-span-all {
-			margin-top:    $space-pt-1;
-			margin-bottom: $space-pt-1;
+			margin-top:    $space-pt-2;
+			margin-bottom: $space-pt-2;
+			column-span: all !important;
+			// float: prince-snap;
+		}
+
+		&.column-span-all--no-float { 
+			margin-top:    $space-pt-2;
+			margin-bottom: $space-pt-2;
+			column-span: all !important;
 		}
 
 		// Remove figure tag in tables
@@ -318,7 +326,7 @@ summary {
 		width: 100%;
 		box-sizing: border-box;
 		border-collapse: collapse;
-	} 
+	}
 	
 	tbody tr:nth-child(odd) {
 		background: #f9f9f9;
@@ -333,6 +341,10 @@ summary {
 		border-collapse: collapse;
 	}
 	
+	td[style] {
+		height: auto !important;
+	}
+
 	// Override inline styles of tables that tinymce generates.
 	table[style] {
 		width: 100% !important;
@@ -375,7 +387,7 @@ summary {
 			font-size: 8pt;
 			padding: $space-pt-1;
 			border-top: 0.5pt solid #535353;
-			background: $light-blue;
+			// background: $light-blue;
 		}		
 	}
 
@@ -404,13 +416,38 @@ summary {
 	}
 
 	//Styles for chapter marker
-    .chapter-header {
-        flow: static(chapterHeader);
+    .chapter-header-left {
+    	float: right;
+    	box-sizing: border-box;
+        flow: static(chapterHeaderLeft);
+        content: counter(chapter);
+        font-size: 12pt;
+        font-family: $font-sans;
+        text-align: right;
+        padding-top: 6pt;
+        padding-bottom: 6pt;
+       	padding-right: 2.25mm;
+        padding-left: 10mm;
+        margin-right: 1mm;
+        font-weight: bold;
+        color: white;
+        background-color: $blue;
+
+    }
+
+    .chapter-header-right {
+    	float: left;
+    	box-sizing: border-box;
+        flow: static(chapterHeaderRight);
         content: counter(chapter); 
         font-size: 12pt;
         font-family: $font-sans;
-        text-align: center;
-        padding: $space-pt-1;
+        text-align: left;
+        padding-top: 6pt;
+        padding-bottom: 6pt;
+       	padding-left: 2.25mm;
+        padding-right: 10mm;
+        margin-left: 1mm;
         font-weight: bold;
         color: white;
         background-color: $blue;
@@ -452,7 +489,8 @@ summary {
 			}
 
 			@left-top { 
-				content: element(chapterHeader);
+				content: element(chapterHeaderLeft);
+				padding-right: 1mm;
 			}
 
 			@bottom-right {
@@ -477,7 +515,8 @@ summary {
 			}
 
 			@right-top { 
-				content: element(chapterHeader);
+				content: element(chapterHeaderRight);
+				padding-left: 1mm;
 			}
 
 			@bottom-left {
