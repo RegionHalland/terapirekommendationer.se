@@ -138,6 +138,21 @@ summary {
 
 @media print {
 
+	@page coverPage {
+		size: A4;
+
+		background-image: url('../img/cover.jpg');
+		background-size: 216mm 303mm;
+		background-repeat: no-repeat;
+		prince-background-image-resolution: "300dpi";
+		prince-bleed: 0mm;
+	}
+
+	.cover-page {
+		page: coverPage;
+		transform: translate(-3mm, -3mm)
+	}
+
 	@page {
 		prince-bleed: 3mm;
 		marks: crop;
@@ -267,6 +282,10 @@ summary {
 		page-break-inside: avoid;
 		column-span: none;
 
+		p {
+			font-family: $font-sans !important;
+		}
+
 		&.column-span-all {
 			margin-top:    $space-pt-2;
 			margin-bottom: $space-pt-2;
@@ -357,8 +376,8 @@ summary {
 	td[style],
 	thead[style],
 	tbody[style] {
-		width:  none !important;
-		height: none !important;
+		width:  auto !important;
+		height: auto !important;
 	}
 
 	img {
@@ -386,9 +405,16 @@ summary {
 			font-style: italic;
 			font-size: 8pt;
 			padding: $space-pt-1;
-			border-top: 0.5pt solid #535353;
+			// border-top: 0.5pt solid #535353;
 			// background: $light-blue;
-		}		
+		}
+
+		&.column-span-all {
+			margin-top:    $space-pt-2;
+			margin-bottom: $space-pt-2;
+			column-span: all !important;
+			// float: prince-snap;
+		}	
 	}
 
 	//Set column-count, inner padding and chapter counter - Needs review
@@ -483,7 +509,7 @@ summary {
 				content: counter(page); 
 				font-family: $font-sans;
 				font-weight: 400;
-				font-size: 9pt;
+				font-size: 10pt;
 				margin-left: 5mm;
 				margin-bottom: 5mm;
 			}
@@ -498,7 +524,7 @@ summary {
 				content: string(chapterName); 
 				font-family: $font-sans;
 				font-weight: 400;
-				font-size: 9pt;			  
+				font-size: 10pt;			  
 				margin-right: 5mm;
 				margin-bottom: 5mm;
 			}
@@ -509,7 +535,7 @@ summary {
 				content: counter(page);
 				font-family: $font-sans;
 				font-weight: 400;
-				font-size: 9pt;
+				font-size: 10pt;
 				margin-right: 5mm;
 				margin-bottom: 5mm;
 			}
@@ -524,7 +550,7 @@ summary {
 				content: string(chapterName);
 				font-family: $font-sans;
 				font-weight: 400;
-				font-size: 9pt;
+				font-size: 10pt;
 				margin-left: 5mm;
 				margin-bottom: 5mm;
 			}
@@ -656,6 +682,16 @@ summary {
 	.column-span-none { column-span: none !important; }
 
 	.figurecomment { display: none !important; }
+	
+	.break-page { page-break-after: always !important; }	
+
+	.hide {
+		height: 0 !important;
+		width: 0 !important;
+		position: absolute;
+		overflow: hide;
+		opacity: 0;
+	}
 }
 
 /* COMPONENTS */
