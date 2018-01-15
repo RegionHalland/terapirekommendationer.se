@@ -75,6 +75,10 @@ gulp.task('generate-pdf', ['css:dist'], shell.task([
 	'prince --javascript assets/dist/html/tr.html'
 ]))
 
+gulp.task('generate-pdf:dist', ['css:dist'], shell.task([
+	'prince --javascript assets/dist/html/tr-klar.html'
+]))
+
 gulp.task('generate-pdf:rek', ['css:dist'], shell.task([
 	'prince --javascript assets/dist/html/rek.html'
 ]))
@@ -99,8 +103,8 @@ gulp.task('bs-reload', () => {
 // Watch
 gulp.task('watch', ['js:dist', 'css:dist', 'fonts:dist', 'browsersync'], () => {
 	gulp.watch('./assets/src/scss/**/*.scss', ['css:dist', 'bs-reload']);
-	gulp.watch('./assets/src/scss/print-rek.scss', ['css:dist', 'generate-pdf:rek']);
-	gulp.watch('./assets/src/scss/print.scss', ['css:dist', 'generate-pdf']);
+	// gulp.watch('./assets/src/scss/print-rek.scss', ['css:dist', 'generate-pdf:rek']);
+	// gulp.watch('./assets/src/scss/print.scss', ['css:dist', 'generate-pdf']);
 	gulp.watch(['./assets/src/js/**/*.js', 'assets/src/mce-js/**/*.js'], ['js:dist', 'bs-reload']);
 })
 

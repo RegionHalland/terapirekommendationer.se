@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" href="{{ get_stylesheet_directory_uri() }}/assets/dist/css/print.min.css">
 </head>
 <body>
-   <h2 class="table-of-contents__header">Innehållsförteckning</h2>
+    <div class="cover-page"></div>
+    <h2 class="table-of-contents__header">Innehållsförteckning</h2>
     <ul class="table-of-contents">
         @foreach($chapters as $key => $chapter)
             <li class="table-of-contents__chapter">{{$chapter->post_title}}<a href="#{{$key+1}}"></a></li>

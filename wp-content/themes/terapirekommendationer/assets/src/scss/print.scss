@@ -47,28 +47,28 @@ $h6: 10pt;
 }
 
 @font-face {
-	font-family: 'scala-sans';
-	src: url('../fonts/scalasans-bolditalic-webfont.woff2') format('woff2'),
-		 url('../fonts/scalasans-bolditalic-webfont.woff') format('woff');
-	font-weight: 700;
-	font-style:  italic;
+ 	font-family: 'scala-sans';
+ 	src: url('../fonts/scalasans-bolditalic-webfont.woff2') format('woff2'),
+ 		 url('../fonts/scalasans-bolditalic-webfont.woff') format('woff');
+ 	font-weight: 700;
+ 	font-style:  italic;
 }
 
-@font-face {
-	font-family: 'scala-sans-caps';
-	src: url('../fonts/scalasans-caps-webfont.woff2') format('woff2'),
-		 url('../fonts/scalasans-caps-webfont.woff') format('woff');
-	font-weight: 400;
-	font-style:  normal;
-}
+// @font-face {
+// 	font-family: 'scala-sans-caps';
+// 	src: url('../fonts/scalasans-caps-webfont.woff2') format('woff2'),
+// 		 url('../fonts/scalasans-caps-webfont.woff') format('woff');
+// 	font-weight: 400;
+// 	font-style:  normal;
+// }
 
-@font-face {
-	font-family: 'scala-sans-caps';
-	src: url('../fonts/scalasans-capsitalic-webfont.woff2') format('woff2'),
-		 url('../fonts/scalasans-capsitalic-webfont.woff') format('woff');
-	font-weight: 400;
-	font-style:  italic;
-}
+// @font-face {
+// 	font-family: 'scala-sans-caps';
+// 	src: url('../fonts/scalasans-capsitalic-webfont.woff2') format('woff2'),
+// 		 url('../fonts/scalasans-capsitalic-webfont.woff') format('woff');
+// 	font-weight: 400;
+// 	font-style:  italic;
+// }
 
 @font-face {
 	font-family: 'scala-sans';
@@ -140,20 +140,31 @@ summary {
 
 	@page coverPage {
 		size: A4;
-
 		background-image: url('../img/cover.jpg');
-		background-size: 216mm 303mm;
+		background-size: 104%;
+		background-position: center;
 		background-repeat: no-repeat;
 		prince-background-image-resolution: "300dpi";
-		prince-bleed: 0mm;
 	}
+	.cover-page { page: coverPage }
 
-	.cover-page {
-		page: coverPage;
-		transform: translate(-3mm, -3mm)
+	@page coverPageBack {
+		size: A4;
+		background-image: url('../img/back.jpg');
+		background-size: 102%;
+		background-position: center;
+		background-repeat: no-repeat;
+		prince-background-image-resolution: "300dpi";
 	}
+	.cover-page-back { page: coverPageBack }
+
+	@page notes {
+		size: A4;
+	}
+	.notes { page: notes }
 
 	@page {
+		size: A4;
 		prince-bleed: 3mm;
 		marks: crop;
 	}
@@ -418,7 +429,8 @@ summary {
 	}
 
 	//Set column-count, inner padding and chapter counter - Needs review
-	.main {
+	.main,
+	.intro {
 		column-count: 2;
 		column-gap: 5mm;
 		padding: $space-2;
