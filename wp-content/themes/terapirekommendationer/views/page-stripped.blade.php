@@ -7,12 +7,12 @@
 
             <div class="mx-auto col-12 sm-col-10 md-col-6 px3 center">
 
-                    <img class="header__logo mb3" src="{{ get_stylesheet_directory_uri() . '/assets/dist/img/region-halland-logo.svg'}}">
+                    <img class="header__logo mb3 mx-auto" src="{{ get_stylesheet_directory_uri() . '/assets/dist/img/region-halland-logo.svg'}}">
 
                     @while(have_posts())
                         {!! the_post() !!}
-                        <article class="article mb2">
-                            <h1>{{ the_title() }}</h1>
+                        <article class="article mb2 left-align">
+                            <h1 class="center">{{ the_title() }}</h1>
                             {!! the_content() !!}
                         </article>
                     @endwhile
