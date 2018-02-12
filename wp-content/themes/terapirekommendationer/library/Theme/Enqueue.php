@@ -116,7 +116,7 @@ class Enqueue
      */
     function tr_set_frontpage() {
         $frontpageId = get_option('page_on_front');
-        update_post_meta($frontpageId, '_wp_page_template', 'page.blade.php');
+        update_post_meta($frontpageId, '_wp_page_template', 'page-stripped.blade.php');
     }
 
     /**

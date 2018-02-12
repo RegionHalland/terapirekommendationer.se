@@ -34,13 +34,19 @@ class CustomTemplates
             \RegionHalland\Helper\Template::locateTemplate('all-reklistor-ssk.blade.php'),
             'all'
         );
+        
+        \RegionHalland\Helper\Template::add(
+            __('Stripped', 'regionhalland'),
+            \RegionHalland\Helper\Template::locateTemplate('page-stripped.blade.php'),
+            'all'
+        );
 
         // Demo
         \RegionHalland\Helper\Template::add(
             __('Demo', 'Terapirekommendationer'),
             \RegionHalland\Helper\Template::locateTemplate('demo.blade.php'),
             'all'
-        );        
+        );
     }
 
 }

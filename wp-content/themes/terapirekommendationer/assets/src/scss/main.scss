@@ -18,3 +18,9 @@
 @import 'components/infobox';
 @import 'components/table';
 @import 'components/content-nav';
+
+// Temporary styles for stripped-page.blade.php below
+.header__logo {
+	width: 100%;
+	max-width: 160px;
+}
