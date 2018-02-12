@@ -111,8 +111,34 @@ summary {
 }
 
 @page { size: A6 }
+@prince-pdf { prince-pdf-page-scaling: none }
 
 @media print {
+	@page coverPage {
+		size: A6;
+		background-image: url('../img/cover-rek-ssk.jpg');
+		background-size: 104%;
+		background-position: center;
+		background-repeat: no-repeat;
+		prince-background-image-resolution: "300dpi";
+	}
+	.cover-page { page: coverPage }
+
+	@page coverPageBack {
+		size: A6;
+		background-image: url('../img/back-rek.jpg');
+		background-size: 102%;
+		background-position: center;
+		background-repeat: no-repeat;
+		prince-background-image-resolution: "300dpi";
+	}
+	.cover-page-back { page: coverPageBack }
+
+	@page {
+		size: A6;
+		prince-bleed: 3mm;
+		marks: crop;
+	}
 	
 	html {
 		box-sizing: border-box;
@@ -188,10 +214,10 @@ summary {
 	}
 	
 	// Show the actual link
-	a:link:after, 
-	a:visited:after { 
-		content: " ("attr(href)")";
-	}
+	// a:link:after, 
+	// a:visited:after { 
+	// 	content: " ("attr(href)")";
+	// }
 
 	p {
 		display: block;

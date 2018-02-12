@@ -139,8 +139,8 @@ summary {
 @media print {
 
 	@page coverPage {
-		size: A4;
-		background-image: url('../img/cover.jpg');
+		size: A5;
+		background-image: url('../img/cover-smarta.jpg');
 		background-size: 104%;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -149,8 +149,8 @@ summary {
 	.cover-page { page: coverPage }
 
 	@page coverPageBack {
-		size: A4;
-		background-image: url('../img/back.jpg');
+		size: A5;
+		background-image: url('../img/back-smarta.jpg');
 		background-size: 102%;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -159,12 +159,12 @@ summary {
 	.cover-page-back { page: coverPageBack }
 
 	@page notes {
-		size: A4;
+		size: A5;
 	}
 	.notes { page: notes }
 
 	@page {
-		size: A4;
+		size: A5;
 		prince-bleed: 3mm;
 		marks: crop;
 	}
@@ -431,8 +431,8 @@ summary {
 	//Set column-count, inner padding and chapter counter - Needs review
 	.main,
 	.intro {
-		column-count: 2;
-		column-gap: 5mm;
+		//column-count: 2;
+		//column-gap: 5mm;
 		padding: $space-2;
 		position: relative;
 	}
@@ -692,6 +692,15 @@ summary {
 	// Utilities
 	.column-span-all  { column-span: all !important;  }
 	.column-span-none { column-span: none !important; }
+
+	@page rotate_body { 
+		prince-rotate-body: landscape;
+	}
+
+	.prince-rotate-body {
+		page: rotate_body;
+	}
+
 
 	.figurecomment { display: none !important; }
 	
