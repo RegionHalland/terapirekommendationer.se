@@ -12,6 +12,7 @@ import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import concat from 'gulp-concat'
 import uglify from 'gulp-uglify'
+import imagemin from 'gulp-imagemin'	
 
 // Build CSS
 gulp.task('css:dist', () => {
@@ -63,6 +64,13 @@ gulp.task('js:dist', () => {
 		.pipe(gulp.dest('./assets/dist/mce-js/'))
 })
 
+// Minify images
+gulp.task('img:dist', () => {
+	return gulp.src('./assets/src/img/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./assets/dist/img'))
+})
+
 // Copy fonts to temporary directory
 gulp.task('fonts:dist', () => {
 	return gulp.src('./assets/src/fonts/*')
@@ -86,6 +94,7 @@ gulp.task('generate-pdf:rek', ['css:dist'], shell.task([
 gulp.task('generate-pdf:rek-ssk', ['css:dist'], shell.task([
 	'prince --javascript assets/dist/html/rek-ssk.html'
 ]))
+
 
 
 // Browsersync
