@@ -68,3 +68,5 @@ ehthumbs.db
 Thumbs.db
 
 wp-content/themes/terapirekommendationer/assets/dist/html/tr.html
+*.pdf
+*.psd
