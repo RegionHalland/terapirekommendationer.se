@@ -132,12 +132,12 @@ class Enqueue
     }
 
 // create a URL to the child theme
-function get_template_directory_child() {
-    $directory_template = get_template_directory_uri(); 
-    $directory_child = str_replace('regionhalland', '', $directory_template) . 'terapirekommendationer';
+// function get_template_directory_child() {
+//     $directory_template = get_template_directory_uri(); 
+//     $directory_child = str_replace('regionhalland', '', $directory_template) . 'terapirekommendationer';
 
-    return $directory_child;
-}
+//     return $directory_child;
+// }
 
 function tr_register_mce_buttons( $buttons ) {
     array_unshift( $buttons, 'table' );
@@ -246,9 +246,9 @@ function tr_remove_mce_2_buttons( $buttons ) {
 }
 
 function myplugin_register_tinymce_javascript( $plugin_array ) {
-    $plugin_array['tr'] = $this->get_template_directory_child() . '/assets/dist/mce-js/mce_content_types_plugin.js';
-    $plugin_array['table'] = $this->get_template_directory_child() . '/assets/dist/mce-js/mce_table_plugin.js';
-    $plugin_array['images'] = $this->get_template_directory_child() . '/assets/dist/mce-js/image_plugin.js';
+    $plugin_array['tr'] = get_stylesheet_directory_uri() . '/assets/dist/mce-js/mce_content_types_plugin.js';
+    $plugin_array['table'] = get_stylesheet_directory_uri() . '/assets/dist/mce-js/mce_table_plugin.js';
+    $plugin_array['images'] = get_stylesheet_directory_uri() . '/assets/dist/mce-js/image_plugin.js';
 
     return $plugin_array;
 }
