@@ -1,6 +1,6 @@
 <?php
 
-namespace Terapirekommendationer;
+namespace RegionHalland;
 
 /**
  * A PSR-4 compatible class loader.

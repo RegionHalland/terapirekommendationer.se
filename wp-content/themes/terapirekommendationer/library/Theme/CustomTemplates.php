@@ -1,9 +1,10 @@
 <?php
 
-namespace Terapirekommendationer\Theme;
+namespace RegionHalland\Theme;
 
 class CustomTemplates
 {
+
     public function __construct()
     {
         add_action('after_setup_theme', array($this, 'addCampaignTemplate'));
@@ -12,25 +13,37 @@ class CustomTemplates
     public function addCampaignTemplate()
     {
         \RegionHalland\Helper\Template::add(
-            __('Whole Chapter', 'Terapirekommendationer'),
+            __('Full width', 'regionhalland'),
+            \RegionHalland\Helper\Template::locateTemplate('full-width.blade.php'),
+            'all'
+        );
+
+        \RegionHalland\Helper\Template::add(
+            __('One page (no article)', 'regionhalland'),
+            \RegionHalland\Helper\Template::locateTemplate('one-page.blade.php'),
+            'all'
+        );
+
+        \RegionHalland\Helper\Template::add(
+            __('Whole Chapter', 'regionhalland'),
             \RegionHalland\Helper\Template::locateTemplate('whole-chapter.blade.php'),
             'all'
         );
 
         \RegionHalland\Helper\Template::add(
-            __('All Headings', 'Terapirekommendationer'),
+            __('All Headings', 'regionhalland'),
             \RegionHalland\Helper\Template::locateTemplate('all-headings.blade.php'),
             'all'
         );
 
         \RegionHalland\Helper\Template::add(
-            __('All Reklistor', 'Terapirekommendationer'),
+            __('All Reklistor', 'regionhalland'),
             \RegionHalland\Helper\Template::locateTemplate('all-reklistor.blade.php'),
             'all'
         );
 
         \RegionHalland\Helper\Template::add(
-            __('All Reklistor (Sjuksköterskor)', 'Terapirekommendationer'),
+            __('All Reklistor (Sjuksköterskor)', 'regionhalland'),
             \RegionHalland\Helper\Template::locateTemplate('all-reklistor-ssk.blade.php'),
             'all'
         );
@@ -40,13 +53,5 @@ class CustomTemplates
             \RegionHalland\Helper\Template::locateTemplate('page-stripped.blade.php'),
             'all'
         );
-
-        // Demo
-        \RegionHalland\Helper\Template::add(
-            __('Demo', 'Terapirekommendationer'),
-            \RegionHalland\Helper\Template::locateTemplate('demo.blade.php'),
-            'all'
-        );
     }
-
 }

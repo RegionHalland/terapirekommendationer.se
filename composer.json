@@ -28,7 +28,7 @@
     ],
     "require": {
         "composer/installers": "~1.0",
-        "johnpbloch/wordpress": "^4.6.0",
+        "johnpbloch/wordpress": "4.9.5",
         "wpackagist-plugin/wp-nested-pages": "2.0.1",
         "wpackagist-plugin/simple-post-notes": "1.6",
         "advanced-custom-fields/advanced-custom-fields-pro": "^5.0",

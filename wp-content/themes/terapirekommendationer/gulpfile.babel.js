@@ -12,7 +12,7 @@ import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import concat from 'gulp-concat'
 import uglify from 'gulp-uglify'
-import imagemin from 'gulp-imagemin'	
+import imagemin from 'gulp-imagemin'
 
 // Build CSS
 gulp.task('css:dist', () => {
@@ -39,7 +39,7 @@ gulp.task('css:dist', () => {
 // Build JS
 gulp.task('js:dist', () => {
 	// App
-	gulp.src('./assets/src/js/*.js')
+	gulp.src(['./assets/src/js/vendor/*.js', './assets/src/js/app.js', './assets/src/js/*.js'])
 		.pipe(plumber({
 			errorHandler: error => {
 				gutil.beep()
@@ -61,7 +61,7 @@ gulp.task('js:dist', () => {
 			}
 		}))
 		.pipe(uglify())
-		.pipe(gulp.dest('./assets/dist/mce-js/'))
+		.pipe(gulp.dest('./assets/dist/mce-js/'))	
 })
 
 // Minify images
