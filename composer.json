@@ -1,59 +1,15 @@
 {
-    "name": "regionhalland/terapirekommendationer",
-    "license": "",
-    "authors": [
-        {
-            "name": "Sebastian Marcusson",
-            "email": "sebastian.marcusson@regionhalland.se"
-        }
-    ],
-    "minimum-stability" : "stable",
-    "repositories": [
-        {
-            "type":"composer",
-            "url":"https://wpackagist.org"
-        },
-        {
-          "type": "package",
-          "package": {
-                "name": "advanced-custom-fields/advanced-custom-fields-pro",
-                "version": "5.1.3",
-                "type": "wordpress-plugin",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=b3JkZXJfaWQ9OTg3ODB8dHlwZT1wZXJzb25hbHxkYXRlPTIwMTctMDItMDIgMTU6MTQ6Mzc="
-                }
-            }
-        }        
-    ],
-    "require": {
-        "composer/installers": "~1.0",
-        "johnpbloch/wordpress": "4.9.5",
-        "wpackagist-plugin/wp-nested-pages": "2.0.1",
-        "wpackagist-plugin/simple-post-notes": "1.6",
-        "advanced-custom-fields/advanced-custom-fields-pro": "^5.0",
-        "wpackagist-plugin/user-role-editor": "^4.35",
-        "caxy/php-htmldiff": "^0.1.5",
-        "gridonic/princexml-php": "^1.2",
-        "wpackagist-plugin/wp-all-import": "3.4.5",
-        "wpackagist-plugin/enhanced-media-library": "2.4.5",
-        "wpackagist-plugin/wordpress-importer": "0.6.3",
-        "wpackagist-plugin/search-by-algolia-instant-relevant-results": "^2.8",
-        "wpackagist-plugin/better-search-replace": "1.3.1",
-        "sunra/php-simple-html-dom-parser": "^1.5"
-    },
-    "extra": {
-        "path": "/",
-        "wordpress-install-dir": "wp",
-        "installer-paths": {
-            "wp-content/plugins/{$name}": ["type:wordpress-plugin"],
-            "wp-content/themes/{$name}": ["type:wordpress-theme"]
-        }
-    },
-
-    "scripts": {
-        "post-install-cmd": [
-            "mkdir -p wp-content/uploads/cache/blade-cache"
-        ]
-    }
+  "name": "regionhalland/terapirekommendationer",
+  "type": "wordpress-theme",
+  "license": "MIT",
+  "description": "Wordpress theme for Terapirekommendationer 💊",
+  "homepage": "https://github.com/regionhalland",
+  "keywords": ["wordpress"],
+  "support": {
+    "issues": "https://github.com/regionhalland/terapirekommendationer/issues"
+  },
+  "require": {
+    "philo/laravel-blade": "^3.1",
+    "helsingborg-stad/acf-export-manager": ">=1.0.0"
+  }
 }

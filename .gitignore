@@ -1,3 +1,7 @@
+.DS_Store
+node_modules/
+vendor/
+
 # Config #
 ##########
 /config/cache.php
@@ -6,28 +10,7 @@
 /config/multisite.php
 /config/salts.php
 wp-config.php
-
-# Municipio dependencies #
-##########################
-wp/
-vendor/
-wp-content/*
-!wp-content/mu-plugins
-!wp-content/mu-plugins/*
-!wp-content/object-cache.php
-
-!wp-content/
-wp-content/*
-!wp-content/plugins/
-wp-content/plugins/*
-!wp-content/plugins/oasis-workflow-pro
-
-# Themes dependencies #
-##########################
-# wp-content/themes/*
-!wp-content/themes
-# !wp-content/themes/terapirekommendationer
-node_modules/
+.env
 
 # Compiled source #
 ###################
@@ -67,6 +50,8 @@ node_modules/
 ehthumbs.db
 Thumbs.db
 
-wp-content/themes/terapirekommendationer/assets/dist/html/tr.html
+# Misc #
+########
+/assets/dist/html/tr.html
 *.pdf
 *.psd
