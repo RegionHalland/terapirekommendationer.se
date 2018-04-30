@@ -7,6 +7,11 @@ class App
 	public function __construct()
 	{
 		/**
+		* Redirect from "Jämför tidigare" button
+		*/
+		new \RegionHalland\Theme\OwfRedirect();
+
+		/**
 		* Template
 		*/
 		new \RegionHalland\Template();
