@@ -118,4 +118,4 @@ gulp.task('watch', ['js:dist', 'css:dist', 'fonts:dist', 'browsersync'], () => {
 })
 
 // Default build
-gulp.task('default', ['css:dist', 'fonts:dist', 'js:dist', 'generate-pdf', 'generate-pdf:rek'])
+gulp.task('default', ['css:dist', 'fonts:dist', 'js:dist'])
