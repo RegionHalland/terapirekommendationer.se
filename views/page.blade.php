@@ -32,7 +32,7 @@
 
 
 
-            <div class="content-nav-container  col col-12 md-col-3 px3">
+            <div class="col col-12 md-col-3 px3">
                 @include('partials.content-nav')
             </div>
         </div>

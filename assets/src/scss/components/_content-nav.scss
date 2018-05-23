@@ -3,6 +3,41 @@
 }
 
 .content-nav {
+	position: relative;
 	padding-top: $space-3;
 	max-width: 254px;
+
+	&.fixed {
+		position: fixed;
+	}
+
+	&.top-0 {
+		top: 0;
+	}
+}
+
+.content-nav__heading  {
+	font-weight: 700;
+}
+
+.content-nav__item {
+	margin-top:    $space-1;
+	margin-bottom: $space-1;
+
+	&.active {
+		padding-left: $space-2;
+		border-left: 3px solid $dark-blue;
+	}
+
+	&.active .content-nav__link {
+		color: palette(black, base)
+	}
+}
+
+.content-nav__link {
+	color: palette(grey, x-dark);
+
+	&:hover {
+		color: palette(black, base);
+	}
 }
