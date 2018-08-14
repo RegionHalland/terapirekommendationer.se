@@ -135,12 +135,12 @@ class WholeChapter extends \RegionHalland\Controller\BaseController
 		// Write the contents back to the file
 		file_put_contents($file, $current);*/
 
-		if (!is_dir('wp-content/themes/terapirekommendationer/assets/dist/html/')) {
+		if (!is_dir(get_stylesheet_directory() . '/assets/dist/html/')) {
   			// dir doesn't exist, make it
-  			mkdir('wp-content/themes/terapirekommendationer/assets/dist/html/');
+  			mkdir(get_stylesheet_directory() . '/assets/dist/html/');
 		}
 
-		echo file_put_contents("wp-content/themes/terapirekommendationer/assets/dist/html/tr.html", $myString);
+		echo file_put_contents(get_stylesheet_directory() . '/assets/dist/html/tr.html', $myString);
 
     	die();
 
