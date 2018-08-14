@@ -100,7 +100,7 @@ gulp.task('generate-pdf:rek-ssk', ['css:dist'], shell.task([
 // Browsersync
 gulp.task('browsersync', () => {
 	browsersync.init({
-		proxy: 'tr.test'
+		proxy: 'vg.test/terapirek'
 	});
 })
 
