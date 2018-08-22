@@ -4,9 +4,15 @@ namespace RegionHalland\Theme;
 
 class Enqueue
 {
-
+    protected $COMPONENT_LIB_URL = '//regionhalland.github.io/styleguide/dist/css/main.min.css';
+    
     public function __construct() 
     {
+        // Enqueue Region Halland Component Library
+        if (!empty(env('COMPONENT_LIB_URL'))) {
+            $this->COMPONENT_LIB_URL = env('COMPONENT_LIB_URL');
+        }
+
         // Enqueue styles
         add_action('wp_enqueue_scripts', array($this, 'style'));
 
@@ -14,7 +20,7 @@ class Enqueue
         add_action('wp_enqueue_scripts', array($this, 'script'));
         
         // Add styleguide to tinymce editor
-        add_editor_style( '//regionhalland.github.io/styleguide/dist/css/main.min.css' );
+        add_editor_style( $this->COMPONENT_LIB_URL );
  
         // Enqueue admin styles
         add_action( 'admin_enqueue_scripts', array($this, 'tr_admin_styles'));
@@ -67,7 +73,7 @@ class Enqueue
     */
     public function style()
     {
-        wp_register_style('regionhalland', "//regionhalland.github.io/styleguide/dist/css/main.min.css");
+        wp_register_style('regionhalland', $this->COMPONENT_LIB_URL);
         wp_enqueue_style('regionhalland');
         wp_enqueue_style('docsearch', "//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css");
         
