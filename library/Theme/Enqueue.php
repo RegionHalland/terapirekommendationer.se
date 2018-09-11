@@ -251,7 +251,7 @@ class Enqueue
      * @return void
      */
     function tr_modify_block_formats( $init ) {
-        $init['block_formats'] = 'Paragraph=p;Mellanrubrik 1=h3;Mellanrubrik 2=h4;Mellanrubrik 3=h5;Mellanrubrik 4=h6;';
+        $init['block_formats'] = 'Paragraph=p;Rubrik 1=h3;Rubrik 2=h4;Rubrik 3=h5;Rubrik 4=h6;';
         return $init;
     }
 
