@@ -1,6 +1,6 @@
 <?php
 
-namespace Terapirekommendationer\Theme;
+namespace RegionHalland\Theme;
 
 use Sunra\PhpSimple\HtmlDomParser;
 

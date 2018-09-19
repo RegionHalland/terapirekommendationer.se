@@ -21,6 +21,7 @@ class App
 		*/
 		new \RegionHalland\Theme\Navigation();
 		new \RegionHalland\Theme\Enqueue();
+		new \RegionHalland\Theme\Content();
 
 		/**
 		* Admin
