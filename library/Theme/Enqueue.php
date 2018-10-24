@@ -8,10 +8,15 @@ class Enqueue
     
     public function __construct() 
     {
+        // We have a new styleguide at:
+        // https://github.com/regionhalland/styleguide-v2
+
+        // We want to use this as soon as possible.
+        
         // Enqueue Region Halland Component Library
-        if (!empty(env('COMPONENT_LIB_URL'))) {
-            $this->COMPONENT_LIB_URL = env('COMPONENT_LIB_URL');
-        }
+        // if (!empty(env('COMPONENT_LIB_URL'))) {
+        //     $this->COMPONENT_LIB_URL = env('COMPONENT_LIB_URL');
+        // }
 
         // Enqueue styles
         add_action('wp_enqueue_scripts', array($this, 'style'));
