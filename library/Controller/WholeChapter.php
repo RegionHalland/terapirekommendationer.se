@@ -18,9 +18,6 @@ class WholeChapter extends \RegionHalland\Controller\BaseController
 {
     public function init()
     {
-    	//var_dump(expression)
-    	//$blade = New View();
-    	//return $blade('whole-chapter', ['name' => 'James']);
     	$page_id = 3913;
     	$page_id_chapter1 = 183;
     	$chapterOne = get_page($page_id_chapter1);
@@ -36,14 +33,10 @@ class WholeChapter extends \RegionHalland\Controller\BaseController
 		$chapters = array();
 
 		foreach ($pages as $key => $value) {
-			// if ($key == 2) {
+			if ($key == 2) {
 				array_push($chapters, $value);
-			// }
+			}
 		}
-		
-
-		// var_dump($chapters);
-		// die();
 
 		foreach ($chapters as $key => $chapter) {
 			$argsTwo = array(
@@ -53,70 +46,36 @@ class WholeChapter extends \RegionHalland\Controller\BaseController
 			);
 			$chapters[$key]->children = get_pages($argsTwo);
 
-			/*foreach ($pages[$key]->children as $k => $grand) {
-				# code...
-				//echo json_encode($grand);
-				$argsThree = array(
-					'sort_order' => 'asc',
-					'sort_column' => 'menu_order',
-					'parent' => $grand->ID,
-				);
-
-				$grand->grand_children = get_pages($argsThree);
-			}
-			//wp_die();
-			//wp_die(json_encode($children));
-			/*foreach ($variable as $key => $value) {
-				# code...
-			}*/
-			/*$argsThree = array(
-				'sort_order' => 'asc',
-				'sort_column' => 'menu_order',
-				'parent' => $child->ID,
-			);*/
-
-			//$pages[$key]->hello =
-
-			/*foreach ($child as $k => $grand_child) {
-				$argsThree = array(
-					'sort_order' => 'asc',
-					'sort_column' => 'menu_order',
-					'parent' => $child->ID,
-				);
-
-				echo get_pages($argsThree);
-
-				//$child[$k]->grand_children = get_pages($argsThree);
-			}*/
-
 		}
 
-		//var_dump($pages[0]->children[2]->grand_children);
-
-
-		//$pages->children = get_page_children($portfolio->ID, $pages);
-
-	/*$myArr = array(
-		"chapters" => $pages,
-		"chapter_children" => $chapter_children,
-		"chapter_grand_children" => $pages
-	);*/
-		//print_r($pages);
-
-		//die()
 	    $this->VIEWS_PATHS = apply_filters('RegionHalland/blade/view_paths', array(
-        get_stylesheet_directory() . '/views',
-        get_template_directory() . '/views'
+        	get_stylesheet_directory() . '/views',
+        	get_template_directory() . '/views'
         ));
+
 		$this->CACHE_PATH = WP_CONTENT_DIR . '/uploads/cache/blade-cache';
 
         $blade = new Blade($this->VIEWS_PATHS, $this->CACHE_PATH);
-        //echo $blade->view()->make($view, $data)->render();
-    	
-    	echo $myString = $blade->view()->make('whole-chapter', [
+        
+
+        $rendered = $blade->view()->make('whole-chapter', [
     		"chapter_one" => $chapterOne,
     		"chapters" => $chapters
     	])->render();
+
+
+    	$prince = new PrinceWrapper('/usr/bin/prince');
+    	//$prince->addStyleSheet(__DIR__.'/min.css');
+		$err = [];
+		
+		header('Content-Type: application/pdf');
+		header('Content-Disposition: attachment; filename="foo.pdf"');
+
+		$pdf = $prince->convert_string_to_passthru($rendered, $err);
+
+    	echo $rendered;
+
+		die();
 
 		// $views = __DIR__;
 		// $cache = __DIR__;

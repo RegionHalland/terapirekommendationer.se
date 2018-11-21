@@ -1,3 +1,6 @@
+{{--
+    Template Name: Whole Chapter
+--}}
 <!doctype html>
 <html class="no-js">
 <head>
