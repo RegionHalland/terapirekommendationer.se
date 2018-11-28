@@ -49,6 +49,7 @@ class App
 	   //new \RegionHalland\Theme\Enqueue();
 	   //new \RegionHalland\Theme\Support();
 	   new \RegionHalland\Theme\Sidebars();
+	   new \RegionHalland\Theme\Shortcodes();
 	   //new \RegionHalland\Theme\Navigation();
 	   //new \RegionHalland\Theme\General();
 	   //new \RegionHalland\Theme\OnTheFlyImages();
